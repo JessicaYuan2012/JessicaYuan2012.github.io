@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/myStyle.css">
 	<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery
 /jquery-1.4.min.js"></script>
-	<script src="jquery2.0.0.min.js"></script>
 </head>
 
 <body>
@@ -25,50 +24,50 @@
 	<div id="content">
     
     <div class="currentNews">
-	<img src="images/news1.jpg" />
+	<a target="_blank"><img /></a>
     <div class="page-info">
-    <h3>1/6 纽约现大批华人假僧尼行乞 多人已被捕</h3>
-    <p>人潮汹涌的曼哈顿时报广场，向来是打扮成米老鼠、超级英雄和其它玩偶人的聚集行乞之地。近日，又加入大批穿着橘色、棕色或灰色僧袍的“僧尼”，样貌大部分是剃光头的华人男子，也有一些类似装扮的女子。面对记者访问，这些穿僧袍的男子对他们来自哪里闪烁其词，拒绝答复任何有关背景或训练的问题，他们大多说汉语，口音听似来自中国各地。</p>
+    <h3></h3>
+    <p></p>
     </div>
     </div>
     
     <div class="followingNews">
-    <img src="images/news2.jpg" />
+	<a target="_blank"><img /></a>
     <div class="page-info">
-    <h3>2/6 在线影展：北京-你视而不见的日与夜</h3>
-    <p>从历史古都到超级都市，北京有着无数种视觉图景。生长于北京的摄影记者贺顿，对这座城市在记忆与当下之间呈现的巨大差异如鲠在喉，他致力于寻找那些大多数人难以发现又或者视而不见的视角，他镜头中的北京，是一种细节与全景并置的视觉“复调”，是刁钻的视角对庸常景物的再造，也是他对自身城市记忆一次荒腔走板的复述。</p>  
+    <h3></h3>
+    <p></p>  
     </div>
     </div>
     
     <div class="followingNews">
-    <img src="images/news3.jpg" />
+	<a target="_blank"><img /></a>
     <div class="page-info">
-    <h3>3/6 海南文昌村民立日本侵略军将领跪地谢罪石像</h3>
-    <p>为纪念被日本侵略军残忍杀害的亲人，海南文昌市东阁镇金牛流坑村村民凌先生特地请人雕刻时任日本侵略军将领的石像，让他们跪在凌先生亲人的坟茔前谢罪。图为跪在一座碑文显示为凌妣陈氏嬬人之墓前的日本侵略军将领，海军中将迈滕信竹，陆军中将佐贺，陆军少将安滕利吉，旅团长少将饭田祥二郎。</p>  
+    <h3></h3>
+    <p></p>  
     </div>
     </div>
 
     <div class="followingNews">
-    <img src="images/news4.jpg" />
+	<a target="_blank"><img /></a>
     <div class="page-info">
-    <h3>4/6 古寺里年轻和尚的现代生活</h3>
-    <p>在经济浪潮、商业繁华席卷城市之都时，习惯了被高楼林立、街道纵横包裹其中的济南市民，往往忽略了仅距市中心2.5公里远、海拔仅有285米高的千佛山上，有一座见证了历史变迁、风云变幻的庙宇。</p>  
+    <h3></h3>
+    <p></p>  
     </div>
     </div>
     
     <div class="followingNews">
-    <img src="images/news5.jpg" />
+	<a target="_blank"><img /></a>
     <div class="page-info">
-    <h3>5/6 等待重生的孩子</h3>
-    <p>从贵州远赴重庆、患上脑干胶质瘤的四岁男孩“狗狗”日渐衰弱，父母八方寻医，药石无灵，邱培亮夫妇带着儿子住在出租房的目的，是等待“狗狗”安然离去，将他的器官及遗体全部捐献。</p>  
+    <h3></h3>
+    <p></p>  
     </div>
     </div>
     
     <div class="followingNews">
-    <img src="images/news6.jpg" />
+	<a target="_blank"><img /></a>
     <div class="page-info">
-    <h3>6/6 合肥传销者暴力阻法耍无赖被抬走</h3>
-    <p>2014年7月8日，安徽合肥，执法人员查处“涉传”旅游大巴。据合肥市蜀山区工商分局负责人介绍，根据群众举报以及各镇街园的先期摸排，每天上午，在赖少其艺术馆、省博物馆等地都有停靠的旅游大巴车，以一天800元的包车费用，拉着传销人员到合肥市的各大景点进行参观，并集中“上课”，对他们进行洗脑式教育。合肥赖少其艺术馆门前，一位暴力阻挠执法的传销人员，被执法人员抬到公安执法车前。 </p>  
+    <h3></h3>
+    <p></p>  
     </div>
     </div>    
     
@@ -92,62 +91,12 @@ Designed by <a href="yuanyang3335@163.com"></a>Yuan Yang<br>
 2014.07.08
 </address>
 </div>
-
-<div id="div1"></div>
 <script>
-
-$("#rightSection a")[0].onclick = 
-function(){
-	var temp = $('.currentNews');
-	temp.removeClass('currentNews'); 
-	temp.addClass('previousNews');
-
-	var temp2 = $('.followingNews');
-	if(temp2.length != 0){
-		$(temp2[0]).removeClass('followingNews');
-		$(temp2[0]).addClass('currentNews');
-	}
-	else{
-		temp = $('.previousNews');
-		$(temp[0]).removeClass('previousNews');
-		$(temp[0]).addClass('currentNews');
-		for(var i=1; i<6; i++){
-			$(temp[i]).removeClass('previousNews');
-			$(temp[i]).addClass('followingNews');
-		}
-	}
-	$('.currentNews img').css('-webkit-animation', 'appear 2s');
-}
-
-$("#leftSection a")[0].onclick =
-function(){
-	var temp = $('.currentNews');
-	temp.removeClass('currentNews'); 
-	temp.addClass('followingNews');
-	
-	var temp2 = $('.previousNews');
-	var l = temp2.length;
-	if(l != 0){
-		$(temp2[l-1]).removeClass('previousNews');
-		$(temp2[l-1]).addClass('currentNews');
-	}
-	else{
-		temp = $('.followingNews');
-		$(temp[5]).removeClass('followingNews');
-		$(temp[5]).addClass('currentNews');
-		for(var i=0; i<5; i++){
-			$(temp[i]).removeClass('followingNews');
-			$(temp[i]).addClass('previousNews');
-		}
-	}
-	$('.currentNews img').css('-webkit-animation', 'appear 2s');
-
-}
-
 //var int = setInterval($("#rightSection a")[0].onclick, 4000);
 //$('#player a')[0].onclick = int;
 //$('#player a')[1].onclick =  window.clearInterval(int);
-
 </script>
+	<script type="text/javascript" src="json.js"></script>
+    <script type="text/javascript" src="mouseClick.js"></script>
 </body>
 </html>

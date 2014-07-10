@@ -93,12 +93,13 @@ div#player{
 }
 
 div#footer{
+	margin-top:100px;
 	width: 1230px;
 	color: #2A2A2A;
 }
 
 address{
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:'微软雅黑';
 	text-align: center;
 }
 
@@ -106,8 +107,4 @@ address{
 {
 	from{opacity:0;}
 	to{opacity:1;}
-}
-
-div#div1{
-	
 }
