@@ -5,20 +5,22 @@
     <meta charset="utf-8" />
     <title>Pic News</title>
     <link rel="stylesheet" href="css/myStyle.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/CommentsAndPaginator.css">
 	<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery
 /jquery-1.4.min.js"></script>
 </head>
 
-<body background="images/bg3.jpg">
+<body background="images/bg8.jpg">
 
 <div id="header">
-<img src="images/logo_Chinese.gif"  width=300/>
+      <img src="images/logo_Chinese.gif"  width=400/>
 </div>
 
 
 <div id="slider">
 	<div id="leftSection">
-	<div><img src="images/previous.gif" height="50"/></div>
+	<div><span style="cursor:pointer"><img src="images/previous.gif" height="50"/></span></div>
 	</div>
   
 	<div id="content">
@@ -74,25 +76,97 @@
   </div><!--content end-->
     
 	<div id="rightSection">
-	<div><img src="images/next.gif" height="50"/></div>
+	<div><span style="cursor:pointer"><img src="images/next.gif" height="50"/></span></div>
 	</div>
     
+  <div id="player">
+    <span style="cursor:pointer"><img src="images/play.gif" id="play" /></span>
+    <span style="cursor:pointer"><img src="images/stop.gif" id="stop" /></span>
+    </div>
 </div><!--slider end-->
 
+<div id="allComments">
+	<ul class="comment_list">
+  	<li class="post">
+    <img class="gravatar" alt="头像"/>
+    <div class="post_body">
+    	<div class="post_header">
+        	<p></p>
+        </div>
+        <div class="post_content">
+        	<p></p>
+        </div>
+    </div>
+    </li>
+  	<li class="post">
+    <img class="gravatar" alt="头像"/>
+    <div class="post_body">
+    	<div class="post_header">
+        	<p></p>
+        </div>
+        <div class="post_content">
+        	<p></p>
+        </div>
+    </div>
+    </li>
+  	<li class="post">
+    <img class="gravatar" alt="头像"/>
+    <div class="post_body">
+    	<div class="post_header">
+        	<p></p>
+        </div>
+        <div class="post_content">
+        	<p></p>
+        </div>
+    </div>
+    </li>
+  	<li class="post">
+    <img class="gravatar" alt="头像"/>
+    <div class="post_body">
+    	<div class="post_header">
+        	<p></p>
+        </div>
+        <div class="post_content">
+        	<p></p>
+        </div>
+    </div>
+    </li>
+  	<li class="post">
+    <img class="gravatar" alt="头像"/>
+    <div class="post_body">
+    	<div class="post_header">
+        	<p></p>
+        </div>
+        <div class="post_content">
+        	<p></p>
+        </div>
+    </div>
+    </li>
+    <div class="paginator" align="center">
+    	<span style="font-size:12px">共<b></b>条&nbsp;&nbsp;&nbsp;分<b></b>页&nbsp;&nbsp;&nbsp;当前&nbsp;&nbsp;第<b></b>页&nbsp;&nbsp;&nbsp;</span>
+        <span style="cursor:pointer; text-decoration:underline;font-size:12px">首页</span>&nbsp;&nbsp;&nbsp;
+        <span style="cursor:pointer; text-decoration:underline;font-size:12px">上一页</span>&nbsp;&nbsp;&nbsp;
+        <span style="cursor:pointer; text-decoration:underline;font-size:12px">下一页</span>&nbsp;&nbsp;&nbsp;
+        <span style="cursor:pointer; text-decoration:underline;font-size:12px">末页</span>&nbsp;&nbsp;&nbsp;
 
-<div id="footer">
+    </div>
+  </ul><!--comment_list end-->
+</div>
+
+<div id="footer" align="center">
 <address>
 Designed by Yuan Yang<br> 
 2014.07.08
 </address>
 </div>
 
-<script type="text/javascript" src="json.js"></script>
-<script type="text/javascript" src="mouseClick.js"></script>
+<script type="text/javascript" src="js/image_json.js"></script>
+<script type="text/javascript" src="js/mouseClick.js"></script>
+<script type="text/javascript" src="js/comment_json.js"></script>
 <script>
-/*
-setInterval($("#rightSection div")[0].onclick,4000);
-*/
+var int = window.setInterval($("#rightSection div")[0].onclick, 3000);
+$('#play')[0].onclick = function(){int = window.setInterval($("#rightSection div")[0].onclick, 4000);}
+$('#stop')[0].onclick = function(){window.clearInterval(int);}
 </script>
 </body>
 </html>
