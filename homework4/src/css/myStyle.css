@@ -1,5 +1,5 @@
 ﻿div#header{
-	padding-left:440px;
+	padding-left:80px;
 	width:790px;
 }
 
@@ -14,7 +14,7 @@ div#content {
 overflow:hidden;
 width: 1020px;
 height: 560px;
-box-shadow: 0px 0px 50px 10px #c9c9c9;
+box-shadow: 0px 0px 50px 10px #333;
 margin-top:-310px;
 margin-left:60px;
 }
@@ -85,22 +85,15 @@ opacity: 0;
 	position:relative;
 }
 
-div#player{
-	width:120px;
-	position:relative;
-	margin-left:1080px;
-	margin-top: 240px;
-}
-
 div#footer{
 	margin-top:100px;
-	width: 1230px;
-	color: #2A2A2A;
+	margin-left:100px;
+	width: 1130px;
+	color: white;
 }
 
 address{
 	font-family:'微软雅黑';
-	text-align: center;
 }
 
 @-webkit-keyframes appear

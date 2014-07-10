@@ -9,16 +9,16 @@
 /jquery-1.4.min.js"></script>
 </head>
 
-<body>
-<!--
+<body background="images/bg3.jpg">
+
 <div id="header">
 <img src="images/logo_Chinese.gif"  width=300/>
 </div>
--->
+
 
 <div id="slider">
 	<div id="leftSection">
-	<a href="#"><img src="images/previous.gif" height="50"/></a>
+	<div><img src="images/previous.gif" height="50"/></div>
 	</div>
   
 	<div id="content">
@@ -74,29 +74,25 @@
   </div><!--content end-->
     
 	<div id="rightSection">
-	<a href="#"><img src="images/next.gif" height="50"/></a>
+	<div><img src="images/next.gif" height="50"/></div>
 	</div>
     
-    <div id="player">
-    <a href=""><img src="images/play.gif" width='50px'/></a>
-	<a href=""><img src="images/stop.gif" width='50px'/></a>
-</div>
 </div><!--slider end-->
 
 
 <div id="footer">
-<hr />
 <address>
-Designed by <a href="yuanyang3335@163.com"></a>Yuan Yang<br> 
+Designed by Yuan Yang<br> 
 2014.07.08
 </address>
 </div>
+
+<script type="text/javascript" src="json.js"></script>
+<script type="text/javascript" src="mouseClick.js"></script>
 <script>
-//var int = setInterval($("#rightSection a")[0].onclick, 4000);
-//$('#player a')[0].onclick = int;
-//$('#player a')[1].onclick =  window.clearInterval(int);
+/*
+setInterval($("#rightSection div")[0].onclick,4000);
+*/
 </script>
-	<script type="text/javascript" src="json.js"></script>
-    <script type="text/javascript" src="mouseClick.js"></script>
 </body>
 </html>

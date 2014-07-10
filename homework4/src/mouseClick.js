@@ -1,5 +1,5 @@
 ﻿//实现鼠标点击上页、下页按钮时的图片切换
-$("#rightSection a")[0].onclick =
+$("#rightSection div")[0].onclick =
 function () {
     var temp = $('.currentNews');
     temp.removeClass('currentNews');
@@ -22,7 +22,7 @@ function () {
     $('.currentNews img').css('-webkit-animation', 'appear 2s');
 }
 
-$("#leftSection a")[0].onclick =
+$("#leftSection div")[0].onclick =
 function () {
     var temp = $('.currentNews');
     temp.removeClass('currentNews');
