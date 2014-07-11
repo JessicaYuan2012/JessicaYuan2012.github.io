@@ -20,6 +20,7 @@ function () {
         }
     }
     $('.currentNews img').css('-webkit-animation', 'appear 2s');
+    localStorage.imgNum = (localStorage.imgNum + 1) % 6;
 }
 
 $("#leftSection div")[0].onclick =
@@ -44,5 +45,5 @@ function () {
         }
     }
     $('.currentNews img').css('-webkit-animation', 'appear 2s');
-
+    localStorage.imgNum = (localStorage.imgNum - 1) % 6;
 }
