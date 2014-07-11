@@ -1,10 +1,10 @@
 ﻿//评论的数据获取和异步刷新
 
+var comment_info;
 //读取评论条数
 $(document).ready(function () {
     $("#div1").load("http://jessicayuan2012.github.io/homework4/src/json/comment_info.json", function (responseTxt, statusTxt, xhr) {
         if (statusTxt == "success") {
-            var comment_info;
             comment_info = eval("(" + responseTxt + ")");
         }
         if (statusTxt == "error")
