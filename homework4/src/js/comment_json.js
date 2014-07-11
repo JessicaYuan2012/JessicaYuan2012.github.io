@@ -32,7 +32,7 @@ $(document).ready(function () {
                             //修改评论（需要考虑不同条数的情况 修改值hidden=true）
                             if (comments.number == 5) {
                                 for (var i = 0; i < 5; i++, commentNum++) {
-                                    if ($($('.post')[i]).attr('hidden') == true) {
+                                    if ($($('.post')[i]).attr('hidden')) {
                                         $($('.post')[i]).removeAttr('hidden');
                                     }
                                     $($('.post')[i].children[0]).attr('src', comments['comment' + String(commentNum)].gravatar);
@@ -42,7 +42,7 @@ $(document).ready(function () {
                             }
                             else {
                                 for (var i = 0; i < comments.number; i++, commentNum++) {
-                                    if ($($('.post')[i]).attr('hidden') == true) {
+                                    if ($($('.post')[i]).attr('hidden')) {
                                         $($('.post')[i]).removeAttr('hidden');
                                     }
                                     $($('.post')[i].children[0]).attr('src', comments['comment' + String(commentNum)].gravatar);
