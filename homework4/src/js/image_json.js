@@ -1,10 +1,9 @@
 ﻿//数据获取和异步刷新
 $(document).ready(function () {
-    $("#div1").load("http://jessicayuan2012.github.io/homework4/src/image_info.json", function (responseTxt, statusTxt, xhr) {
+    $("#div1").load("http://jessicayuan2012.github.io/homework4/src/json/image_info.json", function (responseTxt, statusTxt, xhr) {
         if (statusTxt == "success") {
         	var picInfo;
             picInfo = eval("(" + responseTxt + ")");
-            $("#div1").remove();
             var imgs = $('#content img');//图片内容
             var titles = $('#content h3');//图片标题
             var imgLinks = $('#content a');//图片链接
