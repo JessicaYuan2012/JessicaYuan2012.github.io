@@ -50,6 +50,6 @@ function () {
 
 
 var int = window.setInterval($("#rightSection div")[0].onclick, 3000);
-$('#play')[0].onclick = function(){int = window.setInterval($("#rightSection div")[0].onclick, 4000);}
+$('#play')[0].onclick = function(){int = window.setInterval($("#rightSection div")[0].onclick, 3000);}
 $('#stop')[0].onclick = function(){window.clearInterval(int);}
 $('#stop')[0].onclick();
