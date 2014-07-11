@@ -47,3 +47,9 @@ function () {
     $('.currentNews img').css('-webkit-animation', 'appear 2s');
     localStorage.imgNum = (Number(localStorage.imgNum) - 1) % 6;
 }
+
+
+var int = window.setInterval($("#rightSection div")[0].onclick, 3000);
+$('#play')[0].onclick = function(){int = window.setInterval($("#rightSection div")[0].onclick, 4000);}
+$('#stop')[0].onclick = function(){window.clearInterval(int);}
+$('#stop')[0].onclick();
