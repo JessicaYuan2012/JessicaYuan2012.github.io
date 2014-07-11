@@ -1,4 +1,7 @@
 ﻿//数据获取和异步刷新
+
+var picInfo;
+
 $(document).ready(function () {
     $("#div1").load("https://jessicayuan2012.github.io/homework4/src/image_info.json", function (responseTxt, statusTxt, xhr) {
         if (statusTxt == "success") {
