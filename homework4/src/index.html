@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <title>Pic News</title>
     <link rel="stylesheet" href="css/myStyle.css">
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/CommentsAndPaginator.css">
-	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery
+	<script type="text/javascript" src="https://ajax.microsoft.com/ajax/jquery
 /jquery-1.4.min.js"></script>
 </head>
 
@@ -168,17 +168,6 @@ Designed by Yuan Yang<br>
 var int = window.setInterval($("#rightSection div")[0].onclick, 3000);
 $('#play')[0].onclick = function(){int = window.setInterval($("#rightSection div")[0].onclick, 4000);}
 $('#stop')[0].onclick = function(){window.clearInterval(int);}
-
-$(document).ready(function(){
-    $("#div1").load("http://jessicayuan2012.github.io/homework4/src/image_info.json",function(responseTxt,statusTxt,xhr){
-      if(statusTxt=="success"){
-        dataObj = eval("("+responseTxt+")");
-        $("#div1").remove();
-      }
-      if(statusTxt=="error")
-        alert("Error: "+xhr.status+": "+xhr.statusText);
-    });
-});
 </script>
 </body>
 </html>

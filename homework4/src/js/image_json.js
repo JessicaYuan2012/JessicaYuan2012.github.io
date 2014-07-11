@@ -1,6 +1,6 @@
 ﻿//数据获取和异步刷新
 $(document).ready(function () {
-    $("#div1").load("http://jessicayuan2012.github.io/homework4/src/image_info.json", function (responseTxt, statusTxt, xhr) {
+    $("#div1").load("https://jessicayuan2012.github.io/homework4/src/image_info.json", function (responseTxt, statusTxt, xhr) {
         if (statusTxt == "success") {
             picInfo = eval("(" + responseTxt + ")");
             $("#div1").remove();
