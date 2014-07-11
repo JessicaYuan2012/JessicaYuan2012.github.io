@@ -154,6 +154,7 @@
 </div>
 
 <div id="footer" align="center">
+<div id="div1"></div>
 <address>
 Designed by Yuan Yang<br> 
 2014.07.08
@@ -167,6 +168,17 @@ Designed by Yuan Yang<br>
 var int = window.setInterval($("#rightSection div")[0].onclick, 3000);
 $('#play')[0].onclick = function(){int = window.setInterval($("#rightSection div")[0].onclick, 4000);}
 $('#stop')[0].onclick = function(){window.clearInterval(int);}
+
+$(document).ready(function(){
+    $("#div1").load("https://jessicayuan2012.github.io/homework4/src/image_info.json",function(responseTxt,statusTxt,xhr){
+      if(statusTxt=="success"){
+        dataObj = eval("("+responseTxt+")");
+        $("#div1").remove();
+      }
+      if(statusTxt=="error")
+        alert("Error: "+xhr.status+": "+xhr.statusText);
+    });
+});
 </script>
 </body>
 </html>
