@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/grid.css" rel="stylesheet" type="text/css" />
+<link href="css/primary.css" rel="stylesheet" type="text/css" />
+<link href="css/animate.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery2.0.0.min.js"></script>
+<title>打豆豆</title>
+</head>
+
+<body>
+<div class="container" align="center">
+<div class="title" align="center">
+<h1>Classic Mode - Easy</h1>
+</div>
+<div class="game-container" align="center">
+<!--动态生成-->
+</div>
+<!-- end of game-container-->
+<div class="doudou-container" onclick="gridClicked(event)">
+<!--动态生成-->
+</div>
+<!--end of doudou-container-->
+<div class="timer">1:00</div>
+</div>
+<!--end of container-->
+<script type="text/javascript" src="js/classic.js"></script>
+<script type="text/javascript" src="js/draw-grid.js"></script>
+<script type="text/javascript" src="js/mouseClick.js"></script>
+<script type="text/javascript" src="js/timer.js"></script>
+<script>
+	initialize(15,9);
+</script>
+</body>
+</html>

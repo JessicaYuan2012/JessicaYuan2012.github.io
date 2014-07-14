@@ -1,0 +1,33 @@
+body{
+	background:#FC9;
+	font-family:"Comic Sans MS", cursive;
+}
+
+.container{
+	width:1050px;
+	background:white;
+	border-radius:6px;
+	margin:0 auto;
+}
+
+.title{
+	position:relative;
+	margin:3px;
+	color:#F93;
+}
+
+h1{
+	font-size:36px;
+}
+
+.timer{
+	position:relative;
+	float:right;
+	width:100px;
+	height:50px;
+	/*border:dotted;
+	border-color:#F90;
+	border-radius:6px;*/
+	font-size:20px;
+	color:#F93;
+}

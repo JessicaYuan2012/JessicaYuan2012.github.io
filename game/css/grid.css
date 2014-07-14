@@ -1,0 +1,80 @@
+.game-container{
+	position:relative;
+	padding:15px;
+}
+
+.grid-row{
+	float:left;
+	clear:both;	
+}
+
+.grid-cell-1{
+	width:40px;
+	height:40px;
+	background:rgba(238, 228, 218, 0.35);
+	float:left;
+}
+
+.grid-cell-2{
+	width:40px;
+	height:40px;
+	background:rgba(203, 172, 141, 0.35);
+	float:left;
+}
+
+.doudou-container{
+	position:relative;
+}
+
+.doudou{
+	margin:4px;
+	border-radius:15px;
+	width:30px;
+	height:30px;
+	position:absolute;
+}
+
+.empty{
+	width:40px;
+	height:40px;
+	position:absolute;
+	cursor: pointer;
+}
+
+.red{
+	background: #FF2424;
+	box-shadow: 2px 2px 2px #F66;
+}
+
+.yellow{
+	background:#FC0;
+	box-shadow: 2px 2px 2px #FC6;
+}
+
+.green{
+	background: #6C3;
+	box-shadow: 2px 2px 2px #6C0;
+}
+
+.blue{
+	background:#69F;
+	box-shadow: 2px 2px 2px #69C;
+}
+
+.purple{
+	background: #96C;
+	box-shadow: 2px 2px 2px #969;
+}
+
+.orange{
+	background:#F93;
+	box-shadow: 2px 2px 2px #F96;
+}
+.brown{
+	background:#AC750F;
+	box-shadow: 2px 2px 2px #BB8011;
+}
+.pink{
+	background:#F99;
+	box-shadow: 2px 2px 2px #F9C;
+}
