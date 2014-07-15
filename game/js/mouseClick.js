@@ -1,6 +1,6 @@
 function gridClicked(e)
 {
-	var targ
+	var targ;
 	if (!e){
 		var e = window.event;
 	}
@@ -12,12 +12,15 @@ function gridClicked(e)
 	} 
 
 	//console.log(targ.classList);
+	//点了豆豆
 	if(targ.classList[0] == 'doudou'){
 		//console.log('doudou clicked!');
 		//错误处理
-		alert("不能点豆豆哦~");
+		$('#bad')[0].play();
 	}
-	else{//获取坐标(x,y)
+	//点的是空格
+	else{
+		//首先获取坐标(x,y)
 		for(var i=0; i<targ.classList.length; i++){
 			if(targ.classList[i].indexOf('position') >= 0){
 				break;
@@ -27,39 +30,47 @@ function gridClicked(e)
 		var x = Number(str[1]);
 		var y = Number(str[2]);
 		//console.log('('+String(x)+','+String(y)+')clicked')
-	}
-	
-	//判断是否是能消除豆豆的位置
-	var anim_name = 'zoomOut';
-	if(judgeElimination(x, y)){
-		//console.log(elimination);
-		var temp;
-		for(var i = 0; i < elimination.length; i++)
-		{
-			temp = $('.position-'+String(elimination[i][0])+'-'+String(elimination[i][1]));
-			temp.addClass('animated ' + anim_name);
-		}
-
-		setTimeout(function(){
-			for(var i = 0; i < elimination.length; i++){
+		//判断是否是能消除豆豆的位置
+		var anim_name = 'zoomOut';
+		if(judgeElimination(x, y)){
+			//console.log(elimination);
+			$('#good')[0].play();
+			var temp;
+			for(var i = 0; i < elimination.length; i++)
+			{
 				temp = $('.position-'+String(elimination[i][0])+'-'+String(elimination[i][1]));
-				var color = temp[0].classList[1];
-				temp.removeClass('doudou');
-				temp.removeClass(color);
-				temp.removeClass(anim_name);
-				temp.addClass('empty');
+				temp.addClass('animated ' + anim_name);
 			}
-		},300);
-	}
-	else{//如果不是错误处理（音效）
-		alert('不能消哦~');
-	}
-	
 
+			setTimeout(function(){
+				for(var i = 0; i < elimination.length; i++){
+					temp = $('.position-'+String(elimination[i][0])+'-'+String(elimination[i][1]));
+					var color = temp[0].classList[1];
+					temp.removeClass('doudou');
+					temp.removeClass(color);
+					temp.removeClass(anim_name);
+					temp.addClass('empty');
+				}
+			},300);
 
-	//判断是否没有匹配的对了，如果没有了，游戏结束
-	/*if(!judgeGameContinue()){
-		alert("game over!");
-		console.log(elimination);
-	}*/
+				//判断是否没有匹配的对了，如果没有了，游戏结束
+				if(!judgeGameContinue()){
+					if(numOfDou == 0){
+						alert("Perfect!");
+					}
+					else{
+						alert("Game over! Dots Left: "+String(numOfDou));
+					}
+					if(t){
+						window.clearInterval(t);
+						window.clearTimeout(out);					
+					}
+
+				}
+		}
+		else{//如果不是错误处理（音效）
+			//console.log('不能消哦~');
+			$('#bad')[0].play();
+		}
+	}	
 }

@@ -25,13 +25,18 @@ function initialize(width, height){
 	var color=['','red','green','blue','yellow','purple','orange','pink','brown'];
 
 	//设置棋盘格子和豆豆容器的长宽
+	var top_margin = -(height*40+15)+(650-40*height-150)/2;
+	if(height > 12){	
+		$('.container').css("height",String(40*height+150)+'px');
+	}
 	$('.game-container').css('width',String(40*width)+'px');
 	$('.game-container').css('height',String(40*height)+'px');
+	$('.game-container').css('top',String((650-40*height-150)/2)+'px');
 	$('.doudou-container').css('width',String(40*width)+'px');
 	$('.doudou-container').css('height',String(40*height)+'px');
-	$('.doudou-container').css("top","-"+String(height*40+15)+"px");
-	$('.container').css("height",String(40*height+150)+'px');
-	$('.timer').css("top","-"+String(height*40)+"px");
+	$('.doudou-container').css("top",String(top_margin)+"px");
+	$('.timer').css("top", String(top_margin + 10)+"px");
+
 
 	//动态绘制棋盘
 	var row;
@@ -71,4 +76,4 @@ function initialize(width, height){
 
 }
 
-$('.title').addClass('animated tada');
+$('.title').addClass('animated rubberBand');

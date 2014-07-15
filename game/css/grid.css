@@ -1,6 +1,8 @@
 .game-container{
 	position:relative;
 	padding:15px;
+	background:white;
+	border-radius:10px;
 }
 
 .grid-row{
@@ -11,14 +13,14 @@
 .grid-cell-1{
 	width:40px;
 	height:40px;
-	background:rgba(238, 228, 218, 0.35);
+	background:rgba(238, 228, 218, 0.5);
 	float:left;
 }
 
 .grid-cell-2{
 	width:40px;
 	height:40px;
-	background:rgba(203, 172, 141, 0.35);
+	background:rgba(203, 172, 141, 0.5);
 	float:left;
 }
 
@@ -48,7 +50,7 @@
 
 .yellow{
 	background:#FC0;
-	box-shadow: 2px 2px 2px #FC6;
+	box-shadow: 2px 2px 2px #FC3;
 }
 
 .green{

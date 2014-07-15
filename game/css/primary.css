@@ -1,6 +1,6 @@
 body{
-	background:#FC9;
 	font-family:"Comic Sans MS", cursive;
+	background:url(../img/bg3.gif);
 }
 
 .container{
@@ -8,16 +8,21 @@ body{
 	background:white;
 	border-radius:6px;
 	margin:0 auto;
+	box-shadow: 5px 5px 2px #C1C1C1; 
+	background: #FDF3D9;
+	height:650px;
+	/*border:double;
+	border-color: #F69;*/
 }
 
 .title{
-	position:relative;
-	margin:3px;
-	color:#F93;
+	position: relative;
+	margin: 3px;
+	color: #F60;
 }
 
 h1{
-	font-size:36px;
+	font-size:38px;
 }
 
 .timer{
@@ -29,5 +34,5 @@ h1{
 	border-color:#F90;
 	border-radius:6px;*/
 	font-size:20px;
-	color:#F93;
+	color: #F63;
 }
