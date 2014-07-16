@@ -23,7 +23,10 @@ var coverWidth = $("body").css("width");
 $(".cover").css("height",coverHeight);
 $(".cover").css("width",coverWidth);
 function hideCover(){
-	resume_game();
+	if(mode == 2){
+		resume_game();	
+	}
+
 	$(".cover").css('display','none');
 }
 
