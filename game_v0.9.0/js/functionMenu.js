@@ -9,7 +9,9 @@
 $(".game-container").before("<div class='gamePause' onclick='pause()'></div>");
 $(".gamePause").append("<img style='width:40px' src='./img/pause.gif'/>");
 function pause(){
-	pause_game();
+	if(mode==2){
+		pause_game();
+	}
 	$(".cover").css('display','block');
 }
 
