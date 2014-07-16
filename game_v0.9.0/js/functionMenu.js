@@ -10,12 +10,12 @@ $(".game-container").before("<div class='gamePause' onclick='pause()'></div>");
 $(".gamePause").append("<img style='width:40px' src='./img/pause.gif'/>");
 function pause(){
 	if(mode == 2){
-		pause_game();
+		pause_game();	
 	}
 	$(".cover").css('display','block');
 }
 
- //the cover
+//the cover
 $(".container").before("<div class='cover' onclick='event.cancelBubble=true;'>");
 $(".cover").append('<div class="funcmenu"></div>');
 var coverHeight = $(".container").css("height");
@@ -24,9 +24,8 @@ $(".cover").css("height",coverHeight);
 $(".cover").css("width",coverWidth);
 function hideCover(){
 	if(mode == 2){
-		resume_game();	
+		resume_game();
 	}
-
 	$(".cover").css('display','none');
 }
 
@@ -49,17 +48,22 @@ $(".funcOption:eq(3)").addClass('blue');
 $(".funcOption:eq(3)").css("background-image","url(./img/home.gif)");
 $(".funcOption:eq(0)").addClass('purple');
 $(".funcOption:eq(0)").css("background-image","url(./img/help.gif)");
+
 //the event of function options
 //red button:back to game
 $(".funcOption:eq(4)").click(function(event) {
 	/* Act on the event */
 	hideCover();
 });
+
+
 //yellow button:restart
 $(".funcOption:eq(1)").click(function(event) {
 	/* Act on the event */
 	window.location.reload();
 });
+
+
 //green button: volume on/off
 $(".funcOption:eq(2)").click(function(event) {
 	/* Act on the event */
@@ -75,21 +79,31 @@ function toggleMute(){
 	$("audio")[0].muted = !($("audio")[0].muted);
 	$("audio")[1].muted = !($("audio")[1].muted);
 }
+
+
 //blue button:back to the index
 $(".funcOption:eq(3)").click(function(event) {
 	/* Act on the event */
 	window.location.href="./index.html";
 });
-$(".funcOption:eq(0)").mouseover(function(event) {
+
+//purple button:help game rule
+$(".funcOption:eq(0)").click(function(event) {
 	/* Act on the event */
 	$(".help").css("display","block");
-});
-$(".funcOption:eq(0)").mouseout(function(event) {
-	/* Act on the event */
-	$(".help").css("display","none");
+	$(".funcmenu").css("display","none");
 });
 //help
-$(".cover").append('<div class="help"><img class="helpimg" src="./img/instruction.gif"/></div>');
+$(".cover").append('<div class="help"><div class="closeHelp"><img class="closeimg" src="./img/exit.gif"/></div><img class="helpimg" src="./img/instruction.gif"/><div class="instruction"><h3></h3></div></div>');
+$(".instruction").addClass("title");
+$(".instruction h3").html('Click the empty cell to clean up the dots of the same color in the cross direction.');
+$(".closeHelp").click(function(event) {
+	/* Act on the event */
+	$(".help").css("display","none");
+	$(".funcmenu").css("display","block");
+});
+
+
 
 <!--Game Over-->
 $(".container").before("<div class='cover2' onclick='event.cancelBubble=true;'>");
@@ -183,8 +197,11 @@ function StageGameOver(textContent,dots,level){
 	$(".cover2 .funcOption:eq(1)").click(function(event){
 		/* Act on the event */
 		level++;
-		if(level <= MAX_LEVEL){
+		if(level <= MAX_LEVEL && textContent == 1){
 			window.location.href="./stage_mode_level"+level+".html";
+		}
+		else if(textContent == 0){
+			$(".cover2 h3").html('Try to get through this level first.');
 		}
 		else{
 			$(".cover2 h3").html('To be continued...');
@@ -211,3 +228,4 @@ function GameOver(){
 		ClassicGameOver(arguments[0],arguments[1]);
 	}
 }
+
