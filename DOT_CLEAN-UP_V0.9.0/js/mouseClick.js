@@ -16,7 +16,7 @@ function gridClicked(e)
 	if(targ.classList[0] == 'doudou'){
 		//console.log('doudou clicked!');
 		//错误处理
-		$('#bad')[0].play();
+		//$('#bad')[0].play();
 	}
 	//点的是空格
 	else{
@@ -56,21 +56,26 @@ function gridClicked(e)
 				//判断是否没有匹配的对了，如果没有了，游戏结束
 				if(!judgeGameContinue()){
 					if(numOfDou == 0){
-						alert("Perfect!");
+						if(mode == 1){
+							GameOver(1, 0, level_num);
+						}
+						else{
+							GameOver(1, 0);
+						}
 					}
 					else{
 						//stage mode
 						if(mode == 1){
-							alert("Game over! " + String(numOfDou) + " Dots left.");
+							GameOver(0, numOfDou, level_num);
 						}
 						//classic mode
 						else if(mode == 2){
-							alert("You made it! " + String(numOfDou) + " Dots left. Try to leave fewer dots next time~");
+							GameOver(1, numOfDou);
 						}
 					}
 					if(mode == 2){
 						window.clearInterval(t);
-						window.clearTimeout(out);					
+						window.clearTimeout(out);
 					}
 				}
 		}
@@ -84,8 +89,7 @@ function gridClicked(e)
 				init_seconds = Number(init_time[0]) * 60 + Number(init_time.slice(2,4));
 				out = window.setTimeout(function(){
 					window.clearInterval(t);
-					//加入游戏结束的弹窗，禁止点击处理
-					alert("Time's up! " + String(numOfDou) + " Dots Left. ");
+					GameOver(0,numOfDou);
 				},init_seconds * 1000);
 			}
 			$('#bad')[0].play();

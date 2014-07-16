@@ -17,6 +17,20 @@ var t = window.setInterval(countdown, 1000);
 
 var out = window.setTimeout(function(){
 	window.clearInterval(t);
-	//加入游戏结束的弹窗，禁止点击处理
-	alert("Time's up! " + String(numOfDou) + " dots Left. ");
+	GameOver(0, numOfDou);
 },init_seconds * 1000 + 500);
+
+function pause_game(){
+	window.clearInterval(t);
+	window.clearInterval(out);
+}
+
+function resume_game(){
+	init_time = $('.timer')[0].innerHTML;
+	init_seconds = Number(init_time[0]) * 60 + Number(init_time.slice(2,4));
+	t = window.setInterval(countdown, 1000);
+	out = window.setTimeout(function(){
+		window.clearInterval(t);
+		GameOver(0, numOfDou);
+	},init_seconds * 1000 + 500);
+}

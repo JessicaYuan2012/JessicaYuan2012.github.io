@@ -5,8 +5,9 @@
 <link href="css/grid.css" rel="stylesheet" type="text/css" />
 <link href="css/primary.css" rel="stylesheet" type="text/css" />
 <link href="css/animate.css" rel="stylesheet" type="text/css" />
+<link href="./css/functionMenu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery2.0.0.min.js"></script>
-<title>Stage Mode - Level 7</title>
+<title>Stage Mode - Level 4</title>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 <audio src="sound/zhenao.wav" id="bad"></audio>
 <div class="container" align="center">
 <div class="title" align="center">
-<h1>Stage Mode - Level 7</h1>
+<h1>Stage Mode - Level 4</h1>
 </div>
 <div class="game-container" align="center">
 <!--动态生成-->
@@ -30,10 +31,11 @@
 <script type="text/javascript" src="js/draw-grid.js"></script>
 <script type="text/javascript" src="js/mouseClick.js"></script>
 <script>
+	var level_num = 4;
 	var mode = 1;
-	var width = 15;
-	var height = 9;
-	var grid_property = [{"width":15,"height":9,"color":6}];
+	var width = 10;
+	var height = 6;
+	var grid_property = [{"width":10,"height":6,"color":5}];
 	var color=['','red','green','blue','yellow','purple','orange','pink','brown'];
 
 	//设置棋盘格子和豆豆容器的长宽
@@ -72,17 +74,17 @@
 		grid[i] = new Array();
 	}
 
+	//var color=['','red','green','blue','yellow','purple','orange','pink','brown'];
+
 	//关卡设置
-	grid[0] = [2,2,0,2,2,0,4,3,3,0,3,6,3,2,2];
-	grid[1] = [0,0,0,2,0,4,6,6,3,1,1,0,5,0,4];
-	grid[2] = [0,0,1,6,0,1,3,4,1,0,1,4,0,0,0];
-	grid[3] = [4,5,4,0,0,0,0,0,4,0,5,0,1,0,0];
-	grid[4] = [3,0,4,0,0,5,4,1,0,3,0,0,3,0,0];
-	grid[5] = [0,0,3,0,0,4,0,0,2,6,0,4,5,0,0];
-	grid[6] = [0,5,2,0,6,4,0,6,2,6,6,5,0,3,6];
-	grid[7] = [0,0,5,6,0,6,0,1,2,0,1,0,3,0,1];
-	grid[8] = [0,0,2,0,6,0,2,5,0,0,3,2,6,0,0];
-	numOfDou = 74;
+	grid[0] = [0,3,4,1,2,5,0,0,2,5];
+	grid[1] = [3,3,0,2,0,0,0,5,0,2];
+	grid[2] = [3,1,2,2,5,0,5,0,4,0];
+	grid[3] = [5,0,3,0,0,4,0,5,4,3];
+	grid[4] = [0,4,2,4,0,1,0,5,2,0];
+	grid[5] = [1,0,0,4,1,4,0,1,5,0];
+
+	numOfDou = 37;
 
 	//动态绘制豆豆
 	var state = grid;
@@ -107,5 +109,6 @@
 		}
 	}
 </script>
+<script type="text/javascript" src="./js/functionMenu.js"></script>
 </body>
 </html>
