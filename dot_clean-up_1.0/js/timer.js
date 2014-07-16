@@ -13,11 +13,10 @@ function countdown(){
 	$('.timer')[0].innerHTML = new_time;
 }
 
-//设计按钮开启计时模式？
 var t = window.setInterval(countdown, 1000);
 
 var out = window.setTimeout(function(){
 	window.clearInterval(t);
 	//加入游戏结束的弹窗，禁止点击处理
-	alert("Time's up! Dots Left: "+String(numOfDou));
+	alert("Time's up! " + String(numOfDou) + " dots Left. ");
 },init_seconds * 1000 + 500);

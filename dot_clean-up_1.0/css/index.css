@@ -44,7 +44,6 @@
 	background:white;
 	border-radius:20px;
 	box-shadow: 3px 3px 2px #C1C1C1; 
-	cursor:pointer;
 }
 
 .stage-mode-instructions{
@@ -82,7 +81,6 @@
 	background:white;
 	border-radius:10px;
 	box-shadow: 3px 3px 2px #C1C1C1; 
-	cursor:pointer;
 }
 
 .classic-mode-instructions{
@@ -99,3 +97,7 @@
 	border-radius:20px;
 }
 
+.bouncing_doudous{
+	position:absolute;
+	top:0px;
+}

@@ -37,7 +37,15 @@ function stage(){
 			for(var i = 0; i < l; i++){
 				$($('.level-button')[i]).removeClass('fadeInRight');
 			}
-		},1000);
+		},1500);
+
+		setTimeout(function(){
+			for(var i = 0; i < l; i++){
+				$($('.level-button')[i]).attr('style','cursor:pointer');
+				$($('.level-button')[i]).attr('onclick', "window.location.href='stage_mode_level"+String(i+1)+".html'") ;
+			}
+		}, 500);
+
 
 		//关卡说明出现
 		$('.stage-mode-instructions').attr('style','opacity:1');
@@ -57,7 +65,8 @@ function stage(){
 			$('.stage-mode-instructions').removeClass('fadeOut');
 			$('.stage-mode-levels').removeClass('fadeOut');
 			for(var i = 0; i < l; i++){
-				$($('.level-button')[i]).attr('style','opacity:0');
+				$($('.level-button')[i]).attr('style','opacity:0;cursor:default');
+				$($('.level-button')[i]).attr('onclick', "") ;
 			}
 		},1000);
 
@@ -65,7 +74,7 @@ function stage(){
 	
 }
 
-$('.red').attr('onclick',"stage()");
+$('#stage_mode_button').attr('onclick',"stage()");
 
 function classic(){
 	var l = $('.classic-level-button').length;
@@ -89,8 +98,16 @@ function classic(){
 			for(var i = 0; i < l; i++){
 				$($('.classic-level-button')[i]).removeClass('fadeInRight');
 			}
-		},1000);
+		},1500);
 
+		setTimeout(function(){
+			for(var i = 0; i < l; i++){
+				$($('.classic-level-button')[i]).attr('style','cursor:pointer');
+			}
+			$($('.classic-level-button')[0]).attr('onclick', "window.location.href='classic_mode_easy.html';") ;
+			$($('.classic-level-button')[1]).attr('onclick', "window.location.href='classic_mode_normal.html';") ;
+			$($('.classic-level-button')[2]).attr('onclick', "window.location.href='classic_mode_hard.html';") ;
+		}, 500);
 		//关卡说明出现
 		$('.classic-mode-instructions').attr('style','opacity:1');
 		$('.classic-mode-instructions').addClass('animated fadeInLeft');
@@ -109,11 +126,21 @@ function classic(){
 			$('.classic-mode-instructions').removeClass('fadeOut');
 			$('.classic-mode-levels').removeClass('fadeOut');
 			for(var i = 0; i < l; i++){
-				$($('.classic-level-button')[i]).attr('style','opacity:0');
+				$($('.classic-level-button')[i]).attr('style','opacity:0;cursor:default');
+				$($('.classic-level-button')[i]).attr('onclick', "") ;
 			}
-		},500);
+		},300);
 	}
 	
 }
 
-$('.orange').attr('onclick',"classic()");
+$('#classic_mode_button').attr('onclick',"classic()");
+
+
+setInterval(function(){
+	var anim_name = "rubberBand";
+	$('.doudou').addClass('animated '+ anim_name);
+	setTimeout(function(){
+		$('.doudou').removeClass(anim_name);
+	},1000);
+},1500);

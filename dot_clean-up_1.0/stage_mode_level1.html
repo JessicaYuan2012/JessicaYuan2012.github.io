@@ -6,7 +6,7 @@
 <link href="css/primary.css" rel="stylesheet" type="text/css" />
 <link href="css/animate.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="jquery2.0.0.min.js"></script>
-<title>Stage Mode - Level 5</title>
+<title>Stage Mode - Level 1</title>
 </head>
 
 <body>
@@ -14,7 +14,7 @@
 <audio src="sound/zhenao.wav" id="bad"></audio>
 <div class="container" align="center">
 <div class="title" align="center">
-<h1>Stage Mode - Level 5</h1>
+<h1>Stage Mode - Level 1</h1>
 </div>
 <div class="game-container" align="center">
 <!--动态生成-->
@@ -30,9 +30,10 @@
 <script type="text/javascript" src="js/draw-grid.js"></script>
 <script type="text/javascript" src="js/mouseClick.js"></script>
 <script>
-	var width = 11;
-	var height = 7;
-	var grid_property = [{"width":11,"height":7,"color":5}];
+	var mode = 1;
+	var width = 13;
+	var height = 6;
+	var grid_property = [{"width":13,"height":6,"color":3}];
 	var color=['','red','green','blue','yellow','purple','orange','pink','brown'];
 
 	//设置棋盘格子和豆豆容器的长宽
@@ -71,18 +72,18 @@
 		grid[i] = new Array();
 	}
 
-	//var color=['','red','green','blue','yellow','purple','orange','pink','brown'];
-
 	//关卡设置
-	grid[0] = [0,3,1,3,1,0,2,0,4,4,4];
-	grid[1] = [0,2,0,4,5,0,0,0,3,3,5];
-	grid[2] = [5,4,4,4,0,0,4,3,2,4,1];
-	grid[3] = [3,1,0,0,0,0,2,0,2,1,1];
-	grid[4] = [2,5,2,0,1,3,5,2,4,0,4];
-	grid[5] = [4,0,4,1,5,0,3,5,1,4,5];
-	grid[6] = [4,3,0,5,4,0,4,1,0,0,0];
-
-	numOfDou = 53;
+	grid[3][0] = grid[0][2] = grid[5][2] = grid[3][8] = 1;
+	grid[1][4] = grid[1][10] = 2;
+	grid[2][5] = grid[0][6] = grid[4][8] = grid[5][10] = 3;
+	for(var i = 0; i < height; i++){
+		for(var j = 0; j< width; j++){
+			if(grid[i][j] == undefined){
+				grid[i][j] = 0;
+			}
+		}
+	}
+	numOfDou = 10;
 
 	//动态绘制豆豆
 	var state = grid;

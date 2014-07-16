@@ -76,4 +76,4 @@ function initialize(width, height){
 
 }
 
-$('.title').addClass('animated rubberBand');
+$('.title').addClass('animated zoomIn');

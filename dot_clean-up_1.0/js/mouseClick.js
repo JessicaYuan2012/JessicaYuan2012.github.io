@@ -59,17 +59,35 @@ function gridClicked(e)
 						alert("Perfect!");
 					}
 					else{
-						alert("Game over! Dots Left: "+String(numOfDou));
+						//stage mode
+						if(mode == 1){
+							alert("Game over! " + String(numOfDou) + " Dots left.");
+						}
+						//classic mode
+						else if(mode == 2){
+							alert("You made it! " + String(numOfDou) + " Dots left. Try to leave fewer dots next time~");
+						}
 					}
-					if(t){
+					if(mode == 2){
 						window.clearInterval(t);
 						window.clearTimeout(out);					
 					}
-
 				}
 		}
 		else{//如果不是错误处理（音效）
 			//console.log('不能消哦~');
+			if(mode == 2){
+				countdown();
+				countdown();//减两秒
+				window.clearTimeout(out);
+				init_time = $('.timer')[0].innerHTML;
+				init_seconds = Number(init_time[0]) * 60 + Number(init_time.slice(2,4));
+				out = window.setTimeout(function(){
+					window.clearInterval(t);
+					//加入游戏结束的弹窗，禁止点击处理
+					alert("Time's up! " + String(numOfDou) + " Dots Left. ");
+				},init_seconds * 1000);
+			}
 			$('#bad')[0].play();
 		}
 	}	
