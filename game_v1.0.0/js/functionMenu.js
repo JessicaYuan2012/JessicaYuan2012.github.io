@@ -155,7 +155,7 @@ $(".cover2 .funcmenu").append('<div class="functitle"><h2>Game Over</h2></div>')
 $(".cover2 .functitle").addClass('title rubberband gameover');
 $(".cover2 .funcmenu").append('<div class="funcOptions"></div>');
 $(".cover2 .funcmenu").css("width",400);
-$(".cover2 .funcmenu").css("height",200);
+$(".cover2 .funcmenu").css("height",220);
 $(".cover2 .funcOptions").css("width",250);
 $(".cover2 .functitle").after('<div class="dots"><h3></h3></div>');
 $(".dots").addClass("title");
