@@ -1,0 +1,41 @@
+body{
+	font-family:"Comic Sans MS", cursive;
+	background:url(../img/bg3.gif);
+}
+
+.container{
+	width:1050px;
+	background:white;
+	border-radius:6px;
+	margin:0 auto;
+	box-shadow: 5px 5px 2px #C1C1C1; 
+	background: #FDF3D9;
+	height:650px;
+	/*border:double;
+	border-color: #F69;*/
+}
+
+.title{
+	position: relative;
+	margin: 3px;
+	color: #F60;
+}
+
+h1{
+	font-size:38px;
+}
+
+.timer{
+	position:relative;
+	right:-450px;
+	width:100px;
+	height:50px;
+	/*border:dotted;
+	border-color:#F90;
+	border-radius:6px;*/
+	font-size:20px;
+	color: #F63;
+	border-radius:6px;
+	box-shadow: 2px 2px 2px #F63;
+	line-height: 50px;
+}

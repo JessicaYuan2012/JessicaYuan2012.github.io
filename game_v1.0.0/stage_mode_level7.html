@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/grid.css" rel="stylesheet" type="text/css" />
+<link href="css/primary.css" rel="stylesheet" type="text/css" />
+<link href="css/animate.css" rel="stylesheet" type="text/css" />
+<link href="./css/functionMenu.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="jquery2.0.0.min.js"></script>
+<script type="text/javascript" src="jquery.storageapi.min.js"></script>
+<title>Stage Mode - Level 7</title>
+</head>
+
+<body>
+<audio src="sound/facebook2.wav" id="good"></audio>
+<audio src="sound/zhenao.wav" id="bad"></audio>
+<div class="container" align="center">
+<div class="title" align="center">
+<h1>Stage Mode - Level 7</h1>
+</div>
+<div class="game-container" align="center">
+<!--动态生成-->
+</div>
+<!-- end of game-container-->
+<div class="doudou-container" onclick="gridClicked(event)">
+<!--动态生成-->
+</div>
+<!--end of doudou-container-->
+</div>
+<!--end of container-->
+<script type="text/javascript" src="js/classic.js"></script>
+<script type="text/javascript" src="js/draw-grid.js"></script>
+<script type="text/javascript" src="js/mouseClick.js"></script>
+<script>
+	var level_num = 7;
+	var mode = 1;
+	var width = 15;
+	var height = 9;
+	var grid_property = [{"width":15,"height":9,"color":6}];
+	var color=['','red','green','blue','yellow','purple','orange','pink','brown'];
+
+	//设置棋盘格子和豆豆容器的长宽
+	var top_margin = -(height*40+15)+(650-40*height-150)/2;
+	if(height > 12){	
+		$('.container').css("height",String(40*height+150)+'px');
+	}
+	$('.game-container').css('width',String(40*width)+'px');
+	$('.game-container').css('height',String(40*height)+'px');
+	$('.game-container').css('top',String((650-40*height-150)/2)+'px');
+	$('.doudou-container').css('width',String(40*width)+'px');
+	$('.doudou-container').css('height',String(40*height)+'px');
+	$('.doudou-container').css("top",String(top_margin)+"px");
+	$('.timer').css("top", String(top_margin + 10)+"px");
+
+	//动态绘制棋盘
+	var row;
+	var col;
+	for(var i = 0; i < height; i++){
+		row = $('<div />');
+		row.addClass('grid-row');
+		for(var j = 0; j < width; j++){
+			col = $('<div />');
+			col.addClass('grid-cell-'+String((i+j)%2+1));
+			row.append(col);
+		}
+		$('.game-container').append(row);
+	}
+
+	var grid, model;
+	if(model == undefined){
+		model = 0;
+	}
+	grid = new Array();
+	for(i = 0; i < grid_property[model].height; i++){
+		grid[i] = new Array();
+	}
+
+	//关卡设置
+	grid[0] = [2,2,0,2,2,0,4,3,3,0,3,6,3,2,2];
+	grid[1] = [0,0,0,2,0,4,6,6,3,1,1,0,5,0,4];
+	grid[2] = [0,0,1,6,0,1,3,4,1,0,1,4,0,0,0];
+	grid[3] = [4,5,4,0,0,0,0,0,4,0,5,0,1,0,0];
+	grid[4] = [3,0,4,0,0,5,4,1,0,3,0,0,3,0,0];
+	grid[5] = [0,0,3,0,0,4,0,0,2,6,0,4,5,0,0];
+	grid[6] = [0,5,2,0,6,4,0,6,2,6,6,5,0,3,6];
+	grid[7] = [0,0,5,6,0,6,0,1,2,0,1,0,3,0,1];
+	grid[8] = [0,0,2,0,6,0,2,5,0,0,3,2,6,0,0];
+	numOfDou = 74;
+
+	//动态绘制豆豆
+	var state = grid;
+	var temp;
+	for(var i = 0; i < height; i++){
+		for(var j = 0; j < width; j++){
+			if(state[i][j] == 0){
+				temp = $('<div />');
+				temp.addClass('empty');
+				temp.addClass('position-'+String(i)+'-'+String(j));
+				$('.doudou-container').append(temp);
+			}
+			else{
+					temp = $('<div />');
+					temp.addClass('doudou');
+					temp.addClass(color[state[i][j]]);
+					temp.addClass('position-'+String(i)+'-'+String(j));
+					$('.doudou-container').append(temp);
+			}
+			$('.position-'+String(i)+'-'+String(j)).css('top',String(40*i)+'px');
+			$('.position-'+String(i)+'-'+String(j)).css('left',String(40*j)+'px');
+		}
+	}
+</script>
+<script type="text/javascript" src="./js/functionMenu.js"></script>
+</body>
+</html>
