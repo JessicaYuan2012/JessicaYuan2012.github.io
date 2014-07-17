@@ -1,5 +1,14 @@
+/**
+ *
+ * 作者：袁扬
+ * 日期：2014.7.14
+ * 功能：游戏界面棋盘上的鼠标点击事件处理
+ *
+ */
+
 function gridClicked(e)
 {
+	//获取点击元素
 	var targ;
 	if (!e){
 		var e = window.event;
@@ -11,10 +20,8 @@ function gridClicked(e)
 		targ = e.srcElement;
 	} 
 
-	//console.log(targ.classList);
 	//点了豆豆
 	if(targ.classList[0] == 'doudou'){
-		//console.log('doudou clicked!');
 		//错误处理
 		//$('#bad')[0].play();
 	}
@@ -29,12 +36,14 @@ function gridClicked(e)
 		var str = targ.classList[i].split('-');
 		var x = Number(str[1]);
 		var y = Number(str[2]);
-		//console.log('('+String(x)+','+String(y)+')clicked')
-		//判断是否是能消除豆豆的位置
+
+		//判断是否是能消除豆豆的位置（调用判断函数judgeElimination）
 		var anim_name = 'zoomOut';
 		if(judgeElimination(x, y)){
-			//console.log(elimination);
+			//音效
 			$('#good')[0].play();
+
+			//动画效果
 			var temp;
 			for(var i = 0; i < elimination.length; i++)
 			{
@@ -53,7 +62,7 @@ function gridClicked(e)
 				}
 			},300);
 
-				//判断是否没有匹配的对了，如果没有了，游戏结束
+				//判断是否没有匹配的对了（调用judgeGameContinue以及GameOver），如果没有了，游戏结束
 				if(!judgeGameContinue()){
 					if(numOfDou == 0){
 						if(mode == 1){
@@ -74,16 +83,17 @@ function gridClicked(e)
 						}
 					}
 					if(mode == 2){
+						//结束倒计时
 						window.clearInterval(t);
 						window.clearTimeout(out);
 					}
 				}
 		}
-		else{//如果不是错误处理（音效）
-			//console.log('不能消哦~');
+		else{//如果不是能消除豆豆的位置：错误处理
+			//经典模式下的倒计时处理
 			if(mode == 2){
 				countdown();
-				countdown();//减两秒
+				countdown();
 				window.clearTimeout(out);
 				init_time = $('.timer')[0].innerHTML;
 				init_seconds = Number(init_time[0]) * 60 + Number(init_time.slice(2,4));
@@ -92,6 +102,7 @@ function gridClicked(e)
 					GameOver(0,numOfDou);
 				},init_seconds * 1000);
 			}
+			//音效
 			$('#bad')[0].play();
 		}
 	}	

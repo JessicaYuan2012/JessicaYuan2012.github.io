@@ -24,9 +24,11 @@ function pause(){
 		$('.cover').removeClass('fadeInDown');
 	},1000);
 	$(".cover").css("opacity","1");
+	$(".funcmenu").css("opacity","1");
 }
 
 //the cover
+
 $("body").css("text-align","center");
 $(".container").before("<div class='layout1'><div class='dw'><div class='cover' onclick='event.cancelBubble=true;'>");
 $(".cover").append('<div class="funcmenu"></div>');
@@ -37,11 +39,12 @@ function hideCover(){
 		resume_game();
 	}
 	$(".cover").addClass('animated fadeOutUp');
-	$(".cover").css("z-index","1");
+	$(".cover").css("z-index","0");
 	$(".cover").css("opacity","0");
 	setTimeout(function(){
 		$('.cover').removeClass('fadeOutUp');
 	},1000);
+	$(".funcmenu").css("opacity","0");
 }
 
 //the function menu
@@ -218,13 +221,15 @@ function ClassicGameOver(textContent,dots){
 			$(".cover2 h3").html(dots+' dots left.<br/>Try to leave fewer dots next time~');
 		}
 	}
-	$(".cover2").css("opacity","1");
+	$(".cover2").css("--webkit-animation-duration","0.6s");
 	$(".cover2").css("z-index","4");
 	$(".cover2").css("display","inline");
-	$(".cover2").addClass('animated fadeInUp');
+	$(".cover2").addClass('animated fadeInDown');
 	setTimeout(function(){
-		$('.cover2').removeClass('fadeInUp');
-	},500);
+		$('.cover2').removeClass('fadeInDown');
+	},1000);
+	$(".cover2").css("opacity","1");
+	$(".funcmenu").css("opacity","1");
 }
 //when stage mode game is over
 //textContent: 0 for failure; 1 for success
@@ -251,13 +256,15 @@ function StageGameOver(textContent,dots,level){
 			$(".cover2 h3").html('To be continued...');
 		}
 	});
-	$(".cover2").css("opacity","1");
+	$(".cover2").css("--webkit-animation-duration","0.6s");
 	$(".cover2").css("z-index","4");
 	$(".cover2").css("display","inline");
 	$(".cover2").addClass('animated fadeInDown');
 	setTimeout(function(){
 		$('.cover2').removeClass('fadeInDown');
-	},500);
+	},1000);
+	$(".cover2").css("opacity","1");
+	$(".funcmenu").css("opacity","1");
 }
 
 function solveGameOverCover(){

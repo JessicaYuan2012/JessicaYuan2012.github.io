@@ -1,5 +1,12 @@
-//首页鼠标点击动画事件
+/**
+ *
+ * 作者：袁扬
+ * 日期：2014.7.16
+ * 功能：首页动画实现
+ *
+ */
 
+//点击stage mode按钮触发函数
 function stage(){
 	var l = $('.level-button').length;
 	if($('.stage-mode-levels').attr('style') == 'opacity:0'){
@@ -39,13 +46,13 @@ function stage(){
 			}
 		},1500);
 
+		//元素出现后改变指针样式和添加超链接
 		setTimeout(function(){
 			for(var i = 0; i < l; i++){
 				$($('.level-button')[i]).attr('style','cursor:pointer');
 				$($('.level-button')[i]).attr('onclick', "window.location.href='stage_mode_level"+String(i+1)+".html'") ;
 			}
 		}, 500);
-
 
 		//关卡说明出现
 		$('.stage-mode-instructions').attr('style','opacity:1');
@@ -64,6 +71,8 @@ function stage(){
 			$('.stage-mode-levels').attr('style','opacity:0');
 			$('.stage-mode-instructions').removeClass('fadeOut');
 			$('.stage-mode-levels').removeClass('fadeOut');
+
+			//元素消失后改变指针样式和删除超链接
 			for(var i = 0; i < l; i++){
 				$($('.level-button')[i]).attr('style','opacity:0;cursor:default');
 				$($('.level-button')[i]).attr('onclick', "") ;
@@ -76,6 +85,7 @@ function stage(){
 
 $('#stage_mode_button').attr('onclick',"stage()");
 
+//点击classic mode按钮触发函数
 function classic(){
 	var l = $('.classic-level-button').length;
 	if($('.classic-mode-levels').attr('style') == 'opacity:0'){
@@ -108,6 +118,7 @@ function classic(){
 			$($('.classic-level-button')[1]).attr('onclick', "window.location.href='classic_mode_normal.html';") ;
 			$($('.classic-level-button')[2]).attr('onclick', "window.location.href='classic_mode_hard.html';") ;
 		}, 500);
+
 		//关卡说明出现
 		$('.classic-mode-instructions').attr('style','opacity:1');
 		$('.classic-mode-instructions').addClass('animated fadeInLeft');
@@ -136,7 +147,7 @@ function classic(){
 
 $('#classic_mode_button').attr('onclick',"classic()");
 
-
+//豆豆的跳动效果
 setInterval(function(){
 	var anim_name = "rubberBand";
 	$('.doudou').addClass('animated '+ anim_name);

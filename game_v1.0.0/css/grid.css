@@ -1,3 +1,12 @@
+/**
+ *
+ * 作者：袁扬
+ * 日期：2014.7.14
+ * 功能：棋盘元素的样式设置
+ * 参考：2048游戏的代码
+ *
+ */
+
 .game-container{
 	position:relative;
 	padding:15px;
@@ -5,11 +14,13 @@
 	border-radius:10px;
 }
 
+/*棋盘行*/
 .grid-row{
 	float:left;
 	clear:both;	
 }
 
+/*棋盘格子样式1*/
 .grid-cell-1{
 	width:40px;
 	height:40px;
@@ -17,6 +28,7 @@
 	float:left;
 }
 
+/*棋盘格子样式2*/
 .grid-cell-2{
 	width:40px;
 	height:40px;
@@ -28,6 +40,7 @@
 	position:relative;
 }
 
+/*豆豆*/
 .doudou{
 	margin:4px;
 	border-radius:15px;
@@ -36,6 +49,7 @@
 	position:absolute;
 }
 
+/*没有豆豆*/
 .empty{
 	width:40px;
 	height:40px;
@@ -43,6 +57,7 @@
 	cursor: pointer;
 }
 
+/*8种颜色及阴影*/
 .red{
 	background: #FF2424;
 	box-shadow: 2px 2px 2px #F66;
