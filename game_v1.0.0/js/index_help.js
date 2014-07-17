@@ -12,8 +12,10 @@ $(".help").css("display","block");
 $(".layout1").append($(".container"));
 $(".instruction").addClass("title");
 $(".instruction h3").html('Click the empty cell to clean up the dots of the same color in the cross direction.');
+
 $("#help_button").click(function(event) {
 	/* Act on the event */
+	$(".help").css("opacity","1");
 	$(".cover").css("opacity","1");
 	$(".cover").css("z-index","4");
 	$(".cover").css("display","inline");
@@ -30,4 +32,5 @@ $(".closeHelp").click(function(event) {
 	},1000);
 	$(".cover").css("opacity","0");
 	$(".cover").css("z-index","0");
+	$(".help").css("opacity","0");
 });

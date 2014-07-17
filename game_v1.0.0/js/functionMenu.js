@@ -114,6 +114,7 @@ $(".funcOption:eq(3)").click(function(event) {
 //purple button:help game rule
 $(".funcOption:eq(0)").click(function(event) {
 	/* Act on the event */
+	$(".funcmenu").css("opacity","0");
 	$(".help").css("opacity","1");
 	$(".help").css("z-index","5");
 	$(".help").addClass('animated fadeInDown');
@@ -134,6 +135,11 @@ $(".closeHelp").click(function(event) {
 	},1000);
 	$(".help").css("opacity","0");
 	$(".help").css("z-index","0");
+	$(".funcmenu").addClass('animated fadeIn');
+	setTimeout(function(){
+		$('.funcmenu').removeClass('fadeIn');
+	},1000);
+	$(".funcmenu").css("opacity","1");
 });
 
 
