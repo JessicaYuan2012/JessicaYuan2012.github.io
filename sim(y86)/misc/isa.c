@@ -2,9 +2,15 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/shm.h>
 #include "isa.h"
 
+#define SHARE_MEM_KEY 10088
+#define SHARE_ADDR_LOW 1024
+#define SHARE_ADDR_HIGH 33856
 
+int shmid;
+unsigned char *sharedMem;
 /* Are we running in GUI mode? */
 extern int gui_mode;
 
@@ -93,6 +99,7 @@ instr_t instruction_set[] =
     {"popl",   HPACK(I_POPL, F_NONE) ,  2, R_ARG, 1, 1, NO_ARG, 0, 0 },
     {"iaddl",  HPACK(I_IADDL, F_NONE), 6, I_ARG, 2, 4, R_ARG, 1, 0 },
     {"leave",  HPACK(I_LEAVE, F_NONE), 1, NO_ARG, 0, 0, NO_ARG, 0, 0 },
+    {"xchl",   HPACK(I_XCHL, F_NONE), 6, M_ARG, 1, 0, R_ARG, 1, 1 },
     /* this is just a hack to make the I_POP2 code have an associated name */
     {"pop2",   HPACK(I_POP2, F_NONE) , 0, NO_ARG, 0, 0, NO_ARG, 0, 0 },
 
@@ -134,12 +141,18 @@ instr_ptr bad_instr()
 
 mem_t init_mem(int len)
 {
-
     mem_t result = (mem_t) malloc(sizeof(mem_rec));
     len = ((len+BPL-1)/BPL)*BPL;
     result->len = len;
     result->contents = (byte_t *) calloc(len, 1);
     return result;
+}
+
+void init_sharemem()
+{
+    int shmid;
+    shmid = shmget(SHARE_MEM_KEY, SHARE_ADDR_HIGH - SHARE_ADDR_LOW, 0666|IPC_CREAT);
+    sharedMem = shmat(shmid, (char *)0, 0);
 }
 
 void clear_mem(mem_t m)
@@ -153,10 +166,28 @@ void free_mem(mem_t m)
     free((void *) m);
 }
 
+mem_t ori_copy_mem(mem_t oldm)
+{
+    mem_t newm = init_mem(oldm->len);	
+    memcpy(newm->contents, oldm->contents, oldm->len);
+    return newm;
+}	
 mem_t copy_mem(mem_t oldm)
 {
-    mem_t newm = init_mem(oldm->len);
-    memcpy(newm->contents, oldm->contents, oldm->len);
+    int i;
+    mem_t newm = init_mem(oldm->len);	
+	
+    for(i = 0; i < oldm->len; i++)
+    {
+	if(i >= SHARE_ADDR_LOW && i < SHARE_ADDR_HIGH)
+	{
+            newm->contents[i] = sharedMem[i-SHARE_ADDR_LOW];
+	}
+	else
+	{
+	    newm->contents[i] = oldm->contents[i];
+	}
+    }
     return newm;
 }
 
@@ -167,11 +198,15 @@ bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile)
     bool_t diff = FALSE;
     if (newm->len < len)
 	len = newm->len;
-    for (pos = 0; (!diff || outfile) && pos < len; pos += 4) {
+   
+    for (pos = 0; (!diff || outfile) && pos < len; pos += 4) 
+    {
         word_t ov = 0;  word_t nv = 0;
-	get_word_val(oldm, pos, &ov);
+
+	ori_get_word_val(oldm, pos, &ov);
 	get_word_val(newm, pos, &nv);
-	if (nv != ov) {
+	if (nv != ov) 
+	{
 	    diff = TRUE;
 	    if (outfile)
 		fprintf(outfile, "0x%.4x:\t0x%.8x\t0x%.8x\n", pos, ov, nv);
@@ -300,7 +335,27 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest)
 {
     if (pos < 0 || pos >= m->len)
 	return FALSE;
-    *dest = m->contents[pos];
+	if (pos >= SHARE_ADDR_LOW && pos < SHARE_ADDR_HIGH)
+	{
+		*dest = sharedMem[pos - SHARE_ADDR_LOW];
+	}	
+	else
+	{
+	    *dest = m->contents[pos];
+	}
+    return TRUE;
+}
+
+bool_t ori_get_word_val(mem_t m, word_t pos, word_t *dest)
+{
+    int i;
+    word_t val;
+    if (pos < 0 || pos + 4 > m->len)
+	return FALSE;
+    val = 0;
+    for (i = 0; i < 4; i++)
+		val = val | m->contents[pos+i]<<(8*i);
+    *dest = val;
     return TRUE;
 }
 
@@ -309,11 +364,22 @@ bool_t get_word_val(mem_t m, word_t pos, word_t *dest)
     int i;
     word_t val;
     if (pos < 0 || pos + 4 > m->len)
-	return FALSE;
+    return FALSE;
     val = 0;
-    for (i = 0; i < 4; i++)
-	val = val | m->contents[pos+i]<<(8*i);
-    *dest = val;
+    if ((pos >= SHARE_ADDR_LOW) && (pos + 4 < SHARE_ADDR_HIGH))
+    {
+	for (i = 0; i < 4; i++)
+	{
+            val = val | sharedMem[pos - SHARE_ADDR_LOW + i]<<(8*i);
+	}
+	*dest = val;
+    }
+    else
+    {
+	for (i = 0; i < 4; i++)
+	    val = val | m->contents[pos+i]<<(8*i);
+   	*dest = val;
+    }
     return TRUE;
 }
 
@@ -321,7 +387,12 @@ bool_t set_byte_val(mem_t m, word_t pos, byte_t val)
 {
     if (pos < 0 || pos >= m->len)
 	return FALSE;
-    m->contents[pos] = val;
+    if(pos >= SHARE_ADDR_LOW && pos < SHARE_ADDR_HIGH)
+    {
+	sharedMem[pos - SHARE_ADDR_LOW] = val;
+    }
+    else
+	m->contents[pos] = val;
     return TRUE;
 }
 
@@ -329,11 +400,25 @@ bool_t set_word_val(mem_t m, word_t pos, word_t val)
 {
     int i;
     if (pos < 0 || pos + 4 > m->len)
-	return FALSE;
-    for (i = 0; i < 4; i++) {
-	m->contents[pos+i] = val & 0xFF;
-	val >>= 8;
+		return FALSE;
+
+    if(pos >= SHARE_ADDR_LOW && pos + 4 < SHARE_ADDR_HIGH)
+    {
+	for(i = 0; i < 4; i++)
+	{
+	    sharedMem[pos - SHARE_ADDR_LOW + i] = val & 0xFF;
+	    val >>= 8;
+	}
     }
+    else
+    { 
+	for (i = 0; i < 4; i++) 
+	{
+    	    m->contents[pos+i] = val & 0xFF;
+    	    val >>= 8;
+    	}
+    }
+
     return TRUE;
 }
 
@@ -385,7 +470,7 @@ bool_t diff_reg(mem_t oldr, mem_t newr, FILE *outfile)
     for (pos = 0; (!diff || outfile) && pos < len; pos += 4) {
         word_t ov = 0;
         word_t nv = 0;
-	get_word_val(oldr, pos, &ov);
+	ori_get_word_val(oldr, pos, &ov);
 	get_word_val(newr, pos, &nv);
 	if (nv != ov) {
 	    diff = TRUE;
@@ -631,7 +716,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
     bool_t ok1 = TRUE;
     word_t cval = 0;
     word_t okc = TRUE;
-    word_t val, dval;
+    word_t val, dval, tempval;
     bool_t need_regids;
     bool_t need_imm;
     word_t ftpc = s->pc;  /* Fall-through PC */
@@ -650,7 +735,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
     need_regids =
 	(hi0 == I_RRMOVL || hi0 == I_ALU || hi0 == I_PUSHL ||
 	 hi0 == I_POPL || hi0 == I_IRMOVL || hi0 == I_RMMOVL ||
-	 hi0 == I_MRMOVL || hi0 == I_IADDL);
+	 hi0 == I_MRMOVL || hi0 == I_IADDL || hi0 == I_XCHL);
 
     if (need_regids) {
 	ok1 = get_byte_val(s->m, ftpc, &byte1);
@@ -661,7 +746,7 @@ stat_t step_state(state_ptr s, FILE *error_file)
 
     need_imm =
 	(hi0 == I_IRMOVL || hi0 == I_RMMOVL || hi0 == I_MRMOVL ||
-	 hi0 == I_JMP || hi0 == I_CALL || hi0 == I_IADDL);
+	 hi0 == I_JMP || hi0 == I_CALL || hi0 == I_IADDL || hi0 == I_XCHL);
 
     if (need_imm) {
 	okc = get_word_val(s->m, ftpc, &cval);
@@ -783,7 +868,44 @@ stat_t step_state(state_ptr s, FILE *error_file)
 	    return STAT_ADR;
 	set_reg_val(s->r, hi1, val);
 	s->pc = ftpc;
+	break;	
+    case I_XCHL:
+	if (!ok1) {
+	    if (error_file)
+		fprintf(error_file,
+			"PC = 0x%x, Invalid instruction address\n", s->pc);
+	    return STAT_ADR;
+	}
+	if (!okc) {
+	    if (error_file)
+		fprintf(error_file,
+			"PC = 0x%x, Invalid instruction addres\n", s->pc);
+	    return STAT_INS;
+	}
+	if (!reg_valid(hi1)) {
+	    if (error_file)
+		fprintf(error_file,
+			"PC = 0x%x, Invalid register ID 0x%.1x\n",
+			s->pc, hi1);
+	    return STAT_INS;
+	}
+	if (reg_valid(lo1)) 
+	    cval += get_reg_val(s->r, lo1);
+	if (!get_word_val(s->m, cval, &val))
+	    return STAT_ADR;
+	tempval = val;
+	val = get_reg_val(s->r, hi1);
+	if (!set_word_val(s->m, cval, val)) {
+	    if (error_file)
+		fprintf(error_file,
+			"PC = 0x%x, Invalid data address 0x%x\n",
+			s->pc, cval);
+	    return STAT_ADR;
+	}
+	set_reg_val(s->r, hi1, tempval);
+	s->pc = ftpc;
 	break;
+
     case I_ALU:
 	if (!ok1) {
 	    if (error_file)

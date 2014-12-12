@@ -19,7 +19,13 @@ int main(int argc, char *argv[])
     FILE *code_file;
     int max_steps = 10000;
 
+    // edit by leo
+    init_sharemem();
+    // edit end
+	
+
     state_ptr s = new_state(MEM_SIZE);
+    
     mem_t saver = copy_reg(s->r);
     mem_t savem;
     int step = 0;
@@ -33,20 +39,23 @@ int main(int argc, char *argv[])
 	fprintf(stderr, "Can't open code file '%s'\n", argv[1]);
 	exit(1);
     }
-
+    
     if (!load_mem(s->m, code_file, 1)) {
 	printf("Exiting\n");
 	return 1;
-    }
-
+    }    
     savem = copy_mem(s->m);
   
+    // edit by leo
+    // printf("error happen after here!\n");
+    // edit end
     if (argc > 2)
 	max_steps = atoi(argv[2]);
 
     for (step = 0; step < max_steps && e == STAT_AOK; step++)
 	e = step_state(s, stdout);
-
+    
+    
     printf("Stopped in %d steps at PC = 0x%x.  Status '%s', CC %s\n",
 	   step, s->pc, stat_name(e), cc_name(s->cc));
 

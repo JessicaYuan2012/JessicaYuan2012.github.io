@@ -530,6 +530,7 @@ void sim_init()
     /* Create memory and register files */
     initialized = 1;
     mem = init_mem(MEM_SIZE);
+    init_sharemem();
     reg = init_reg();
     
     /* create 5 pipe registers */
@@ -607,7 +608,7 @@ static void update_state(bool_t update_mem, bool_t update_cc)
 	set_reg_val(reg, wb_destE, wb_valE);
     }
     if (wb_destM != REG_NONE) {
-	sim_log("\tWriteback: Wrote 0x%x to register %s\n",
+	 sim_log("\tWriteback: Wrote 0x%x to register %s\n",
 		wb_valM, reg_name(wb_destM));
 	set_reg_val(reg, wb_destM, wb_valM);
     }

@@ -24,10 +24,10 @@ $bytelim = 1000;
 # usage - Print the help message and terminate
 #
 sub usage {
-    print STDERR "Usage: $0 [-hqp] [-n N] -f FILE\n";
+    print STDERR "Usage: $0 [-hq] [-n N] -f FILE\n";
     print STDERR "   -h      Print help message\n";
     print STDERR "   -q      Quiet mode (default verbose)\n";
-    print STDERR "   -p      Run program on pipeline simulator (default ISA sim)\n";
+    print STDERR "   -p      Run program on pipeline simulator\n";
     print STDERR "   -n N    Set max number of elements up to 64 (default $blocklen)\n";
     print STDERR "   -f FILE Input .ys file is FILE\n";
     print STDERR "   -b blim set byte limit for function\n";

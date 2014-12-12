@@ -416,7 +416,7 @@ static char digits[16] =
 
 /* Create string in hex/oct/binary format with leading zeros */
 /* bpd denotes bits per digit  Should be in range 1-4,
-   bpw denotes bits per word.*/
+   pbw denotes bits per word.*/
 void wstring(unsigned x, int bpd, int bpw, char *str)
 {
     int digit;

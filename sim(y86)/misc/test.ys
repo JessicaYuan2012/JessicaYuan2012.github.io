@@ -1,0 +1,112 @@
+irmovl $1, %eax
+irmovl $100, %ecx
+irmovl $0, %ebx
+irmovl $0, %edi
+nop
+nop
+nop
+nop
+xchl 4096(%ebx), %eax
+nop
+nop
+nop
+nop
+subl %ebx, %eax
+jne PROB
+
+PROA:
+	irmovl $0, %ebx
+	irmovl $0, %edi
+	mrmovl 4128(%ebx), %eax		# get the value m
+
+	subl %edi, %eax				# if(m == 0) begin to write
+	jne PROA	
+
+	mrmovl 4160(%ebx), %esi		# get the value n
+	irmovl $5, %edi
+	addl %edi, %esi				# n += 5
+	rmmovl %esi, 4160(%ebx)
+	irmovl $4192, %ebx
+
+ASEND:
+	mrmovl (%ebx), %edi			# get 'data[i]'
+	irmovl $1, %eax
+	addl %eax, %edi				# data[i]++
+	rmmovl %edi, (%ebx)
+
+	irmovl $4, %edi
+	addl %edi, %ebx				#i++
+	irmovl $1, %edi				#n--
+	subl %edi, %esi				#if(n == 0), a message send done
+	nop
+	nop
+	nop
+	nop
+	jne ASEND
+
+	irmovl $0, %ebx				#make %ebx back to 0
+	irmovl $1, %edi				#make m = 1
+	rmmovl %edi, 4128(%ebx)
+	irmovl $1, %edi				#time--
+	subl %edi, %ecx				#if(time != 0), we should waiting for next send
+	jne PROA
+	jmp END
+
+PROB:
+	irmovl $0, %ebx
+	irmovl $1, %edi
+	mrmovl 4128(%ebx), %eax		# get the value m
+
+	subl %eax, %edi				# if(m == 1) begin to write
+	jne PROB	
+	mrmovl 4160(%ebx), %esi		# get the value n
+	irmovl $5, %edi
+	addl %edi, %esi				# n += 5
+	rmmovl %esi, 4160(%ebx)
+	irmovl $4192, %ebx
+
+BSEND:
+	nop
+	nop
+	nop
+	nop
+	mrmovl (%ebx), %edi			# get 'data[i]'
+	nop
+	nop
+	nop
+	nop
+	irmovl $1, %eax
+	nop
+	nop
+	nop
+	nop
+	addl %eax, %edi				# data[i]++
+	nop
+	nop
+	nop
+	nop
+	rmmovl %edi, (%ebx)
+	nop
+	nop
+	nop
+	nop
+	irmovl $4, %edi
+	addl %edi, %ebx				#i++
+
+	irmovl $1, %edi				#n--
+	subl %edi, %esi				#if(n == 0), a message send done
+	jne BSEND
+
+	irmovl $0, %ebx				#make %ebx back to 0
+	irmovl $0, %edi				#make m = 0
+	rmmovl %edi, 4128(%ebx)
+
+	irmovl $1, %edi				#time--
+	subl %edi, %ecx				#if(time != 0), we should waiting for next send
+	jne PROB
+
+	jmp END
+
+END:
+	halt
+	

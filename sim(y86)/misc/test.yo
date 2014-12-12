@@ -1,0 +1,111 @@
+  0x000: 30f001000000 | irmovl $1, %eax
+  0x006: 30f164000000 | irmovl $100, %ecx
+  0x00c: 30f300000000 | irmovl $0, %ebx
+  0x012: 30f700000000 | irmovl $0, %edi
+  0x018: 10           | nop
+  0x019: 10           | nop
+  0x01a: 10           | nop
+  0x01b: 10           | nop
+  0x01c: e00300100000 | xchl 4096(%ebx), %eax
+  0x022: 10           | nop
+  0x023: 10           | nop
+  0x024: 10           | nop
+  0x025: 10           | nop
+  0x026: 6130         | subl %ebx, %eax
+  0x028: 74b1000000   | jne PROB
+                      | 
+  0x02d:              | PROA:
+  0x02d: 30f300000000 | 	irmovl $0, %ebx
+  0x033: 30f700000000 | 	irmovl $0, %edi
+  0x039: 500320100000 | 	mrmovl 4128(%ebx), %eax		# get the value m
+                      | 
+  0x03f: 6170         | 	subl %edi, %eax				# if(m == 0) begin to write
+  0x041: 742d000000   | 	jne PROA	
+                      | 
+  0x046: 506340100000 | 	mrmovl 4160(%ebx), %esi		# get the value n
+  0x04c: 30f705000000 | 	irmovl $5, %edi
+  0x052: 6076         | 	addl %edi, %esi				# n += 5
+  0x054: 406340100000 | 	rmmovl %esi, 4160(%ebx)
+  0x05a: 30f360100000 | 	irmovl $4192, %ebx
+                      | 
+  0x060:              | ASEND:
+  0x060: 507300000000 | 	mrmovl (%ebx), %edi			# get 'data[i]'
+  0x066: 30f001000000 | 	irmovl $1, %eax
+  0x06c: 6007         | 	addl %eax, %edi				# data[i]++
+  0x06e: 407300000000 | 	rmmovl %edi, (%ebx)
+                      | 
+  0x074: 30f704000000 | 	irmovl $4, %edi
+  0x07a: 6073         | 	addl %edi, %ebx				#i++
+  0x07c: 30f701000000 | 	irmovl $1, %edi				#n--
+  0x082: 6176         | 	subl %edi, %esi				#if(n == 0), a message send done
+  0x084: 10           | 	nop
+  0x085: 10           | 	nop
+  0x086: 10           | 	nop
+  0x087: 10           | 	nop
+  0x088: 7460000000   | 	jne ASEND
+                      | 
+  0x08d: 30f300000000 | 	irmovl $0, %ebx				#make %ebx back to 0
+  0x093: 30f701000000 | 	irmovl $1, %edi				#make m = 1
+  0x099: 407320100000 | 	rmmovl %edi, 4128(%ebx)
+  0x09f: 30f701000000 | 	irmovl $1, %edi				#time--
+  0x0a5: 6171         | 	subl %edi, %ecx				#if(time != 0), we should waiting for next send
+  0x0a7: 742d000000   | 	jne PROA
+  0x0ac: 7045010000   | 	jmp END
+                      | 
+  0x0b1:              | PROB:
+  0x0b1: 30f300000000 | 	irmovl $0, %ebx
+  0x0b7: 30f701000000 | 	irmovl $1, %edi
+  0x0bd: 500320100000 | 	mrmovl 4128(%ebx), %eax		# get the value m
+                      | 
+  0x0c3: 6107         | 	subl %eax, %edi				# if(m == 1) begin to write
+  0x0c5: 74b1000000   | 	jne PROB	
+  0x0ca: 506340100000 | 	mrmovl 4160(%ebx), %esi		# get the value n
+  0x0d0: 30f705000000 | 	irmovl $5, %edi
+  0x0d6: 6076         | 	addl %edi, %esi				# n += 5
+  0x0d8: 406340100000 | 	rmmovl %esi, 4160(%ebx)
+  0x0de: 30f360100000 | 	irmovl $4192, %ebx
+                      | 
+  0x0e4:              | BSEND:
+  0x0e4: 10           | 	nop
+  0x0e5: 10           | 	nop
+  0x0e6: 10           | 	nop
+  0x0e7: 10           | 	nop
+  0x0e8: 507300000000 | 	mrmovl (%ebx), %edi			# get 'data[i]'
+  0x0ee: 10           | 	nop
+  0x0ef: 10           | 	nop
+  0x0f0: 10           | 	nop
+  0x0f1: 10           | 	nop
+  0x0f2: 30f001000000 | 	irmovl $1, %eax
+  0x0f8: 10           | 	nop
+  0x0f9: 10           | 	nop
+  0x0fa: 10           | 	nop
+  0x0fb: 10           | 	nop
+  0x0fc: 6007         | 	addl %eax, %edi				# data[i]++
+  0x0fe: 10           | 	nop
+  0x0ff: 10           | 	nop
+  0x100: 10           | 	nop
+  0x101: 10           | 	nop
+  0x102: 407300000000 | 	rmmovl %edi, (%ebx)
+  0x108: 10           | 	nop
+  0x109: 10           | 	nop
+  0x10a: 10           | 	nop
+  0x10b: 10           | 	nop
+  0x10c: 30f704000000 | 	irmovl $4, %edi
+  0x112: 6073         | 	addl %edi, %ebx				#i++
+                      | 
+  0x114: 30f701000000 | 	irmovl $1, %edi				#n--
+  0x11a: 6176         | 	subl %edi, %esi				#if(n == 0), a message send done
+  0x11c: 74e4000000   | 	jne BSEND
+                      | 
+  0x121: 30f300000000 | 	irmovl $0, %ebx				#make %ebx back to 0
+  0x127: 30f700000000 | 	irmovl $0, %edi				#make m = 0
+  0x12d: 407320100000 | 	rmmovl %edi, 4128(%ebx)
+                      | 
+  0x133: 30f701000000 | 	irmovl $1, %edi				#time--
+  0x139: 6171         | 	subl %edi, %ecx				#if(time != 0), we should waiting for next send
+  0x13b: 74b1000000   | 	jne PROB
+                      | 
+  0x140: 7045010000   | 	jmp END
+                      | 
+  0x145:              | END:
+  0x145: 00           | 	halt

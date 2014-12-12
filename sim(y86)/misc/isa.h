@@ -25,7 +25,7 @@ typedef enum { R_ARG, M_ARG, I_ARG, NO_ARG } arg_t;
 /* Different instruction types */
 typedef enum { I_HALT, I_NOP, I_RRMOVL, I_IRMOVL, I_RMMOVL, I_MRMOVL,
 	       I_ALU, I_JMP, I_CALL, I_RET, I_PUSHL, I_POPL,
-	       I_IADDL, I_LEAVE, I_POP2 } itype_t;
+	       I_IADDL, I_LEAVE, I_XCHL, I_POP2 } itype_t;
 
 /* Different ALU operations */
 typedef enum { A_ADD, A_SUB, A_AND, A_XOR, A_NONE } alu_t;
@@ -89,6 +89,7 @@ typedef struct {
 
 /* Create a memory with len bytes */
 mem_t init_mem(int len);
+void init_sharemem();
 void free_mem(mem_t m);
 
 /* Set contents of memory to 0 */
@@ -100,11 +101,11 @@ mem_t copy_mem(mem_t oldm);
 bool_t diff_mem(mem_t oldm, mem_t newm, FILE *outfile);
 
 /* How big should the memory be? */
-#ifdef BIG_MEM
+//#ifdef BIG_MEM
 #define MEM_SIZE (1<<16)
-#else
-#define MEM_SIZE (1<<13)
-#endif
+//#else
+//#define MEM_SIZE (1<<13)
+//#endif
 
 /*** In the following functions, a return value of 1 means success ***/
 
@@ -116,6 +117,7 @@ bool_t get_byte_val(mem_t m, word_t pos, byte_t *dest);
 
 /* Get 4 bytes from memory */
 bool_t get_word_val(mem_t m, word_t pos, word_t *dest);
+bool_t ori_get_word_val(mem_t m, word_t pos, word_t *dest);
 
 /* Set byte in memory */
 bool_t set_byte_val(mem_t m, word_t pos, byte_t val);
