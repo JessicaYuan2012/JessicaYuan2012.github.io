@@ -74,6 +74,10 @@ var audienceRatingOpts = {
       responsive : true
 }
 
+function returnExp(element){
+  return element.toExponential();
+}
+
 function processData(allText, columns) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
@@ -113,7 +117,7 @@ function loadAudienceRatingData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns[1].map(parseFloat).map(toExponential)
+                            data : columns[1].map(parseFloat).map(returnExp)
                         }
                     ]
                 }
