@@ -50,16 +50,7 @@ function loadOnlineDayCountData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : [sum(columns[1].map(returnInt).slice(0,18)), \
-                                    sum(columns[1].map(returnInt).slice(19,38)), \
-                                    sum(columns[1].map(returnInt).slice(39,58)), \
-                                    sum(columns[1].map(returnInt).slice(59,78)), \
-                                    sum(columns[1].map(returnInt).slice(79,98)), \
-                                    sum(columns[1].map(returnInt).slice(99,118)), \
-                                    sum(columns[1].map(returnInt).slice(119,138)), \
-                                    sum(columns[1].map(returnInt).slice(139,158)), \
-                                    sum(columns[1].map(returnInt).slice(159,178)), \
-                                    sum(columns[1].map(returnInt).slice(179,180))]
+                            data : [sum(columns[1].map(returnInt).slice(0,18)),sum(columns[1].map(returnInt).slice(19,38)),sum(columns[1].map(returnInt).slice(39,58)),sum(columns[1].map(returnInt).slice(59,78)),sum(columns[1].map(returnInt).slice(79,98)),sum(columns[1].map(returnInt).slice(99,118)),sum(columns[1].map(returnInt).slice(119,138)),sum(columns[1].map(returnInt).slice(139,158)),sum(columns[1].map(returnInt).slice(159,178)),sum(columns[1].map(returnInt).slice(179,180))]
                         }
                     ]
                 }
