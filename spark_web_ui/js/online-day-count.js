@@ -40,7 +40,7 @@ function loadOnlineDayCountData() {
                 //console.log("out of processData:");
                 //console.log(columns);
                 var lineChartData = {
-                    labels : columns["0-19天","20-39天","40-59天","60-79天","80-99天",\
+                    labels : ["0-19天","20-39天","40-59天","60-79天","80-99天",\
                     "100-119天","120-139天","140-159天","160-179天","180天以上"],
                     datasets : [
                         {
