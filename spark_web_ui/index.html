@@ -5,7 +5,7 @@
   <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
   <script src="js/ChartNew.js"></script>
   <script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
-  <script src="js/online-day-count.js"></script>
+  <script src="js/online-time.js"></script>
   <script src="js/audience-rating.js"></script>
 
 
@@ -28,7 +28,7 @@
               <br>
               <li><a id="rating" href="javascript:void(0);" onclick="loadAudienceRatingData()">收视情况</a></li>
               <li><a href="javascript:void(0);">购买情况</a></li>
-              <li><a id="online" href="javascript:void(0);" onclick="loadOnlineDayCountData()">在线天数</a></li>
+              <li><a id="online" href="javascript:void(0);" onclick="loadOnlineDayCountData()">在线时间</a></li>
               <li><a href="javascript:void(0);">换台行为</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -40,6 +40,7 @@
       <div>
         <div style="width:60%">
           <canvas id="chart"></canvas>
+          <canvas id="chart2"></canvas>
         </div>
       </div>
     </div>
