@@ -25,7 +25,7 @@ var audienceRatingOpts = {
             footNoteFontSize : 8,
             footNoteFontStyle : "bold",
             footNoteFontColor : "#666",*/
-      legend : true,
+      legend : false,
         legendFontFamily : "'Arial'",
         legendFontSize : 12,
         legendFontStyle : "normal",
@@ -38,7 +38,7 @@ var audienceRatingOpts = {
       yAxisRight : false,
       xAxisBottom : true,
       xAxisTop : false,
-      yAxisLabel : "%",
+      yAxisLabel : "秒",
             yAxisFontFamily : "'Arial'",
             yAxisFontSize : 16,
             yAxisFontStyle : "normal",
@@ -113,7 +113,7 @@ function loadAudienceRatingData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns[1].map(parseFloat)
+                            data : columns[1].map(parseFloat).map(toExponential)
                         }
                     ]
                 }
