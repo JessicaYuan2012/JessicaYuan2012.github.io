@@ -98,33 +98,39 @@ function processData(allText, columns) {
 
 function loadAudienceRatingData() {
 		//process csv data
-        var columns = [[]];
+    var element = $('#canvas-container');
+    $(element.children).remove();
 
-        $.ajax({
-            type: "GET",
-            url: "data/audiencerating/part-00000",
-            dataType: "text",
-            success: function(data) {
-                processData(data,columns);
-                var lineChartData = {
-                    labels : ["0点-1点","1点-2点","2点-3点","3点-4点","4点-5点","5点-6点","6点-7点","7点-8点","8点-9点","9点-10点","10点-11点","11点-12点","12点-13点","13点-14点","14点-15点","15点-16点","16点-17点","17点-18点","18点-19点","19点-20点","20点-21点","21点-22点","22点-23点","23点-24点"],
-                    datasets : [
-                        {
-                            label: "Online Day Count",
-                            fillColor : "rgba(220,220,220,0.2)",
-                            strokeColor : "rgba(220,220,220,1)",
-                            pointColor : "rgba(220,220,220,1)",
-                            pointStrokeColor : "#fff",
-                            pointHighlightFill : "#fff",
-                            pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns[1].map(returnResult)
-                        }
-                    ]
-                }
+    var canvas3="<canvas id=\"chart3\"></canvas>";
+    element.append(canvas3);
+    
+    var columns = [[]];
 
-                var ctx = document.getElementById("chart").getContext("2d");
-                window.myLine = new Chart(ctx).Line(lineChartData, audienceRatingOpts);
+    $.ajax({
+        type: "GET",
+        url: "data/audiencerating/part-00000",
+        dataType: "text",
+        success: function(data) {
+            processData(data,columns);
+            var lineChartData = {
+                labels : ["0点-1点","1点-2点","2点-3点","3点-4点","4点-5点","5点-6点","6点-7点","7点-8点","8点-9点","9点-10点","10点-11点","11点-12点","12点-13点","13点-14点","14点-15点","15点-16点","16点-17点","17点-18点","18点-19点","19点-20点","20点-21点","21点-22点","22点-23点","23点-24点"],
+                datasets : [
+                    {
+                        label: "Online Day Count",
+                        fillColor : "rgba(220,220,220,0.2)",
+                        strokeColor : "rgba(220,220,220,1)",
+                        pointColor : "rgba(220,220,220,1)",
+                        pointStrokeColor : "#fff",
+                        pointHighlightFill : "#fff",
+                        pointHighlightStroke : "rgba(220,220,220,1)",
+                        data : columns[1].map(returnResult)
+                    }
+                ]
             }
-         });
+
+            var ctx = document.getElementById("chart3").getContext("2d");
+            window.myLine = new Chart(ctx).Line(lineChartData, audienceRatingOpts);
+        }
+     });
 
 }

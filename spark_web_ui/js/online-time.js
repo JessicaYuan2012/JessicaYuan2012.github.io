@@ -184,55 +184,65 @@ function sum(numArray){
 }
 
 function loadData(){
+  var element = $('#canvas-container');
+  $(element.children).remove();
   loadOnlineDayCountData();
   loadPerDayViewingHour();
 }
 
 function loadOnlineDayCountData() {
 		//process csv data
-        var columns = [[]];
+    var element = $('#canvas-container');
+    var canvas1="<canvas id=\"chart1\"></canvas>";
+    element.append(canvas1);
 
-        $.ajax({
-            type: "GET",
-            url: "data/OnlineDayCount/part-00000",
-            dataType: "text",
-            success: function(data) {
-                processData(data,columns);
-                numOfDevices = sum(columns[1].map(returnInt))
-                final_data_points = []
-                final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(19,39))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(39,59))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(59,79))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(79,99))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(99,119))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices*100).toFixed(3));
-                var barChartData = {
-                    labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
-                    datasets : [
-                        {
-                            label: "Online Day Count",
-                            fillColor : "rgba(220,220,220,0.2)",
-                            strokeColor : "rgba(220,220,220,1)",
-                            pointColor : "rgba(220,220,220,1)",
-                            pointStrokeColor : "#fff",
-                            pointHighlightFill : "#fff",
-                            pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : final_data_points
-                        }
-                    ]
-                }
+    var columns = [[]];
 
-                var ctx = document.getElementById("chart").getContext("2d");
-                window.myLine = new Chart(ctx).Bar(barChartData, newopts);
+    $.ajax({
+        type: "GET",
+        url: "data/OnlineDayCount/part-00000",
+        dataType: "text",
+        success: function(data) {
+            processData(data,columns);
+            numOfDevices = sum(columns[1].map(returnInt))
+            final_data_points = []
+            final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(19,39))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(39,59))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(59,79))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(79,99))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(99,119))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices*100).toFixed(3));
+            final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices*100).toFixed(3));
+            var barChartData = {
+                labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
+                datasets : [
+                    {
+                        label: "Online Day Count",
+                        fillColor : "rgba(220,220,220,0.2)",
+                        strokeColor : "rgba(220,220,220,1)",
+                        pointColor : "rgba(220,220,220,1)",
+                        pointStrokeColor : "#fff",
+                        pointHighlightFill : "#fff",
+                        pointHighlightStroke : "rgba(220,220,220,1)",
+                        data : final_data_points
+                    }
+                ]
             }
-         });
+
+            var ctx = document.getElementById("chart1").getContext("2d");
+            window.myLine = new Chart(ctx).Bar(barChartData, newopts);
+        }
+     });
 }
 
 function loadPerDayViewingHour() {
+    var element = $('#canvas-container')
+    var canvas2="<canvas id=\"chart2\"></canvas>";
+    element.append(canvas2)
     var columns2 = [[]];
+
     $.ajax({
         type: "GET",
         url: "data/ViewingTime/part-00000",
@@ -255,7 +265,7 @@ function loadPerDayViewingHour() {
                     }
                 ]
             }
-            console.log(LineChartData)
+            //console.log(LineChartData)
             var ctx2 = document.getElementById("chart2").getContext("2d");
             window.myLine = new Chart(ctx2).Line(LineChartData, newopts2);
         }
