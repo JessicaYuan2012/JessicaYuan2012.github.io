@@ -1,6 +1,4 @@
 
-var lines = [[]];
-
 var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
 var lineChartData = {
@@ -22,7 +20,7 @@ var lineChartData = {
 function processData(allText) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
-
+    var lines = [[]];
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
