@@ -37,10 +37,19 @@ function loadOnlineDayCountData() {
             dataType: "text",
             success: function(data) {
                 processData(data,columns);
-                //console.log("out of processData:");
-                //console.log(columns);
+                numOfDevices = sum(columns[1].map(returnInt))
+                final_data_points = []
+                final_data_points.push(sum(columns[1].map(returnInt).slice(0,19))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(19,39))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(39,59))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(59,79)));
+                final_data_points.push(sum(columns[1].map(returnInt).slice(79,99)));
+                final_data_points.push(sum(columns[1].map(returnInt).slice(99,119)));
+                final_data_points.push(sum(columns[1].map(returnInt).slice(119,139)));
+                final_data_points.push(sum(columns[1].map(returnInt).slice(139,159)));
+                final_data_points.push(sum(columns[1].map(returnInt).slice(159,185)));
                 var lineChartData = {
-                    labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-179天","180天以上"],
+                    labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
                     datasets : [
                         {
                             label: "Online Day Count",
@@ -50,7 +59,7 @@ function loadOnlineDayCountData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : [sum(columns[1].map(returnInt).slice(0,18)),sum(columns[1].map(returnInt).slice(19,38)),sum(columns[1].map(returnInt).slice(39,58)),sum(columns[1].map(returnInt).slice(59,78)),sum(columns[1].map(returnInt).slice(79,98)),sum(columns[1].map(returnInt).slice(99,118)),sum(columns[1].map(returnInt).slice(119,138)),sum(columns[1].map(returnInt).slice(139,158)),sum(columns[1].map(returnInt).slice(159,178)),sum(columns[1].map(returnInt).slice(179,180))]
+                            data : final_data_points
                         }
                     ]
                 }
