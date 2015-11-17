@@ -1,12 +1,12 @@
 <html>
 <head>
     <title>test</title>
-    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            url: "cars.txt",
+            url: "data/cars.txt",
             dataType: "text",
             success: function(data) {processData(data);}
          });
