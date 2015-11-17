@@ -50,7 +50,7 @@ $(document).ready(function() {
 		//process csv data
         $.ajax({
             type: "GET",
-            url: "data/cars.csv",
+            url: "data/OnlineDayCount/part-00000",
             dataType: "text",
             success: function(data) {processData(data);}
          });
