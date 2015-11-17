@@ -243,7 +243,7 @@ function loadOnlineDayCountData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns2.slice(10,20).map()
+                            data : columns2.slice(10,20).map(returnHour)
                         }
                     ]
                 }
