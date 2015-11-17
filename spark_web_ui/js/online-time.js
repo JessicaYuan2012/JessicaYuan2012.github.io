@@ -158,17 +158,17 @@ function returnHour(element){
   return (parseInt(element,10)/1000/3600).toFixed(0);
 }
 
-function processData(allText, columns) {
+function processData(allText, col) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
             for (var j=0; j<headers.length; j++) {
-            	if (columns[j] == undefined){
-            		columns[j] = [];
+            	if (col[j] == undefined){
+            		col[j] = [];
                 }
-                columns[j].push(data[j].replace(/\"/g, ""));
+                col[j].push(data[j].replace(/\"/g, ""));
             }
         }
     }
@@ -181,6 +181,11 @@ function sum(numArray){
         sum += numArray[i];
     }
     return sum;
+}
+
+function loadData(){
+  loadOnlineDayCountData();
+  loadPerDayViewingHour();
 }
 
 function loadOnlineDayCountData() {
@@ -224,33 +229,34 @@ function loadOnlineDayCountData() {
                 window.myLine = new Chart(ctx).Bar(barChartData, newopts);
             }
          });
-        
-        var columns2 = [[]];
-        $.ajax({
-            type: "GET",
-            url: "data/ViewingTime/part-00000",
-            dataType: "text",
-            success: function(data) {
-                processData(data,columns2);
-                var LineChartData = {
-                    labels : columns2.slice(10,20),
-                    datasets : [
-                        {
-                            label: "Online Hours",
-                            fillColor : "rgba(220,220,220,0.2)",
-                            strokeColor : "rgba(220,220,220,1)",
-                            pointColor : "rgba(220,220,220,1)",
-                            pointStrokeColor : "#fff",
-                            pointHighlightFill : "#fff",
-                            pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns2.slice(10,20).map(returnHour)
-                        }
-                    ]
-                }
+}
 
-                var ctx = document.getElementById("chart2").getContext("2d");
-                window.myLine = new Chart(ctx).Line(LineChartData, newopts2);
+function loadPerDayViewingHour() {
+    var columns2 = [[]];
+    $.ajax({
+        type: "GET",
+        url: "data/ViewingTime/part-00000",
+        dataType: "text",
+        success: function(data) {
+            processData(data,columns2);
+            var LineChartData = {
+                labels : columns2.slice(0,10),
+                datasets : [
+                    {
+                        label: "Online Hours",
+                        fillColor : "rgba(220,220,220,0.2)",
+                        strokeColor : "rgba(220,220,220,1)",
+                        pointColor : "rgba(220,220,220,1)",
+                        pointStrokeColor : "#fff",
+                        pointHighlightFill : "#fff",
+                        pointHighlightStroke : "rgba(220,220,220,1)",
+                        data : columns2.slice(0,10).map(returnHour)
+                    }
+                ]
             }
-         });
 
+            var ctx = document.getElementById("chart2").getContext("2d");
+            window.myLine = new Chart(ctx).Line(LineChartData, newopts2);
+        }
+     });
 }
