@@ -1,4 +1,4 @@
-var newopts = {
+var audienceRatingOpts = {
       inGraphDataShow : true,
       datasetFill : true,
       scaleLabel: "<%=value%>",
@@ -10,7 +10,7 @@ var newopts = {
       /*canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",*/
-      graphTitle : "用户（设备）在线天数分布图",
+      graphTitle : "各时段收视率统计图",
             graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
             graphTitleFontStyle : "normal",
@@ -74,10 +74,6 @@ var newopts = {
       responsive : true
 }
 
-function returnInt(element){
-  return parseInt(element,10);
-}
-
 function processData(allText, columns) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
@@ -96,36 +92,18 @@ function processData(allText, columns) {
     //console.log(columns);
 }
 
-function sum(numArray){
-    for (var sum = i = 0; i < numArray.length; i++){
-        sum += numArray[i];
-    }
-    return sum;
-}
-
-function loadOnlineDayCountData() {
+function loadAudienceRatingData() {
 		//process csv data
         var columns = [[]];
 
         $.ajax({
             type: "GET",
-            url: "data/OnlineDayCount/part-00000",
+            url: "data/audiencerating/part-00000",
             dataType: "text",
             success: function(data) {
                 processData(data,columns);
-                numOfDevices = sum(columns[1].map(returnInt))
-                final_data_points = []
-                final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(19,39))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(39,59))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(59,79))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(79,99))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(99,119))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices*100).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices*100).toFixed(3));
-                var barChartData = {
-                    labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
+                var lineChartData = {
+                    labels : ["0点-1点","1点-2点","2点-3点","3点-4点","4点-5点","5点-6点","6点-7点","7点-8点","8点-9点","9点-10点","10点-11点","11点-12点","12点-13点","13点-14点","14点-15点","15点-16点","16点-17点","17点-18点","18点-19点","19点-20点","20点-21点","21点-22点","22点-23点","23点-24点"],
                     datasets : [
                         {
                             label: "Online Day Count",
@@ -135,13 +113,13 @@ function loadOnlineDayCountData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : final_data_points
+                            data : columns[1].map(parseFloat)
                         }
                     ]
                 }
 
                 var ctx = document.getElementById("chart").getContext("2d");
-                window.myLine = new Chart(ctx).Bar(barChartData, newopts);
+                window.myLine = new Chart(ctx).Line(lineChartData, audienceRatingOpts);
             }
          });
 
