@@ -239,6 +239,7 @@ function loadPerDayViewingHour() {
         dataType: "text",
         success: function(data) {
             processData(data,columns2);
+            console.log(columns2)
             var LineChartData = {
                 labels : columns2.slice(0,10),
                 datasets : [
@@ -255,8 +256,8 @@ function loadPerDayViewingHour() {
                 ]
             }
 
-            var ctx = document.getElementById("chart2").getContext("2d");
-            window.myLine = new Chart(ctx).Line(LineChartData, newopts2);
+            var ctx2 = document.getElementById("chart2").getContext("2d");
+            window.myLine = new Chart(ctx2).Line(LineChartData, newopts2);
         }
      });
 }
