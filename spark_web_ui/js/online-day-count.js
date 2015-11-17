@@ -8,24 +8,23 @@ var newopts = {
       scaleTickSizeTop : 5,
       scaleFontSize : 16,
       scaleShowGridLines : true,
-      canvasBorders : true,
-      canvasBordersWidth : 3,
-      canvasBordersColor : "black",
+      canvasBorders : false,
       graphTitle : "用户（设备）在线天数统计图",
-            graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
-            graphTitleFontStyle : "bold",
             graphTitleFontColor : "#666",
       yAxisLeft : true,
       yAxisRight : false,
       xAxisBottom : false,
       xAxisTop : false,
       yAxisLabel : "%",
-            yAxisFontFamily : "'Arial'",
             yAxisFontSize : 16,
             yAxisFontStyle : "normal",
             yAxisFontColor : "#666",
-      annotateDisplay : true, 
+      xAxisLabel : "",
+            xAxisFontSize : 16,
+            xAxisFontStyle : "normal",
+            xAxisFontColor : "#666",
+      annotateDisplay : false, 
       spaceTop : 0,
       spaceBottom : 0,
       spaceLeft : 0,
@@ -77,15 +76,15 @@ function loadOnlineDayCountData() {
                 processData(data,columns);
                 numOfDevices = sum(columns[1].map(returnInt))
                 final_data_points = []
-                final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(19,39))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(39,59))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(59,79))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(79,99))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(99,119))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices).toFixed(3));
-                final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(19,39))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(39,59))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(59,79))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(79,99))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(99,119))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices*100).toFixed(3));
+                final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices*100).toFixed(3));
                 var lineChartData = {
                     labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
                     datasets : [
