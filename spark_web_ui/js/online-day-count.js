@@ -7,7 +7,7 @@ var newopts = {
       scaleTickSizeBottom : 5,
       scaleTickSizeTop : 5,
       scaleFontSize : 16,
-      scaleShowGridLines : true
+      scaleShowGridLines : true,
       canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",
