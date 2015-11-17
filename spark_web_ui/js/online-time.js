@@ -1,4 +1,4 @@
-var newopts = {
+var onlineDaysOpts = {
       inGraphDataShow : true,
       datasetFill : true,
       scaleLabel: "<%=value%>",
@@ -74,7 +74,7 @@ var newopts = {
       responsive : true
 }
 
-var newopts2 = {
+var perDayOnlineHourOpts = {
       inGraphDataShow : true,
       datasetFill : true,
       scaleLabel: "<%=value%>",
@@ -172,8 +172,6 @@ function processData(allText, col) {
             }
         }
     }
-    //console.log("in processData:");
-    //console.log(columns);
 }
 
 function sum(numArray){
@@ -193,7 +191,6 @@ function loadData(){
 }
 
 function loadOnlineDayCountData() {
-		//process csv data
     var element = $('#canvas-container');
     var canvas1="<canvas id=\"chart1\"></canvas>";
     element.append(canvas1);
@@ -206,6 +203,7 @@ function loadOnlineDayCountData() {
         dataType: "text",
         success: function(data) {
             processData(data,columns);
+
             numOfDevices = sum(columns[1].map(returnInt))
             final_data_points = []
             final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices*100).toFixed(3));
@@ -217,6 +215,7 @@ function loadOnlineDayCountData() {
             final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices*100).toFixed(3));
             final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices*100).toFixed(3));
             final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices*100).toFixed(3));
+            
             var barChartData = {
                 labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
                 datasets : [
@@ -234,7 +233,7 @@ function loadOnlineDayCountData() {
             }
 
             var ctx = document.getElementById("chart1").getContext("2d");
-            window.myLine = new Chart(ctx).Bar(barChartData, newopts);
+            window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
         }
      });
 }
@@ -251,7 +250,7 @@ function loadPerDayViewingHour() {
         dataType: "text",
         success: function(data) {
             processData(data,columns2);
-            //console.log(columns2)
+
             var LineChartData = {
                 labels : columns2[0].slice(0,14),
                 datasets : [
@@ -267,9 +266,9 @@ function loadPerDayViewingHour() {
                     }
                 ]
             }
-            //console.log(LineChartData)
+
             var ctx2 = document.getElementById("chart2").getContext("2d");
-            window.myLine = new Chart(ctx2).Line(LineChartData, newopts2);
+            window.myLine = new Chart(ctx2).Line(LineChartData, perDayOnlineHourOpts);
         }
      });
 }
