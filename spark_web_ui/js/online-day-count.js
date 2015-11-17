@@ -21,7 +21,7 @@ function processData(allText, columns) {
 }
 
 
-function loadOnlineDayCountData {
+function loadOnlineDayCountData() {
 		//process csv data
         var columns = [[]];
 
@@ -48,7 +48,7 @@ function loadOnlineDayCountData {
                         }
                     ]
                 }
-                
+
                 var ctx = document.getElementById("test-chart").getContext("2d");
                 window.myLine = new Chart(ctx).Line(lineChartData, {
                     responsive: true
