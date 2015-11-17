@@ -42,12 +42,12 @@ function loadOnlineDayCountData() {
                 final_data_points.push(sum(columns[1].map(returnInt).slice(0,19))/numOfDevices);
                 final_data_points.push(sum(columns[1].map(returnInt).slice(19,39))/numOfDevices);
                 final_data_points.push(sum(columns[1].map(returnInt).slice(39,59))/numOfDevices);
-                final_data_points.push(sum(columns[1].map(returnInt).slice(59,79)));
-                final_data_points.push(sum(columns[1].map(returnInt).slice(79,99)));
-                final_data_points.push(sum(columns[1].map(returnInt).slice(99,119)));
-                final_data_points.push(sum(columns[1].map(returnInt).slice(119,139)));
-                final_data_points.push(sum(columns[1].map(returnInt).slice(139,159)));
-                final_data_points.push(sum(columns[1].map(returnInt).slice(159,185)));
+                final_data_points.push(sum(columns[1].map(returnInt).slice(59,79))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(79,99))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(99,119))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(119,139))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(139,159))/numOfDevices);
+                final_data_points.push(sum(columns[1].map(returnInt).slice(159,185))/numOfDevices);
                 var lineChartData = {
                     labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
                     datasets : [
