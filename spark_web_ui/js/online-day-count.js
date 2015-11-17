@@ -2,7 +2,7 @@ function returnInt(element){
   return parseInt(element,10);
 }
 
-function processData(allText) {
+function processData(allText, lines) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
     for (var i=1; i<allTextLines.length; i++) {
@@ -28,7 +28,7 @@ $(document).ready(function() {
             type: "GET",
             url: "data/OnlineDayCount/part-00000",
             dataType: "text",
-            success: function(data, lines) {processData(data);}
+            success: function(data) {processData(data,lines);}
          });
 
         var lineChartData = {
