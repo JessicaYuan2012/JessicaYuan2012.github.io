@@ -1,3 +1,41 @@
+var newopts = {
+      inGraphDataShow : true,
+      datasetFill : true,
+      scaleLabel: "<%=value%>",
+      scaleTickSizeRight : 5,
+      scaleTickSizeLeft : 5,
+      scaleTickSizeBottom : 5,
+      scaleTickSizeTop : 5,
+      scaleFontSize : 16,
+      scaleShowGridLines : true
+      canvasBorders : true,
+      canvasBordersWidth : 3,
+      canvasBordersColor : "black",
+      graphTitle : "用户（设备）在线天数统计图",
+            graphTitleFontFamily : "'Arial'",
+            graphTitleFontSize : 24,
+            graphTitleFontStyle : "bold",
+            graphTitleFontColor : "#666",
+      yAxisLeft : true,
+      yAxisRight : false,
+      xAxisBottom : false,
+      xAxisTop : false,
+      yAxisLabel : "%",
+            yAxisFontFamily : "'Arial'",
+            yAxisFontSize : 16,
+            yAxisFontStyle : "normal",
+            yAxisFontColor : "#666",
+      annotateDisplay : true, 
+      spaceTop : 0,
+      spaceBottom : 0,
+      spaceLeft : 0,
+      spaceRight : 0,
+      logarithmic: false,
+      rotateLabels : "smart",
+      dynamicDisplay : true,
+      responsive : true
+}
+
 function returnInt(element){
   return parseInt(element,10);
 }
@@ -65,13 +103,7 @@ function loadOnlineDayCountData() {
                 }
 
                 var ctx = document.getElementById("test-chart").getContext("2d");
-                ctx.canvas.width = 700;
-                ctx.canvas.height = 500;
-                window.myLine = new Chart(ctx).Line(lineChartData, {
-                    responsive: true,
-                    scaleShowGridLines : false,
-                    pointHitDetectionRadius: 20
-                });
+                window.myLine = new Chart(ctx).Bar(lineChartData, newopts);
             }
          });
 
