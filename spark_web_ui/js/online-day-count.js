@@ -1,6 +1,3 @@
-
-var lines = [[]];
-
 function returnInt(element){
   return parseInt(element,10);
 }
@@ -22,33 +19,33 @@ function processData(allText) {
     //console.log(lines);
 }
 
-var lineChartData = {
-	labels : ["1","2","3","4","5","6","7","8","9"],
-	datasets : [
-		{
-			label: "Online Day Count",
-			fillColor : "rgba(220,220,220,0.2)",
-			strokeColor : "rgba(220,220,220,1)",
-			pointColor : "rgba(220,220,220,1)",
-			pointStrokeColor : "#fff",
-			pointHighlightFill : "#fff",
-			pointHighlightStroke : "rgba(220,220,220,1)",
-			data : lines[1].map(returnInt).slice(0,9)
-		},
-	]
-}
-
-
 
 $(document).ready(function() {
 		//process csv data
+        var lines = [[]];
+
         $.ajax({
             type: "GET",
             url: "data/OnlineDayCount/part-00000",
             dataType: "text",
-            success: function(data) {processData(data);}
+            success: function(data, lines) {processData(data);}
          });
 
+        var lineChartData = {
+            labels : ["1","2","3","4","5","6","7","8","9"],
+            datasets : [
+                {
+                    label: "Online Day Count",
+                    fillColor : "rgba(220,220,220,0.2)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    pointColor : "rgba(220,220,220,1)",
+                    pointStrokeColor : "#fff",
+                    pointHighlightFill : "#fff",
+                    pointHighlightStroke : "rgba(220,220,220,1)",
+                    data : lines[1].map(returnInt).slice(0,9)
+                },
+            ]
+        }
         //draw chart
     	var ctx = document.getElementById("test-chart").getContext("2d");
 		window.myLine = new Chart(ctx).Line(lineChartData, {
