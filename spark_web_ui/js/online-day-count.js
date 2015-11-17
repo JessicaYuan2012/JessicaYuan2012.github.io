@@ -1,8 +1,10 @@
 
+var lines = [[]];
+
 var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 
 var lineChartData = {
-	labels : ["January","February","March","April","May","June","July"],
+	labels : lines[0],
 	datasets : [
 		{
 			label: "Online Day Count",
@@ -12,7 +14,7 @@ var lineChartData = {
 			pointStrokeColor : "#fff",
 			pointHighlightFill : "#fff",
 			pointHighlightStroke : "rgba(220,220,220,1)",
-			data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+			data : lines[1]
 		},
 	]
 }
@@ -20,7 +22,6 @@ var lineChartData = {
 function processData(allText) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
-    var lines = [[]];
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
@@ -32,7 +33,7 @@ function processData(allText) {
             }
         }
     }
-    console.log(lines);
+    //console.log(lines);
 }
 
 $(document).ready(function() {
