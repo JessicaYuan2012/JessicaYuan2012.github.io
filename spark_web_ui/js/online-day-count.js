@@ -20,6 +20,12 @@ function processData(allText, columns) {
     //console.log(columns);
 }
 
+function sum(numArray){
+    for (var sum = i = 0; i < numArray.length; i++){
+        sum += numArray[i];
+    }
+    return sum;
+}
 
 function loadOnlineDayCountData() {
 		//process csv data
@@ -34,7 +40,8 @@ function loadOnlineDayCountData() {
                 //console.log("out of processData:");
                 //console.log(columns);
                 var lineChartData = {
-                    labels : columns[0],
+                    labels : columns["0-19天","20-39天","40-59天","60-79天","80-99天",\
+                    "100-119天","120-139天","140-159天","160-179天","180天以上"],
                     datasets : [
                         {
                             label: "Online Day Count",
@@ -44,7 +51,16 @@ function loadOnlineDayCountData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns[1].map(returnInt)
+                            data : [sum(columns[1].map(returnInt).slice(0,18),\
+                                    sum(columns[1].map(returnInt).slice(19,38),\
+                                    sum(columns[1].map(returnInt).slice(39,58),\
+                                    sum(columns[1].map(returnInt).slice(59,78),\
+                                    sum(columns[1].map(returnInt).slice(79,98),\
+                                    sum(columns[1].map(returnInt).slice(99,118),\
+                                    sum(columns[1].map(returnInt).slice(119,138),\
+                                    sum(columns[1].map(returnInt).slice(139,158),\
+                                    sum(columns[1].map(returnInt).slice(159,178),\
+                                    sum(columns[1].map(returnInt).slice(179,180)]
                         }
                     ]
                 }
