@@ -34,7 +34,7 @@ function loadOnlineDayCountData() {
                 //console.log("out of processData:");
                 //console.log(columns);
                 var lineChartData = {
-                    labels : columns[0].slice(0,20),
+                    labels : columns[0],
                     datasets : [
                         {
                             label: "Online Day Count",
@@ -44,7 +44,7 @@ function loadOnlineDayCountData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns[1].map(returnInt).slice(0,20)
+                            data : columns[1].map(returnInt)
                         }
                     ]
                 }
@@ -55,6 +55,7 @@ function loadOnlineDayCountData() {
                 window.myLine = new Chart(ctx).Line(lineChartData, {
                     responsive: true,
                     scaleShowGridLines : false
+                    pointHitDetectionRadius: 20
                 });
             }
          });
