@@ -1,107 +1,38 @@
-var allopts = {
-    //Boolean - If we show the scale above the chart data     -> Default value Changed
-    scaleOverlay : true,
-    //Boolean - If we want to override with a hard coded scale
-    scaleOverride : false,
-    //** Required if scaleOverride is true **
-    //Number - The number of steps in a hard coded scale
-    scaleSteps : null,
-    //Number - The value jump in the hard coded scale
-    scaleStepWidth : null,
-    //Number - The scale starting value
-    scaleStartValue : null,
-    //String - Colour of the scale line 
-    scaleLineColor : "rgba(0,0,0,.1)",
-    //Number - Pixel width of the scale line    
-    scaleLineWidth : 1,
-    //Boolean - Whether to show labels on the scale 
-    scaleShowLabels : true,
-    //Interpolated JS string - can access value
-    scaleLabel : "<%=value%>",
-    //String - Scale label font declaration for the scale label
-    scaleFontFamily : "'Arial'",
-    //Number - Scale label font size in pixels  
-    scaleFontSize : 12,
-    //String - Scale label font weight style    
-    scaleFontStyle : "normal",
-    //String - Scale label font colour  
-    scaleFontColor : "#666",    
-    ///Boolean - Whether grid lines are shown across the chart
-    scaleShowGridLines : true,
-    //String - Colour of the grid lines
-    scaleGridLineColor : "rgba(0,0,0,.05)",
-    //Number - Width of the grid lines
-    scaleGridLineWidth : 1, 
-    //Boolean - Whether the line is curved between points -> Default value Changed 
-    bezierCurve : false,
-    //Boolean - Whether to show a dot for each point -> Default value Changed
-    pointDot : false,
-    //Number - Radius of each point dot in pixels
-    pointDotRadius : 3,
-    //Number - Pixel width of point dot stroke
-    pointDotStrokeWidth : 1,
-    //Boolean - Whether to show a stroke for datasets
-    datasetStroke : true,
-    //Number - Pixel width of dataset stroke
-    datasetStrokeWidth : 2,
-    //Boolean - Whether to fill the dataset with a colour
-    datasetFill : true,
-    //Boolean - Whether to animate the chart             -> Default value changed
-    animation : false,
-    //Number - Number of animation steps
-    animationSteps : 60,
-    //String - Animation easing effect
-    animationEasing : "easeOutQuart",
-    //Function - Fires when the animation is complete
-    onAnimationComplete : null,
-    canvasBorders : true,
-    canvasBordersWidth : 30,
-    canvasBordersColor : "black",
-    yAxisLeft : true,
-    yAxisRight : true,
-    yAxisLabel : "Y axis",
-    yAxisFontFamily : "'Arial'",
-    yAxisFontSize : 50,
-    yAxisFontStyle : "normal",
-    yAxisFontColor : "#666",
-    xAxisLabel : "",
-    xAxisFontFamily : "'Arial'",
-    xAxisFontSize : 16,
-    xAxisFontStyle : "normal",
-    xAxisFontColor : "#666",
-    yAxisUnit : "UNIT",
-    yAxisUnitFontFamily : "'Arial'",
-    yAxisUnitFontSize : 12,
-    yAxisUnitFontStyle : "normal",
-    yAxisUnitFontColor : "#666",
-    graphTitle : "",
-    graphTitleFontFamily : "'Arial'",
-    graphTitleFontSize : 24,
-    graphTitleFontStyle : "bold",
-    graphTitleFontColor : "#666",
-    graphSubTitle : "",
-    graphSubTitleFontFamily : "'Arial'",
-    graphSubTitleFontSize : 18,
-    graphSubTitleFontStyle : "normal",
-    graphSubTitleFontColor : "#666",
-    footNote : "Footnote",
-    footNoteFontFamily : "'Arial'",
-    footNoteFontSize : 50,
-    footNoteFontStyle : "bold",
-    footNoteFontColor : "#666",
-    legend : true,
-    legendFontFamily : "'Arial'",
-    legendFontSize : 18,
-    legendFontStyle : "normal",
-    legendFontColor : "#666",
-    legendBlockSize : 30,
-    legendBorders : true,
-    legendBordersWidth : 30,
-    legendBordersColor : "#666",
-    //  ADDED PARAMETERS 
-    graphMin : "DEFAULT",
-    graphMax : "DEFAULT"
-
+var newopts = {
+      inGraphDataShow : true,
+      datasetFill : true,
+      scaleLabel: "<%=value%>",
+      scaleTickSizeRight : 5,
+      scaleTickSizeLeft : 5,
+      scaleTickSizeBottom : 5,
+      scaleTickSizeTop : 5,
+      scaleFontSize : 16,
+      scaleShowGridLines : true,
+      canvasBorders : false,
+      graphTitle : "用户（设备）在线天数统计图",
+            graphTitleFontSize : 24,
+            graphTitleFontColor : "#666",
+      yAxisLeft : true,
+      yAxisRight : false,
+      xAxisBottom : false,
+      xAxisTop : false,
+      yAxisLabel : "%",
+            yAxisFontSize : 16,
+            yAxisFontStyle : "normal",
+            yAxisFontColor : "#666",
+      xAxisLabel : "",
+            xAxisFontSize : 16,
+            xAxisFontStyle : "normal",
+            xAxisFontColor : "#666",
+      annotateDisplay : false, 
+      spaceTop : 0,
+      spaceBottom : 0,
+      spaceLeft : 0,
+      spaceRight : 0,
+      logarithmic: false,
+      rotateLabels : "smart",
+      dynamicDisplay : true,
+      responsive : true
 }
 
 function returnInt(element){
@@ -171,7 +102,7 @@ function loadOnlineDayCountData() {
                 }
 
                 var ctx = document.getElementById("test-chart").getContext("2d");
-                window.myLine = new Chart(ctx).Bar(lineChartData, allopts);
+                window.myLine = new Chart(ctx).Bar(lineChartData, newopts);
             }
          });
 
