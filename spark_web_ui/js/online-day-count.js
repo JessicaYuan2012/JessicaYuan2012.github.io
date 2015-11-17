@@ -16,7 +16,8 @@ function processData(allText, lines) {
             }
         }
     }
-    //console.log(lines);
+    console.log("in processData:");
+    console.log(lines);
 }
 
 
@@ -30,6 +31,9 @@ $(document).ready(function() {
             dataType: "text",
             success: function(data) {processData(data,lines);}
          });
+
+        console.log("out of processData:");
+        console.log(lines[1]);
 
         var lineChartData = {
             labels : ["1","2","3","4","5","6","7","8","9"],
