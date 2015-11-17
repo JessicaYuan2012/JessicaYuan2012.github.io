@@ -22,7 +22,7 @@
             if (data.length == headers.length) {
                 var tarr = [];
                 for (var j=0; j<headers.length; j++) {
-                    tarr.push(headers[j]+":"+data[j]);
+                    tarr.push(data[j].replace(/\"/g, ""));
                 }
                 lines.push(tarr);
             }
