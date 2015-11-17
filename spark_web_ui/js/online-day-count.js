@@ -1,22 +1,8 @@
 
 var lines = [[]];
 
-var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-
-var lineChartData = {
-	labels : lines[0],
-	datasets : [
-		{
-			label: "Online Day Count",
-			fillColor : "rgba(220,220,220,0.2)",
-			strokeColor : "rgba(220,220,220,1)",
-			pointColor : "rgba(220,220,220,1)",
-			pointStrokeColor : "#fff",
-			pointHighlightFill : "#fff",
-			pointHighlightStroke : "rgba(220,220,220,1)",
-			data : lines[1]
-		},
-	]
+function returnInt(element){
+  return parseInt(element,10);
 }
 
 function processData(allText) {
@@ -35,6 +21,24 @@ function processData(allText) {
     }
     //console.log(lines);
 }
+
+var lineChartData = {
+	labels : ["1","2","3","4","5","6","7","8","9"],
+	datasets : [
+		{
+			label: "Online Day Count",
+			fillColor : "rgba(220,220,220,0.2)",
+			strokeColor : "rgba(220,220,220,1)",
+			pointColor : "rgba(220,220,220,1)",
+			pointStrokeColor : "#fff",
+			pointHighlightFill : "#fff",
+			pointHighlightStroke : "rgba(220,220,220,1)",
+			data : lines[1].map(returnInt).slice(0,9)
+		},
+	]
+}
+
+
 
 $(document).ready(function() {
 		//process csv data
