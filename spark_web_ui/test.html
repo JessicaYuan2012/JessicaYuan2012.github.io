@@ -6,7 +6,7 @@
     $(document).ready(function() {
         $.ajax({
             type: "GET",
-            url: "data/cars.txt",
+            url: "data/cars.csv",
             dataType: "text",
             success: function(data) {processData(data);}
          });
