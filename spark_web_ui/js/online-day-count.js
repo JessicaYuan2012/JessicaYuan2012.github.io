@@ -53,7 +53,8 @@ function loadOnlineDayCountData() {
                 ctx.canvas.width = 700;
                 ctx.canvas.height = 500;
                 window.myLine = new Chart(ctx).Line(lineChartData, {
-                    responsive: true
+                    responsive: true,
+                    scaleShowGridLines : false
                 });
             }
          });
