@@ -99,7 +99,9 @@ function processData(allText, columns) {
 function loadAudienceRatingData() {
 		//process csv data
     var element = $('#canvas-container');
-    $(element.children).remove();
+    if(element.children() != []){
+      $(element.children()).remove();
+    }
 
     var canvas3="<canvas id=\"chart3\"></canvas>";
     element.append(canvas3);

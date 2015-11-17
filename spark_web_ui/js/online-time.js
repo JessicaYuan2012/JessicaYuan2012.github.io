@@ -185,7 +185,9 @@ function sum(numArray){
 
 function loadData(){
   var element = $('#canvas-container');
-  $(element.children).remove();
+  if(element.children() != []){
+      $(element.children()).remove();
+  }
   loadOnlineDayCountData();
   loadPerDayViewingHour();
 }
