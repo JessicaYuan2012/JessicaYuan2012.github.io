@@ -24,8 +24,10 @@ function processData(allText) {
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
-            var tarr = [];
             for (var j=0; j<headers.length; j++) {
+            	if (lines[j] == undefined){
+            		lines[j] = [];
+                }
                 lines[j].push(data[j].replace(/\"/g, ""));
             }
         }
