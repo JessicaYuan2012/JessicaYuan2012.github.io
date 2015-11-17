@@ -38,7 +38,7 @@ var audienceRatingOpts = {
       yAxisRight : false,
       xAxisBottom : true,
       xAxisTop : false,
-      yAxisLabel : "秒",
+      yAxisLabel : "亿秒",
             yAxisFontFamily : "'Arial'",
             yAxisFontSize : 16,
             yAxisFontStyle : "normal",
@@ -53,7 +53,7 @@ var audienceRatingOpts = {
             yAxisUnitFontSize : 8,
             yAxisUnitFontStyle : "normal",
             yAxisUnitFontColor : "#666",*/
-      //annotateDisplay : true, 
+      annotateDisplay : false, 
       spaceTop : 0,
       spaceBottom : 0,
       spaceLeft : 0,
@@ -74,8 +74,8 @@ var audienceRatingOpts = {
       responsive : true
 }
 
-function returnExp(element){
-  return element.toExponential();
+function returnResult(element){
+  return (parseFloat(element).toExponential()/100000000).toFixed(0);
 }
 
 function processData(allText, columns) {
@@ -117,7 +117,7 @@ function loadAudienceRatingData() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : columns[1].map(parseFloat).map(returnExp)
+                            data : columns[1].map(returnResult)
                         }
                     ]
                 }
