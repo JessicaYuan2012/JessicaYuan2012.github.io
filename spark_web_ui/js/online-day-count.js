@@ -34,7 +34,7 @@ $(document).ready(function() {
                 console.log("out of processData:");
                 console.log(lines);
                 var lineChartData = {
-                    labels : ["1","2","3","4","5","6","7","8","9"],
+                    labels : lines[0],
                     datasets : [
                         {
                             label: "Online Day Count",
@@ -44,7 +44,7 @@ $(document).ready(function() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : lines[1].map(returnInt).slice(0,9)
+                            data : lines[1].map(returnInt)
                         }
                     ]
                 }
