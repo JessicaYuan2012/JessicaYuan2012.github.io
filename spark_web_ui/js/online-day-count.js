@@ -50,6 +50,8 @@ function loadOnlineDayCountData() {
                 }
 
                 var ctx = document.getElementById("test-chart").getContext("2d");
+                ctx.canvas.width = 700;
+                ctx.canvas.height = 500;
                 window.myLine = new Chart(ctx).Line(lineChartData, {
                     responsive: true
                 });
