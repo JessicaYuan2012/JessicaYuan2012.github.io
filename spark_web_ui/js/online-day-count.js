@@ -2,39 +2,39 @@ function returnInt(element){
   return parseInt(element,10);
 }
 
-function processData(allText, lines) {
+function processData(allText, columns) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
             for (var j=0; j<headers.length; j++) {
-            	if (lines[j] == undefined){
-            		lines[j] = [];
+            	if (columns[j] == undefined){
+            		columns[j] = [];
                 }
-                lines[j].push(data[j].replace(/\"/g, ""));
+                columns[j].push(data[j].replace(/\"/g, ""));
             }
         }
     }
-    console.log("in processData:");
-    console.log(lines);
+    //console.log("in processData:");
+    //console.log(columns);
 }
 
 
 $(document).ready(function() {
 		//process csv data
-        var lines = [[]];
+        var columns = [[]];
 
         $.ajax({
             type: "GET",
             url: "data/OnlineDayCount/part-00000",
             dataType: "text",
             success: function(data) {
-                processData(data,lines);
-                console.log("out of processData:");
-                console.log(lines);
+                processData(data,columns);
+                //console.log("out of processData:");
+                //console.log(columns);
                 var lineChartData = {
-                    labels : lines[0].slice(0,9),
+                    labels : columns[0].slice(0,9),
                     datasets : [
                         {
                             label: "Online Day Count",
@@ -44,7 +44,7 @@ $(document).ready(function() {
                             pointStrokeColor : "#fff",
                             pointHighlightFill : "#fff",
                             pointHighlightStroke : "rgba(220,220,220,1)",
-                            data : lines[1].map(returnInt).slice(0,9)
+                            data : columns[1].map(returnInt).slice(0,9)
                         }
                     ]
                 }
