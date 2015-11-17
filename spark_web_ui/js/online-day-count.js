@@ -29,30 +29,30 @@ $(document).ready(function() {
             type: "GET",
             url: "data/OnlineDayCount/part-00000",
             dataType: "text",
-            success: function(data) {processData(data,lines);}
+            success: function(data) {
+                processData(data,lines);
+                console.log("out of processData:");
+                console.log(lines);
+                var lineChartData = {
+                    labels : ["1","2","3","4","5","6","7","8","9"],
+                    datasets : [
+                        {
+                            label: "Online Day Count",
+                            fillColor : "rgba(220,220,220,0.2)",
+                            strokeColor : "rgba(220,220,220,1)",
+                            pointColor : "rgba(220,220,220,1)",
+                            pointStrokeColor : "#fff",
+                            pointHighlightFill : "#fff",
+                            pointHighlightStroke : "rgba(220,220,220,1)",
+                            data : lines[1].map(returnInt).slice(0,9)
+                        }
+                    ]
+                }
+                var ctx = document.getElementById("test-chart").getContext("2d");
+                window.myLine = new Chart(ctx).Line(lineChartData, {
+                    responsive: true
+                });
+            }
          });
 
-        console.log("out of processData:");
-        console.log(lines[1]);
-
-        var lineChartData = {
-            labels : ["1","2","3","4","5","6","7","8","9"],
-            datasets : [
-                {
-                    label: "Online Day Count",
-                    fillColor : "rgba(220,220,220,0.2)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    pointColor : "rgba(220,220,220,1)",
-                    pointStrokeColor : "#fff",
-                    pointHighlightFill : "#fff",
-                    pointHighlightStroke : "rgba(220,220,220,1)",
-                    data : lines[1].map(returnInt).slice(0,9)
-                },
-            ]
-        }
-        //draw chart
-    	var ctx = document.getElementById("test-chart").getContext("2d");
-		window.myLine = new Chart(ctx).Line(lineChartData, {
-			responsive: true
-		});
     });
