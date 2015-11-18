@@ -347,8 +347,8 @@ function loadPerDayViewingHour() {
     var canvas2="<canvas id=\"chart2\"></canvas>"
     var nav = "<nav id=\"chart-nav\">\
       <ul class=\"pager\">\
-        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackward2()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
-        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward2()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
+        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackwardOnline()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForwardOnline()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
       </ul>\
     </nav>";
     element.append(canvas2);
@@ -422,7 +422,7 @@ function loadAudienceRatingData() {
 
 }
 
-function moveForward2() {
+function moveForwardOnline() {
   if (end_for_online >= daily_viewing_hour_list.length) return;
   
   $("#chart2").remove();
@@ -434,7 +434,7 @@ function moveForward2() {
 
   if(start_for_online > 0){
     $(".previous").removeClass("disabled");
-    $($(".previous").children()).attr("onclick", "moveBackward2();");
+    $($(".previous").children()).attr("onclick", "moveBackwardOnline();");
   }
   else{
     $(".previous").addClass("disabled");
@@ -447,7 +447,7 @@ function moveForward2() {
   }
   else{
     $(".next").removeClass("disabled");
-    $($(".next").children()).attr("onclick", "moveForward2();");
+    $($(".next").children()).attr("onclick", "moveForwardOnline();");
   }
 
   var LineChartData = {
@@ -470,7 +470,7 @@ function moveForward2() {
   window.myLine = new Chart(ctx).Line(LineChartData, perDayOnlineHourOpts);
 }
 
-function moveBackward2() {
+function moveBackwardOnline() {
   if(start_for_online <= 0) return;
 
   $("#chart2").remove();
@@ -481,7 +481,7 @@ function moveBackward2() {
   end_for_online -= 14;
   if(start_for_online > 0){
     $(".previous").removeClass("disabled");
-    $($(".previous").children()).attr("onclick", "moveBackward2();");
+    $($(".previous").children()).attr("onclick", "moveBackwardOnline();");
   }
   else{
     $(".previous").addClass("disabled");
@@ -494,7 +494,7 @@ function moveBackward2() {
   }
   else{
     $(".next").removeClass("disabled");
-    $($(".next").children()).attr("onclick", "moveForward2();");
+    $($(".next").children()).attr("onclick", "moveForwardOnline();");
   }
 
   var LineChartData = {
