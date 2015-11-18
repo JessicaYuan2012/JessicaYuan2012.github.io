@@ -126,7 +126,7 @@ function loadChannelChangeAllData() {
 
     $.ajax({
         type: "GET",
-        url: "data/ChannelChangeAll/part-00000",
+        url: "data/ChangeChannelAll/part-00000",
         dataType: "text",
         success: function(data) {
             processData(data,columns);
