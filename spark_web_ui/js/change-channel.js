@@ -257,7 +257,7 @@ function loadChannelChangeDailyData() {
 
     $.ajax({
         type: "GET",
-        url: "data/ChangeChanneDaily/part-00000",
+        url: "data/ChangeChannelDaily/part-00000",
         dataType: "text",
         success: function(data) {
             processData(data,columns);
