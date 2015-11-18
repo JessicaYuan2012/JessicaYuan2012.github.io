@@ -1,55 +1,51 @@
 <html>
+
 <head>
-  <title>SPARK WEB UI</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-  <script src="js/ChartNew.js"></script>
-  <script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
-  <script src="js/online-time.js"></script>
-  <script src="js/ChangeChannel.js"></script>
-  <script src="js/index.js"></script>
-
-  <link href="css/theme.css" rel="stylesheet">
-  <link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/vertical_navbar.css" rel="stylesheet">
-  <link href="css/index.css" rel="stylesheet">
-
-
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SPARK WEB UI</title>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/ChartNew.js"></script>
+    <script src="bootstrap-3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/online-time.js"></script>
+    <script src="js/ChangeChannel.js"></script>
+    <script src="js/index.js"></script>
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vertical_navbar.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 </head>
-<body class="wy-body-for-nav" role="document" >
-  <div class="wy-grid-for-nav">
 
-<nav data-toggle="wy-nav-shift" class="wy-nav-side" style="background: #e3e3e3; position: fixed">
-    <div class="wy-side-nav-search" style="position: fixed">
-        <a href="index.html" class="fa fa-home" style="font-size: 30px; text-decoration: none; color: inherit;"> SPARK</a>
-    </div>
-    <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation" style="width: inherit">
-        <ul style="width: 100%; font-size: 20px;" class="current">
-            <li class="toctree-l1 current" style="width: 100%" ><a class="reference internal" href="" style="width:100%;  text-decoration: none; color: #b3b3b3;">Overview</a>
-                <ul>
-                    <li class="toctree-l2"><a class="reference internal" href="" style=" text-decoration: none; color: #b3b3b3;" onclick="clearCanvas()">spark sql</a></li>
-                  </ul>
-            </li>
-            <br>
-            <li class="toctree-l1 current" style="width: 100%; margin-top: 0.609em"><a class="reference internal" href="" style="text-decoration: none; color: #b3b3b3;">Result</a>
-                <ul>
-                    <li class="toctree-l2"><a class="reference internal" href="javascript: void(0)" style=" text-decoration: none; color: #b3b3b3;" onclick="loadData()">收视情况</a></li>
-                    <li class="toctree-l2"><a class="reference internal" href="javascript: void(0)" style=" text-decoration: none; color: #b3b3b3;">购买情况</a></li>
-                    <li class="toctree-l2"><a class="reference internal" href="javascript: void(0)" style=" text-decoration: none; color: #b3b3b3;" onclick="loadChannelChangeData()">换台行为</a></li>
+<body class="wy-body-for-nav" role="document">
+    <div class="wy-grid-for-nav">
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side" style="background: #e3e3e3; position: fixed">
+            <div class="wy-side-nav-search">
+                <a href="./index_files/index.html" class="fa fa-home" style="font-size: 30px; text-decoration: none; color: inherit;"> SPARK</a>
+            </div>
+            <div class="wy-menu wy-menu-vertical affix" data-spy="affix" role="navigation" aria-label="main navigation" style="width: inherit">
+                <ul style="width: 100%; font-size: 20px;" class="current">
+                    <li class="toctree-l1 current" style="width: 100%"><a class="reference internal" href="" style="width:100%;  text-decoration: none; color: #b3b3b3;">Overview</a>
+                        <ul>
+                            <li class="toctree-l2"><a class="reference internal" href="" style=" text-decoration: none; color: #b3b3b3;" onclick="clearCanvas()">spark sql</a></li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li class="toctree-l1 current" style="width: 100%; margin-top: 0.609em"><a class="reference internal" href="" style="text-decoration: none; color: #b3b3b3;">Result</a>
+                        <ul>
+                            <li class="toctree-l2"><a class="reference internal" href="javascript: void(0)" style=" text-decoration: none; color: #b3b3b3;" onclick="loadData()">收视情况</a></li>
+                            <li class="toctree-l2"><a class="reference internal" href="javascript: void(0)" style=" text-decoration: none; color: #b3b3b3;">购买情况</a></li>
+                            <li class="toctree-l2"><a class="reference internal" href="javascript: void(0)" style=" text-decoration: none; color: #b3b3b3;" onclick="loadChannelChangeData()">换台行为</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </li>
-        </ul> 
-        
-      </div>
-    </nav>
+            </div>
+        </nav>
     </div>
-  </div>
-
     <div class="col-sm-9" id="main-content">
-      <div>
-        <div id="canvas-container" style="width:60%">
+        <div>
+            <div id="canvas-container" style="width:60%">
+            </div>
         </div>
-      </div>
-
+    </div>
 </body>
+
 </html>
