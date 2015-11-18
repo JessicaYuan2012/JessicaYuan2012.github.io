@@ -185,6 +185,12 @@ function sum(numArray){
     return sum;
 }
 
+var daily_channel_change_columns = [[]];
+var start = 0;
+var end = 14;
+var date_list = [];
+var final_data_points = [];
+
 function loadChannelChangeData(){
   var element = $('#canvas-container');
   if(element.children() != []){
@@ -253,32 +259,29 @@ function loadChannelChangeDailyData() {
     var canvas5="<canvas id=\"chart5\"></canvas>"
     var nav = "<nav>\
       <ul class=\"pager\">\
-        <li class=\"previous disabled\"><a href=\"#\"><span aria-hidden=\"true\">&larr;</span>向前</a></li>\
-        <li class=\"next\"><a href=\"#\">向后<span aria-hidden=\"true\">&rarr;</span></a></li>\
+        <li class=\"previous disabled\"><a href=\"javascript:void(0);\"><span aria-hidden=\"true\">&larr;</span>向前</a></li>\
+        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward()\">向后<span aria-hidden=\"true\">&rarr;</span></a></li>\
       </ul>\
     </nav>";
     element.append(canvas5);
     element.append(nav);
-
-    var columns = [[]];
 
     $.ajax({
         type: "GET",
         url: "data/ChangeChannelDaily/part-00000",
         dataType: "text",
         success: function(data) {
-            processData(data,columns);
+            processData(data,daily_channel_change_columns);
 
-            date_list = columns[0];
-            change_sum_list = columns[1].map(returnInt);
-            device_num_list = columns[2].map(returnInt);
-            final_data_points = []
-            for (var i = 0; i <= columns[0].length - 1; i++) {
+            date_list = daily_channel_change_columns[0];
+            change_sum_list = daily_channel_change_columns[1].map(returnInt);
+            device_num_list = daily_channel_change_columns[2].map(returnInt);
+            for (var i = 0; i <= daily_channel_change_columns[0].length - 1; i++) {
               final_data_points.push((change_sum_list[i]/device_num_list[i]).toFixed(2));
             };
             
             var lineChartData = {
-                labels : date_list.slice(0,14),
+                labels : date_list.slice(start,end),
                 datasets : [
                     {
                         label: "Channel Change Times - All",
@@ -288,7 +291,7 @@ function loadChannelChangeDailyData() {
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
-                        data : final_data_points.slice(0,14)
+                        data : final_data_points.slice(start,end)
                     }
                 ]
             }
@@ -297,4 +300,26 @@ function loadChannelChangeDailyData() {
             window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
         }
      });
+}
+
+function moveForward() {
+  start += 14;
+  end += 14;
+  var lineChartData = {
+      labels : date_list.slice(start, end),
+      datasets : [
+          {
+              label: "Channel Change Times - All",
+              fillColor : "rgba(220,220,220,0.2)",
+              strokeColor : "rgba(220,220,220,1)",
+              pointColor : "rgba(220,220,220,1)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(220,220,220,1)",
+              data : final_data_points.slice(start, end)
+          }
+      ]
+  }
+  var ctx = document.getElementById("chart5").getContext("2d");
+  window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
 }
