@@ -297,10 +297,10 @@ function loadAvgPersonPurchase() {
             
             //numOfDevices = sum(columns[1].map(returnInt))
             final_data_points = []
-            final_data_points.push(columns[0][0]).toFixed(3));
-            final_data_points.push(columns[0][1]).toFixed(3));
-            final_data_points.push(columns[0][2]).toFixed(3));
-            final_data_points.push(columns[0][3]).toFixed(3));
+            final_data_points.push(columns[0][0]).toFixed(3);
+            final_data_points.push(columns[0][1]).toFixed(3);
+            final_data_points.push(columns[0][2]).toFixed(3);
+            final_data_points.push(columns[0][3]).toFixed(3);
             console.log(final_data_points)
              
             var barChartData = {
