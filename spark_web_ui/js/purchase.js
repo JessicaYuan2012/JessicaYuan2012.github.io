@@ -284,7 +284,7 @@ function loadAvgPersonPurchase() {
         dataType: "text",
         success: function(data) {
             processData(data,columns);
-
+            console.log(columns);
 /*            
             numOfDevices = sum(columns[1].map(returnInt))
             final_data_points = []
