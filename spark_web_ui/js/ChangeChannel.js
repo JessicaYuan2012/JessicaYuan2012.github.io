@@ -306,6 +306,18 @@ function loadChannelChangeDailyData() {
 
 function moveForward() {
   if (end >= final_data_points_daily_average.length) return;
+  $("#chart5").remove();
+  var element = $('#canvas-container');
+  var canvas5="<canvas id=\"chart5\"></canvas>"
+  var nav = "<nav>\
+    <ul class=\"pager\">\
+      <li class=\"previous\"><a href=\"javascript:void(0);\" ><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+      <li class=\"next\"><a href=\"javascript:void(0);\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
+    </ul>\
+  </nav>";
+  element.append(canvas5);
+  element.append(nav);
+  
   start += 14;
   end += 14;
   if(start > 0){
@@ -346,6 +358,18 @@ function moveForward() {
 
 function moveBackward() {
   if(start <= 0) return;
+  $("#chart5").remove();
+  var element = $('#canvas-container');
+  var canvas5="<canvas id=\"chart5\"></canvas>"
+  var nav = "<nav>\
+    <ul class=\"pager\">\
+      <li class=\"previous\"><a href=\"javascript:void(0);\" ><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+      <li class=\"next\"><a href=\"javascript:void(0);\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
+    </ul>\
+  </nav>";
+  element.append(canvas5);
+  element.append(nav);
+
   start -= 14;
   end -= 14;
   if(start > 0){
