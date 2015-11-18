@@ -238,7 +238,7 @@ function returnResult(element){
   return (parseFloat(element).toExponential()/100000000).toFixed(0);
 }
 
-function returnMyDateFormat(str) {
+function returnMyDateFormat2(str) {
   var s = str.slice(0,4)+"-"+str.slice(4,6)+"-"+str.slice(6,8);
   var d = new Date(s);
   var day = d.getDay();
@@ -389,7 +389,8 @@ function loadPerDayViewingHour() {
         dataType: "text",
         success: function(data) {
             processData(data,columns2);
-            label_list = columns2[0].map(returnMyDateFormat);
+            
+            label_list = columns2[0].map(returnMyDateFormat2);
             console.log(label_list);
             
             daily_viewing_hour_list = columns2[1].map(returnHour);
