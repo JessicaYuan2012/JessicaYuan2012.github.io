@@ -294,7 +294,7 @@ function loadAvgPersonPurchase() {
         dataType: "text",
         success: function(data) {
             processData(data,columns);
-            console.log(columns);
+            //console.log(columns);
             
             //numOfDevices = sum(columns[1].map(returnInt))
             final_data_points = []
@@ -391,11 +391,11 @@ function loadSeasonPurchaseData() {
 
     $.ajax({
         type: "GET",
-        url: "data/audiencerating/part-00000",
+        url: "data/audiencerating/SeasonPurchase",
         dataType: "text",
         success: function(data) {
             processData(data,columns3);
-            
+            console.log(columns3);
             var lineChartData = {
                 labels : ["2011春","2011夏","2011秋","2011冬","2012春","2012夏","2012秋","2012冬","2013春","2013夏","2013秋","2013冬","2014春","2014夏","2014秋","2014冬"],
                 datasets : [
@@ -407,7 +407,7 @@ function loadSeasonPurchaseData() {
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
-                        data : columns3[1].map(returnResult)
+                        data : columns3[0】
                     }
                 ]
             }
