@@ -75,8 +75,8 @@ var audienceRatingOpts = {
 }
 
 var onlineDaysOpts = {
-      inGraphDataShow : false,
-      datasetFill : true,
+      inGraphDataShow : true,
+      datasetFill : false,
       scaleLabel: "<%=value%>",
       scaleTickSizeRight : 5,
       scaleTickSizeLeft : 5,
