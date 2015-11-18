@@ -391,7 +391,7 @@ function loadSeasonPurchaseData() {
 
     $.ajax({
         type: "GET",
-        url: "data/audiencerating/SeasonPurchase",
+        url: "data/Purchase/SeasonPurchase.txt",
         dataType: "text",
         success: function(data) {
             processData(data,columns3);
