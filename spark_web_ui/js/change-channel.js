@@ -307,9 +307,11 @@ function moveForward() {
   end += 14;
   if(start > 0){
     $(".previous").removeClass("disabled");
+    $(".previous").attr("onclick", "moveForward();");
   }
   if(end >= final_data_points_daily_average.length){
-    $(".next").addClass("disabled")
+    $(".next").addClass("disabled");
+    $(".next").removeAttr("onclick")
   }
   var lineChartData = {
       labels : date_list.slice(start, end),
@@ -335,9 +337,11 @@ function moveBackward() {
   end -= 14;
   if(start > 0){
     $(".previous").removeClass("disabled");
+    $(".previous").attr("onclick", "moveForward();");
   }
   if(end >= final_data_points_daily_average.length){
-    $(".next").addClass("disabled")
+    $(".next").addClass("disabled");
+    $(".next").removeAttr("onclick")
   }
   var lineChartData = {
       labels : date_list.slice(start, end),
