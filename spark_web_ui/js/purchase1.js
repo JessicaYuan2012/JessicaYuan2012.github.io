@@ -1,4 +1,4 @@
-var audienceRatingOpts = {
+var SeasonPurchaseOpts = {
       inGraphDataShow : true,
       datasetFill : true,
       scaleLabel: "<%=value%>",
@@ -10,7 +10,7 @@ var audienceRatingOpts = {
       /*canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",*/
-      graphTitle : "各时段收视率统计图",
+      graphTitle : "各季度购买次数综合分布图",
             graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
             graphTitleFontStyle : "normal",
@@ -275,9 +275,10 @@ function loadPurchaseData(){
   if(element.children() != []){
       $(element.children()).remove();
   }
-  //loadAudienceRatingData();
-  //loadPerDayViewingHour();
+  loadSeasonPurchaseData();
   loadAvgPersonPurchase();
+  //loadPerDayViewingHour();
+  
 }
 
 function loadAvgPersonPurchase() {
@@ -326,21 +327,10 @@ function loadAvgPersonPurchase() {
                     }
                 ]
             }
-/*
-            var pieChartData = [{value: final_data_points[0], color:"#D97041", title:"0-19天"},
-            {value: final_data_points[1], color:"#C7604C", title:"20-39天"},
-            {value: final_data_points[2], color:"#21323D", title:"40-59天"},
-            {value: final_data_points[3], color:"#9D9B7F", title:"60-79天"},
-            {value: final_data_points[4], color:"#D97041", title:"80-99天"},
-            {value: final_data_points[5], color:"#C7604C", title:"100-119天"},
-            {value: final_data_points[6], color:"#584A5E", title:"120-139天"},
-            {value: final_data_points[7], color:"#7D4F6D", title:"140-159天"},
-            {value: final_data_points[8], color:"#9D9B7F", title:"160-181天"}]
-*/
 
             var ctx = document.getElementById("chart1").getContext("2d");
             window.myLine = new Chart(ctx).Bar(barChartData, avgPersonPurchaseOpts);
-            //window.myLine = new Chart(ctx).Pie(pieChartData, onlineDaysOpts);
+            
             
         }
      });
@@ -393,7 +383,7 @@ function loadPerDayViewingHour() {
      });
 }
 
-function loadAudienceRatingData() {
+function loadSeasonPurchaseData() {
     var element = $('#canvas-container');
     var canvas3="<canvas id=\"chart3\"></canvas>";
     element.append(canvas3);   
@@ -407,7 +397,7 @@ function loadAudienceRatingData() {
             processData(data,columns3);
             
             var lineChartData = {
-                labels : ["0点-1点","1点-2点","2点-3点","3点-4点","4点-5点","5点-6点","6点-7点","7点-8点","8点-9点","9点-10点","10点-11点","11点-12点","12点-13点","13点-14点","14点-15点","15点-16点","16点-17点","17点-18点","18点-19点","19点-20点","20点-21点","21点-22点","22点-23点","23点-24点"],
+                labels : ["2011春","2011夏"，"2011秋"，"2011冬"，"2012春","2012夏"，"2012秋"，"2012冬"，"2013春","2013夏"，"2013秋"，"2013冬"，"2014春","2014夏"，"2014秋"，"2014冬"],
                 datasets : [
                     {
                         label: "Online Day Count",
@@ -423,7 +413,7 @@ function loadAudienceRatingData() {
             }
 
             var ctx = document.getElementById("chart3").getContext("2d");
-            window.myLine = new Chart(ctx).Line(lineChartData, audienceRatingOpts);
+            window.myLine = new Chart(ctx).Line(lineChartData, SeasonPurchaseOpts);
         }
      });
 
