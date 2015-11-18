@@ -253,7 +253,7 @@ function processData(allText, col) {
         }
     }
 }
-
+/*
 function lym_processData(allText, col) {
     var allTextLines = allText.split(/\r\n|\n/);
     //var headers = allTextLines[0].split(',');
@@ -261,7 +261,7 @@ function lym_processData(allText, col) {
         col[i].push(allTextLines[i]);
         
     }
-}
+}*/
 
 function sum(numArray){
     for (var sum = i = 0; i < numArray.length; i++){
