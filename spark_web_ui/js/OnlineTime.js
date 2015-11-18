@@ -245,8 +245,8 @@ function processData(allText, col) {
         var data = allTextLines[i].split(',');
         if (data.length == headers.length) {
             for (var j=0; j<headers.length; j++) {
-              if (col[j] == undefined){
-                col[j] = [];
+            	if (col[j] == undefined){
+            		col[j] = [];
                 }
                 col[j].push(data[j].replace(/\"/g, ""));
             }
@@ -260,6 +260,12 @@ function sum(numArray){
     }
     return sum;
 }
+
+var columns2 = [[]];
+var label_list = [];
+var daily_viewing_hour_list = [];
+var start2 = 0;
+var end2 = 14;
 
 function loadData(){
   var element = $('#canvas-container');
@@ -339,9 +345,6 @@ function loadOnlineDayCountData() {
      });
 }
 
-var label_list = [];
-var daily_viewing_hour_list = [];
-
 function loadPerDayViewingHour() {
     var element = $('#canvas-container');
     var canvas2="<canvas id=\"chart2\"></canvas>"
@@ -354,17 +357,18 @@ function loadPerDayViewingHour() {
     element.append(canvas2);
     element.append(nav);
 
-    var columns2 = [[]];
     $.ajax({
         type: "GET",
         url: "data/ViewingTime/part-00000",
         dataType: "text",
         success: function(data) {
-            processData(data,columns2);
-            label_list = columns2[0];
+            processData(data, columns2);
+            //console.log(columns2)
+            label_list = columns2[0].map(returnMyDateFormat);
+            //console.log("in ajax:",label_list);
             daily_viewing_hour_list = columns2[1].map(returnHour);
             var LineChartData = {
-                labels : columns2[0].slice(0,14),
+                labels : label_list.slice(start2,end2),
                 datasets : [
                     {
                         label: "Online Hours",
@@ -374,7 +378,7 @@ function loadPerDayViewingHour() {
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
-                        data : columns2[1].slice(0,14).map(returnHour)
+                        data : daily_viewing_hour_list.slice(start2,end2)
                     }
                 ]
             }
@@ -422,16 +426,16 @@ function loadAudienceRatingData() {
 }
 
 function moveForward2() {
-  if (end >= daily_viewing_hour_list.length) return;
+  if (end2 >= daily_viewing_hour_list.length) return;
   
   $("#chart2").remove();
   var canvas2="<canvas id=\"chart2\"></canvas>"
   $("#chart-nav").before(canvas2);
 
-  start += 14;
-  end += 14;
+  start2 += 14;
+  end2 += 14;
 
-  if(start > 0){
+  if(start2 > 0){
     $(".previous").removeClass("disabled");
     $($(".previous").children()).attr("onclick", "moveBackward2();");
   }
@@ -440,7 +444,7 @@ function moveForward2() {
     $($(".previous").children()).removeAttr("onclick");
   }
 
-  if(end >= daily_viewing_hour_list.length){
+  if(end2 >= daily_viewing_hour_list.length){
     $(".next").addClass("disabled");
     $($(".next").children()).removeAttr("onclick");
   }
@@ -450,7 +454,7 @@ function moveForward2() {
   }
 
   var LineChartData = {
-      labels : label_list.slice(start,end),
+      labels : label_list.slice(start2,end2),
       datasets : [
           {
               label: "Online Hours",
@@ -460,7 +464,7 @@ function moveForward2() {
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
-              data : daily_viewing_hour_list.slice(start,end)
+              data : daily_viewing_hour_list.slice(start2,end2)
           }
       ]
   }
@@ -470,15 +474,15 @@ function moveForward2() {
 }
 
 function moveBackward2() {
-  if(start <= 0) return;
+  if(start2 <= 0) return;
 
   $("#chart2").remove();
   var canvas2="<canvas id=\"chart2\"></canvas>"
   $("#chart-nav").before(canvas2);
 
-  start -= 14;
-  end -= 14;
-  if(start > 0){
+  start2 -= 14;
+  end2 -= 14;
+  if(start2 > 0){
     $(".previous").removeClass("disabled");
     $($(".previous").children()).attr("onclick", "moveBackward2();");
   }
@@ -487,7 +491,7 @@ function moveBackward2() {
     $($(".previous").children()).removeAttr("onclick");
   }
 
-  if(end >= daily_viewing_hour_list.length){
+  if(end2 >= daily_viewing_hour_list.length){
     $(".next").addClass("disabled");
     $($(".next").children()).removeAttr("onclick");
   }
@@ -497,7 +501,7 @@ function moveBackward2() {
   }
 
   var LineChartData = {
-      labels : label_list.slice(start,end),
+      labels : label_list.slice(start2,end2),
       datasets : [
           {
               label: "Online Hours",
@@ -507,7 +511,7 @@ function moveBackward2() {
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
-              data : daily_viewing_hour_list.slice(start,end)
+              data : daily_viewing_hour_list.slice(start2,end2)
           }
       ]
   }
