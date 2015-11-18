@@ -302,7 +302,7 @@ function loadAvgPersonPurchase() {
             final_data_points.push(columns[0][1]).toFixed(3);
             final_data_points.push(columns[0][2]).toFixed(3);
             final_data_points.push(columns[0][3]).toFixed(3);
-            console.log(final_data_points)
+            //console.log(final_data_points)
              
             var barChartData = {
                 labels : ["2011年","2012年","2013年","2014年",],
