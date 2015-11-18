@@ -306,9 +306,8 @@ function loadChannelChangeDailyData() {
 
 function moveForward() {
   if (end >= final_data_points_daily_average.length) return;
-  $("#chart5").remove();
-  $("#chart-nav").remove();
-  var element = $('#canvas-container');
+  /*$("#chart5").remove();
+  var element = $('#chart4');
   var canvas5="<canvas id=\"chart5\"></canvas>"
   var nav = "<nav id=\"chart-nav\">\
     <ul class=\"pager\">\
@@ -317,7 +316,7 @@ function moveForward() {
     </ul>\
   </nav>";
   element.append(canvas5);
-  element.append(nav);
+  element.append(nav);*/
 
   start += 14;
   end += 14;
@@ -354,12 +353,12 @@ function moveForward() {
       ]
   }
   var ctx = document.getElementById("chart5").getContext("2d");
-  window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
+  window.myLine = Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
 }
 
 function moveBackward() {
   if(start <= 0) return;
-  $("#chart5").remove();
+  /*$("#chart5").remove();
   $("#chart-nav").remove();
   var element = $('#canvas-container');
   var canvas5="<canvas id=\"chart5\"></canvas>"
@@ -370,7 +369,7 @@ function moveBackward() {
     </ul>\
   </nav>";
   element.append(canvas5);
-  element.append(nav);
+  element.append(nav);*/
 
   start -= 14;
   end -= 14;
@@ -407,5 +406,5 @@ function moveBackward() {
       ]
   }
   var ctx = document.getElementById("chart5").getContext("2d");
-  window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
+  window.myLine = Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
 }
