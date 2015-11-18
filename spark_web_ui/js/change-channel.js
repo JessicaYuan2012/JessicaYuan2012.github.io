@@ -259,7 +259,7 @@ function loadChannelChangeDailyData() {
     var canvas5="<canvas id=\"chart5\"></canvas>"
     var nav = "<nav>\
       <ul class=\"pager\">\
-        <li class=\"previous disabled\"><a href=\"javascript:void(0);\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackward()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
         <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
       </ul>\
     </nav>";
@@ -305,6 +305,40 @@ function loadChannelChangeDailyData() {
 function moveForward() {
   start += 14;
   end += 14;
+  if(start > 0){
+    $(".previous").removeClass("disabled");
+  }
+  if(end >= final_data_points_daily_average.length){
+    $(".next").addClass("disabled")
+  }
+  var lineChartData = {
+      labels : date_list.slice(start, end),
+      datasets : [
+          {
+              label: "Channel Change Times - All",
+              fillColor : "rgba(220,220,220,0.2)",
+              strokeColor : "rgba(220,220,220,1)",
+              pointColor : "rgba(220,220,220,1)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(220,220,220,1)",
+              data : final_data_points_daily_average.slice(start, end)
+          }
+      ]
+  }
+  var ctx = document.getElementById("chart5").getContext("2d");
+  window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
+}
+
+function moveBackward() {
+  start -= 14;
+  end -= 14;
+  if(start > 0){
+    $(".previous").removeClass("disabled");
+  }
+  if(end >= final_data_points_daily_average.length){
+    $(".next").addClass("disabled")
+  }
   var lineChartData = {
       labels : date_list.slice(start, end),
       datasets : [
