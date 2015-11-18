@@ -339,19 +339,30 @@ function loadOnlineDayCountData() {
      });
 }
 
-function loadPerDayViewingHour() {
-    var element = $('#canvas-container')
-    var canvas2="<canvas id=\"chart2\"></canvas>";
-    element.append(canvas2)
-    var columns2 = [[]];
+var label_list = [];
+var daily_viewing_hour_list = [];
 
+function loadPerDayViewingHour() {
+    var element = $('#canvas-container');
+    var canvas2="<canvas id=\"chart2\"></canvas>"
+    var nav = "<nav id=\"chart-nav\">\
+      <ul class=\"pager\">\
+        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackward2()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward2()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
+      </ul>\
+    </nav>";
+    element.append(canvas2);
+    element.append(nav);
+
+    var columns2 = [[]];
     $.ajax({
         type: "GET",
         url: "data/ViewingTime/part-00000",
         dataType: "text",
         success: function(data) {
             processData(data,columns2);
-
+            label_list = columns2[0];
+            daily_viewing_hour_list = columns2[1].map(returnHour);
             var LineChartData = {
                 labels : columns2[0].slice(0,14),
                 datasets : [
@@ -409,3 +420,99 @@ function loadAudienceRatingData() {
      });
 
 }
+
+function moveForward2() {
+  if (end >= daily_viewing_hour_list.length) return;
+  
+  $("#chart2").remove();
+  var canvas2="<canvas id=\"chart2\"></canvas>"
+  $("#chart-nav").before(canvas2);
+
+  start += 14;
+  end += 14;
+
+  if(start > 0){
+    $(".previous").removeClass("disabled");
+    $($(".previous").children()).attr("onclick", "moveBackward2();");
+  }
+  else{
+    $(".previous").addClass("disabled");
+    $($(".previous").children()).removeAttr("onclick");
+  }
+
+  if(end >= daily_viewing_hour_list.length){
+    $(".next").addClass("disabled");
+    $($(".next").children()).removeAttr("onclick");
+  }
+  else{
+    $(".next").removeClass("disabled");
+    $($(".next").children()).attr("onclick", "moveForward2();");
+  }
+
+  var LineChartData = {
+      labels : label_list.slice(start,end),
+      datasets : [
+          {
+              label: "Online Hours",
+              fillColor : "rgba(220,220,220,0.2)",
+              strokeColor : "rgba(220,220,220,1)",
+              pointColor : "rgba(220,220,220,1)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(220,220,220,1)",
+              data : daily_viewing_hour_list.slice(start,end)
+          }
+      ]
+  }
+
+  var ctx = document.getElementById("chart2").getContext("2d");
+  window.myLine = new Chart(ctx).Line(LineChartData, perDayOnlineHourOpts);
+}
+
+function moveBackward2() {
+  if(start <= 0) return;
+
+  $("#chart2").remove();
+  var canvas2="<canvas id=\"chart2\"></canvas>"
+  $("#chart-nav").before(canvas2);
+
+  start -= 14;
+  end -= 14;
+  if(start > 0){
+    $(".previous").removeClass("disabled");
+    $($(".previous").children()).attr("onclick", "moveBackward2();");
+  }
+  else{
+    $(".previous").addClass("disabled");
+    $($(".previous").children()).removeAttr("onclick");
+  }
+
+  if(end >= daily_viewing_hour_list.length){
+    $(".next").addClass("disabled");
+    $($(".next").children()).removeAttr("onclick");
+  }
+  else{
+    $(".next").removeClass("disabled");
+    $($(".next").children()).attr("onclick", "moveForward2();");
+  }
+
+  var LineChartData = {
+      labels : label_list.slice(start,end),
+      datasets : [
+          {
+              label: "Online Hours",
+              fillColor : "rgba(220,220,220,0.2)",
+              strokeColor : "rgba(220,220,220,1)",
+              pointColor : "rgba(220,220,220,1)",
+              pointStrokeColor : "#fff",
+              pointHighlightFill : "#fff",
+              pointHighlightStroke : "rgba(220,220,220,1)",
+              data : daily_viewing_hour_list.slice(start,end)
+          }
+      ]
+  }
+
+  var ctx = document.getElementById("chart2").getContext("2d");
+  window.myLine = new Chart(ctx).Line(LineChartData, perDayOnlineHourOpts);
+}
+
