@@ -397,7 +397,7 @@ function loadSeasonPurchaseData() {
             processData(data,columns3);
             console.log(columns3);
             final_data_points = []
-            for(i = 0; i<12; i++)
+            for(i = 0; i<16; i++)
             {
               final_data_points.push(columns[0][i]).toFixed(3);
             }
