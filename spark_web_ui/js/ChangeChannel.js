@@ -248,8 +248,13 @@ function loadChannelChangeAllData() {
                 ]
             }
 
+            var pieCharData = [{value: final_data_points[0], color:"#D97041", title:"1-100次"},
+            {value: final_data_points[1], color:"#C7604C", title:"101-1000次"},
+            {value: final_data_points[2], color:"#21323D", title:"1000-10000次"},
+            {value: final_data_points[3], color:"#9D9B7F", title:"10000+次"}]
+
             var ctx = document.getElementById("chart4").getContext("2d");
-            window.myLine = new Chart(ctx).Bar(barChartData, ChannelChangeAllOpts);
+            window.myLine = new Chart(ctx).Pie(pieCharData, ChannelChangeAllOpts);
         }
      });
 }
