@@ -17,6 +17,7 @@ function clearCanvas() {
 
 function clearContent() {
     var element = $('#content-container');
+    element.attr("style","");
     if(element.children() != []){
       $(element.children()).remove();
     }
