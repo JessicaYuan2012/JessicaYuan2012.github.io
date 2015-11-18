@@ -249,8 +249,8 @@ function loadChannelChangeAllData() {
             }
 
             var pieCharData = [{value: final_data_points[0], color:"#7DA1A1", title:"1-100次"},
-            {value: final_data_points[1], color:"#4DB399", title:"101-1000次"},
-            {value: final_data_points[2], color:"#CCCCB3", title:"1000-10000次"},
+            {value: final_data_points[1], color:"#CCCCB3", title:"101-1000次"},
+            {value: final_data_points[2], color:"#4DB399", title:"1000-10000次"},
             {value: final_data_points[3], color:"#47331F", title:"10000+次"}]
 
             var ctx = document.getElementById("chart4").getContext("2d");
@@ -291,8 +291,8 @@ function loadChannelChangeDailyData() {
                     {
                         label: "Channel Change Times - All",
                         fillColor : "rgba(151,187,205,0.2)",
-                        strokeColor : "rgba(151,187,205,1)",
-                        pointColor : "rgba(151,187,205,1)",
+                        strokeColor : "rgba(151,187,205,0.8)",
+                        pointColor : "rgba(151,187,205,0.8)",
                         pointStrokeColor : "#fff",
                         //pointHighlightFill : "#fff",
                         //pointHighlightStroke : "rgba(220,220,220,1)",
@@ -341,8 +341,8 @@ function moveForward() {
           {
               label: "Channel Change Times - All",
               fillColor : "rgba(151,187,205,0.2)",
-              strokeColor : "rgba(151,187,205,1)",
-              pointColor : "rgba(151,187,205,1)",
+              strokeColor : "rgba(151,187,205,0.8)",
+              pointColor : "rgba(151,187,205,0.8)",
               pointStrokeColor : "#fff",
               //pointHighlightFill : "#fff",
               //pointHighlightStroke : "rgba(220,220,220,1)",
@@ -387,8 +387,8 @@ function moveBackward() {
           {
               label: "Channel Change Times - All",
               fillColor : "rgba(151,187,205,0.2)",
-              strokeColor : "rgba(151,187,205,1)",
-              pointColor : "rgba(151,187,205,1)",
+              strokeColor : "rgba(151,187,205,0.8)",
+              pointColor : "rgba(151,187,205,0.8)",
               pointStrokeColor : "#fff",
               //pointHighlightFill : "#fff",
               //pointHighlightStroke : "rgba(220,220,220,1)",

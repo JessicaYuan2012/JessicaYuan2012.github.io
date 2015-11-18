@@ -303,8 +303,8 @@ function loadOnlineDayCountData() {
                     {
                         type: "Line",
                         fill: false,
-                        strokeColor : "rgba(151,187,205,1)",
-                        pointColor : "rgba(151,187,205,1)",
+                        strokeColor : "rgba(151,187,205,0.8)",
+                        pointColor : "rgba(151,187,205,0.8)",
                         pointStrokeColor : "#fff",
                         data : final_data_points,
                     },
@@ -369,8 +369,8 @@ function loadPerDayViewingHour() {
                     {
                         label: "Online Hours",
                         fillColor : "rgba(151,187,205,0.2)",
-                        strokeColor : "rgba(151,187,205,1)",
-                        pointColor : "rgba(151,187,205,1)",
+                        strokeColor : "rgba(151,187,205,0.8)",
+                        pointColor : "rgba(151,187,205,0.8)",
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
@@ -455,8 +455,8 @@ function moveForward2() {
           {
               label: "Online Hours",
               fillColor : "rgba(151,187,205,0.2)",
-              strokeColor : "rgba(151,187,205,1)",
-              pointColor : "rgba(151,187,205,1)",
+              strokeColor : "rgba(151,187,205,0.8)",
+              pointColor : "rgba(151,187,205,0.8)",
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
@@ -502,8 +502,8 @@ function moveBackward2() {
           {
               label: "Online Hours",
               fillColor : "rgba(151,187,205,0.2)",
-              strokeColor : "rgba(151,187,205,1)",
-              pointColor : "rgba(151,187,205,1)",
+              strokeColor : "rgba(151,187,205,0.8)",
+              pointColor : "rgba(151,187,205,0.8)",
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
