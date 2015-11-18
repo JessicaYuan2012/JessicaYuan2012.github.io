@@ -303,9 +303,9 @@ function loadOnlineDayCountData() {
                     {
                         type: "Line",
                         fill: false,
-                        strokeColor : "rgb(230, 14, 14)",
-                        pointColor : "rgb(205, 151, 155)",
-                        pointStrokeColor : "#f56691",
+                        strokeColor : "rgba(220,220,220,1)",
+                        pointColor : "rgba(220,220,220,1)",
+                        pointStrokeColor : "#fff",
                         data : final_data_points,
                     },
                     {
@@ -368,9 +368,9 @@ function loadPerDayViewingHour() {
                 datasets : [
                     {
                         label: "Online Hours",
-                        fillColor : "rgba(220,220,220,0.2)",
-                        strokeColor : "rgba(220,220,220,1)",
-                        pointColor : "rgba(220,220,220,1)",
+                        fillColor : "rgba(151,187,205,0.5)",
+                        strokeColor : "rgba(151,187,205,1)",
+                        pointColor : "rgba(151,187,205,1)",
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
@@ -454,9 +454,9 @@ function moveForward2() {
       datasets : [
           {
               label: "Online Hours",
-              fillColor : "rgba(220,220,220,0.2)",
-              strokeColor : "rgba(220,220,220,1)",
-              pointColor : "rgba(220,220,220,1)",
+              fillColor : "rgba(151,187,205,0.5)",
+              strokeColor : "rgba(151,187,205,1)",
+              pointColor : "rgba(151,187,205,1)",
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
@@ -501,9 +501,9 @@ function moveBackward2() {
       datasets : [
           {
               label: "Online Hours",
-              fillColor : "rgba(220,220,220,0.2)",
-              strokeColor : "rgba(220,220,220,1)",
-              pointColor : "rgba(220,220,220,1)",
+              fillColor : "rgba(151,187,205,0.5)",
+              strokeColor : "rgba(151,187,205,1)",
+              pointColor : "rgba(151,187,205,1)",
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
