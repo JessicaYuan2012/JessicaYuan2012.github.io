@@ -261,11 +261,11 @@ function sum(numArray){
     return sum;
 }
 
-var columns_global_online = [[]];
+var columns2 = [[]];
 var label_list = [];
 var daily_viewing_hour_list = [];
-var start_for_online = 0;
-var end_for_online = 14;
+var start2 = 0;
+var end2 = 14;
 
 function loadData(){
   clearAll();
@@ -347,8 +347,8 @@ function loadPerDayViewingHour() {
     var canvas2="<canvas id=\"chart2\"></canvas>"
     var nav = "<nav id=\"chart-nav\">\
       <ul class=\"pager\">\
-        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackwardOnline()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
-        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForwardOnline()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
+        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackward2()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward2()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
       </ul>\
     </nav>";
     element.append(canvas2);
@@ -359,13 +359,13 @@ function loadPerDayViewingHour() {
         url: "data/ViewingTime/part-00000",
         dataType: "text",
         success: function(data) {
-            processData(data, columns_global_online);
-            //console.log(columns_global_online)
-            label_list = columns_global_online[0].map(returnMyDateFormat);
+            processData(data, columns2);
+            //console.log(columns2)
+            label_list = columns2[0].map(returnMyDateFormat);
             //console.log("in ajax:",label_list);
-            daily_viewing_hour_list = columns_global_online[1].map(returnHour);
+            daily_viewing_hour_list = columns2[1].map(returnHour);
             var LineChartData = {
-                labels : label_list.slice(start_for_online,end_for_online),
+                labels : label_list.slice(start2,end2),
                 datasets : [
                     {
                         label: "Online Hours",
@@ -375,7 +375,7 @@ function loadPerDayViewingHour() {
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
-                        data : daily_viewing_hour_list.slice(start_for_online,end_for_online)
+                        data : daily_viewing_hour_list.slice(start2,end2)
                     }
                 ]
             }
@@ -422,36 +422,36 @@ function loadAudienceRatingData() {
 
 }
 
-function moveForwardOnline() {
-  if (end_for_online >= daily_viewing_hour_list.length) return;
+function moveForward2() {
+  if (end2 >= daily_viewing_hour_list.length) return;
   
   $("#chart2").remove();
   var canvas2="<canvas id=\"chart2\"></canvas>"
   $("#chart-nav").before(canvas2);
 
-  start_for_online += 14;
-  end_for_online += 14;
+  start2 += 14;
+  end2 += 14;
 
-  if(start_for_online > 0){
+  if(start2 > 0){
     $(".previous").removeClass("disabled");
-    $($(".previous").children()).attr("onclick", "moveBackwardOnline();");
+    $($(".previous").children()).attr("onclick", "moveBackward2();");
   }
   else{
     $(".previous").addClass("disabled");
     $($(".previous").children()).removeAttr("onclick");
   }
 
-  if(end_for_online >= daily_viewing_hour_list.length){
+  if(end2 >= daily_viewing_hour_list.length){
     $(".next").addClass("disabled");
     $($(".next").children()).removeAttr("onclick");
   }
   else{
     $(".next").removeClass("disabled");
-    $($(".next").children()).attr("onclick", "moveForwardOnline();");
+    $($(".next").children()).attr("onclick", "moveForward2();");
   }
 
   var LineChartData = {
-      labels : label_list.slice(start_for_online,end_for_online),
+      labels : label_list.slice(start2,end2),
       datasets : [
           {
               label: "Online Hours",
@@ -461,7 +461,7 @@ function moveForwardOnline() {
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
-              data : daily_viewing_hour_list.slice(start_for_online,end_for_online)
+              data : daily_viewing_hour_list.slice(start2,end2)
           }
       ]
   }
@@ -470,35 +470,35 @@ function moveForwardOnline() {
   window.myLine = new Chart(ctx).Line(LineChartData, perDayOnlineHourOpts);
 }
 
-function moveBackwardOnline() {
-  if(start_for_online <= 0) return;
+function moveBackward2() {
+  if(start2 <= 0) return;
 
   $("#chart2").remove();
   var canvas2="<canvas id=\"chart2\"></canvas>"
   $("#chart-nav").before(canvas2);
 
-  start_for_online -= 14;
-  end_for_online -= 14;
-  if(start_for_online > 0){
+  start2 -= 14;
+  end2 -= 14;
+  if(start2 > 0){
     $(".previous").removeClass("disabled");
-    $($(".previous").children()).attr("onclick", "moveBackwardOnline();");
+    $($(".previous").children()).attr("onclick", "moveBackward2();");
   }
   else{
     $(".previous").addClass("disabled");
     $($(".previous").children()).removeAttr("onclick");
   }
 
-  if(end_for_online >= daily_viewing_hour_list.length){
+  if(end2 >= daily_viewing_hour_list.length){
     $(".next").addClass("disabled");
     $($(".next").children()).removeAttr("onclick");
   }
   else{
     $(".next").removeClass("disabled");
-    $($(".next").children()).attr("onclick", "moveForwardOnline();");
+    $($(".next").children()).attr("onclick", "moveForward2();");
   }
 
   var LineChartData = {
-      labels : label_list.slice(start_for_online,end_for_online),
+      labels : label_list.slice(start2,end2),
       datasets : [
           {
               label: "Online Hours",
@@ -508,7 +508,7 @@ function moveBackwardOnline() {
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
-              data : daily_viewing_hour_list.slice(start_for_online,end_for_online)
+              data : daily_viewing_hour_list.slice(start2,end2)
           }
       ]
   }
