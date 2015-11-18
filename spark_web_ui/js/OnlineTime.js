@@ -363,9 +363,9 @@ function loadPerDayViewingHour() {
         dataType: "text",
         success: function(data) {
             processData(data, columns2);
-
+            console.log(columns2)
             label_list = columns2[0].map(returnMyDateFormat);
-            //console.log(label_list);
+            console.log("in ajax:",label_list);
             daily_viewing_hour_list = columns2[1].map(returnHour);
             var LineChartData = {
                 labels : label_list.slice(start2,end2),
