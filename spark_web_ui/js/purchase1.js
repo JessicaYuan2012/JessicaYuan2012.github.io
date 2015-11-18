@@ -74,7 +74,7 @@ var audienceRatingOpts = {
       responsive : true
 }
 
-var avgPersonPurchase = {
+var avgPersonPurchaseOpts = {
       inGraphDataShow : true,
       datasetFill : false,
       scaleLabel: "<%=value%>",
@@ -339,7 +339,7 @@ function loadAvgPersonPurchase() {
 */
 
             var ctx = document.getElementById("chart1").getContext("2d");
-            window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
+            window.myLine = new Chart(ctx).Bar(barChartData, avgPersonPurchaseOpts);
             //window.myLine = new Chart(ctx).Pie(pieChartData, onlineDaysOpts);
             
         }
