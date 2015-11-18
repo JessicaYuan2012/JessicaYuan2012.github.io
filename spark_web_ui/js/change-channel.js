@@ -304,7 +304,7 @@ function loadChannelChangeDailyData() {
         url: "data/ChangeChannelDaily/part-00000",
         dataType: "text",
         success: function(data) {
-            processData(data,daily_channel_change_columns);
+            processData(data, daily_channel_change_columns);
 
             date_list = daily_channel_change_columns[0].map(returnMyDateFormat);
             change_sum_list = daily_channel_change_columns[1].map(returnInt);
