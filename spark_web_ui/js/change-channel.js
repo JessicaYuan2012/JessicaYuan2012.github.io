@@ -184,7 +184,7 @@ function returnMyDateFormat(str) {
   else if(day == 6){
     s = s + " 星期六"
   }
-  else if(day == 7){
+  else if(day == 0){
     s = s + " 星期日"
   }
   return s;

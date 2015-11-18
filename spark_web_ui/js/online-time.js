@@ -238,6 +238,34 @@ function returnResult(element){
   return (parseFloat(element).toExponential()/100000000).toFixed(0);
 }
 
+function returnMyDateFormat(str) {
+  var s = str.slice(0,4)+"-"+str.slice(4,6)+"-"+str.slice(6,8);
+  var d = new Date(s);
+  var day = d.getDay();
+  if(day == 1){
+    s = s + " 星期一";
+  }
+  else if(day == 2){
+    s = s + " 星期二"
+  }
+  else if(day == 3){
+    s = s + " 星期三"
+  }
+  else if(day == 4){
+    s = s + " 星期四"
+  }
+  else if(day == 5){
+    s = s + " 星期五"
+  }
+  else if(day == 6){
+    s = s + " 星期六"
+  }
+  else if(day == 0){
+    s = s + " 星期日"
+  }
+  return s;
+}
+
 function processData(allText, col) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');
