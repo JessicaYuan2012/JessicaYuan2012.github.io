@@ -258,7 +258,7 @@ function lym_processData(allText, col) {
     var allTextLines = allText.split(/\r\n|\n/);
     //var headers = allTextLines[0].split(',');
     for (var i=1; i<allTextLines.length; i++) {
-        col[j].push(allTextLines[i]);
+        col[i].push(allTextLines[i]);
         
     }
 }
