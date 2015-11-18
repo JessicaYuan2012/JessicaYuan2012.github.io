@@ -189,7 +189,7 @@ var daily_channel_change_columns = [[]];
 var start = 0;
 var end = 14;
 var date_list = [];
-var final_data_points = [];
+var final_data_points_daily_average = [];
 
 function loadChannelChangeData(){
   var element = $('#canvas-container');
@@ -259,8 +259,8 @@ function loadChannelChangeDailyData() {
     var canvas5="<canvas id=\"chart5\"></canvas>"
     var nav = "<nav>\
       <ul class=\"pager\">\
-        <li class=\"previous disabled\"><a href=\"javascript:void(0);\"><span aria-hidden=\"true\">&larr;</span>向前</a></li>\
-        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward()\">向后<span aria-hidden=\"true\">&rarr;</span></a></li>\
+        <li class=\"previous disabled\"><a href=\"javascript:void(0);\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
+        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
       </ul>\
     </nav>";
     element.append(canvas5);
@@ -277,7 +277,7 @@ function loadChannelChangeDailyData() {
             change_sum_list = daily_channel_change_columns[1].map(returnInt);
             device_num_list = daily_channel_change_columns[2].map(returnInt);
             for (var i = 0; i <= daily_channel_change_columns[0].length - 1; i++) {
-              final_data_points.push((change_sum_list[i]/device_num_list[i]).toFixed(2));
+              final_data_points_daily_average.push((change_sum_list[i]/device_num_list[i]).toFixed(2));
             };
             
             var lineChartData = {
@@ -291,7 +291,7 @@ function loadChannelChangeDailyData() {
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
-                        data : final_data_points.slice(start,end)
+                        data : final_data_points_daily_average.slice(start,end)
                     }
                 ]
             }
@@ -316,7 +316,7 @@ function moveForward() {
               pointStrokeColor : "#fff",
               pointHighlightFill : "#fff",
               pointHighlightStroke : "rgba(220,220,220,1)",
-              data : final_data_points.slice(start, end)
+              data : final_data_points_daily_average.slice(start, end)
           }
       ]
   }
