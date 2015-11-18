@@ -293,22 +293,18 @@ function loadAvgPersonPurchase() {
         dataType: "text",
         success: function(data) {
             lym_processData(data,columns);
-            console.log(columns);
-/*            
-            numOfDevices = sum(columns[1].map(returnInt))
-            final_data_points = []
-            final_data_points.push((sum(columns[1].map(returnInt).slice(0,19))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(19,39))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(39,59))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(59,79))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(79,99))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(99,119))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(119,139))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(139,159))/numOfDevices*100).toFixed(3));
-            final_data_points.push((sum(columns[1].map(returnInt).slice(159,185))/numOfDevices*100).toFixed(3));
+            //console.log(columns);
             
+            //numOfDevices = sum(columns[1].map(returnInt))
+            final_data_points = []
+            final_data_points.push(columns[0][0]).toFixed(3));
+            final_data_points.push(columns[0][1]).toFixed(3));
+            final_data_points.push(columns[0][2]).toFixed(3));
+            final_data_points.push(columns[0][3]).toFixed(3));
+            console.log(final_data_points)
+             
             var barChartData = {
-                labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
+                labels : ["2011年","2012年","2013年","2014年",],
                 datasets : [
                     {
                         type: "Line",
@@ -330,7 +326,7 @@ function loadAvgPersonPurchase() {
                     }
                 ]
             }
-
+/*
             var pieChartData = [{value: final_data_points[0], color:"#D97041", title:"0-19天"},
             {value: final_data_points[1], color:"#C7604C", title:"20-39天"},
             {value: final_data_points[2], color:"#21323D", title:"40-59天"},
@@ -340,12 +336,12 @@ function loadAvgPersonPurchase() {
             {value: final_data_points[6], color:"#584A5E", title:"120-139天"},
             {value: final_data_points[7], color:"#7D4F6D", title:"140-159天"},
             {value: final_data_points[8], color:"#9D9B7F", title:"160-181天"}]
-
+*/
 
             var ctx = document.getElementById("chart1").getContext("2d");
             window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
             //window.myLine = new Chart(ctx).Pie(pieChartData, onlineDaysOpts);
-            */
+            
         }
      });
 
