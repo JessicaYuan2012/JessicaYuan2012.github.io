@@ -301,6 +301,14 @@ function loadOnlineDayCountData() {
                 labels : ["0-19天","20-39天","40-59天","60-79天","80-99天","100-119天","120-139天","140-159天","160-181天"],
                 datasets : [
                     {
+                        type: "Line",
+                        fill: false,
+                        strokeColor : "rgb(230, 14, 14)",
+                        pointColor : "rgb(205, 151, 155)",
+                        pointStrokeColor : "#f56691",
+                        data : final_data_points,
+                    },
+                    {
                         label: "Online Day Count",
                         fillColor : "rgba(220,220,220,0.2)",
                         strokeColor : "rgba(220,220,220,1)",
@@ -325,8 +333,8 @@ function loadOnlineDayCountData() {
 
 
             var ctx = document.getElementById("chart1").getContext("2d");
-            //window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
-            window.myLine = new Chart(ctx).Pie(pieChartData, onlineDaysOpts);
+            window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
+            //window.myLine = new Chart(ctx).Pie(pieChartData, onlineDaysOpts);
         }
      });
 }
