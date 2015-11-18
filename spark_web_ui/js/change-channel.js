@@ -308,11 +308,20 @@ function moveForward() {
   end += 14;
   if(start > 0){
     $(".previous").removeClass("disabled");
-    $(".previous").attr("onclick", "moveForward();");
+    $(".previous").attr("onclick", "moveBackward();");
   }
+  else{
+    $(".previous").addClass("disabled");
+    $(".previous").removeAttr("onclick");
+  }
+
   if(end >= final_data_points_daily_average.length){
     $(".next").addClass("disabled");
-    $(".next").removeAttr("onclick")
+    $(".next").removeAttr("onclick");
+  }
+  else{
+    $(".next").removeClass("disabled");
+    $(".next").attr("onclick", "moveForward();");
   }
   var lineChartData = {
       labels : date_list.slice(start, end),
@@ -339,11 +348,20 @@ function moveBackward() {
   end -= 14;
   if(start > 0){
     $(".previous").removeClass("disabled");
-    $(".previous").attr("onclick", "moveForward();");
+    $(".previous").attr("onclick", "moveBackward();");
   }
+  else{
+    $(".previous").addClass("disabled");
+    $(".previous").removeAttr("onclick");
+  }
+
   if(end >= final_data_points_daily_average.length){
     $(".next").addClass("disabled");
-    $(".next").removeAttr("onclick")
+    $(".next").removeAttr("onclick");
+  }
+  else{
+    $(".next").removeClass("disabled");
+    $(".next").attr("onclick", "moveForward();");
   }
   var lineChartData = {
       labels : date_list.slice(start, end),
