@@ -75,7 +75,7 @@ var audienceRatingOpts = {
 }
 
 var onlineDaysOpts = {
-      inGraphDataShow : true,
+      inGraphDataShow : false,
       datasetFill : false,
       scaleLabel: "<%=value%>",
       scaleTickSizeRight : 5,
@@ -303,8 +303,8 @@ function loadOnlineDayCountData() {
                     {
                         type: "Line",
                         fill: false,
-                        strokeColor : "rgba(220,220,220,1)",
-                        pointColor : "rgba(220,220,220,1)",
+                        strokeColor : "rgba(151,187,205,1)",
+                        pointColor : "rgba(151,187,205,1)",
                         pointStrokeColor : "#fff",
                         data : final_data_points,
                     },
