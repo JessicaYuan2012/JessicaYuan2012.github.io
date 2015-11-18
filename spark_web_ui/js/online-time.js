@@ -313,8 +313,20 @@ function loadOnlineDayCountData() {
                 ]
             }
 
+            var pieChartData = [{value: final_data_points[0], color:"#D97041", title:"0-19天"},
+            {value: final_data_points[1], color:"#C7604C", title:"20-39天"},
+            {value: final_data_points[2], color:"#21323D", title:"40-59天"},
+            {value: final_data_points[3], color:"#9D9B7F", title:"60-79天"},
+            {value: final_data_points[4], color:"#D97041", title:"80-99天"},
+            {value: final_data_points[5], color:"#C7604C", title:"100-119天"},
+            {value: final_data_points[6], color:"#584A5E", title:"120-139天"},
+            {value: final_data_points[7], color:"#7D4F6D", title:"140-159天"},
+            {value: final_data_points[8], color:"#9D9B7F", title:"160-181天"}]
+
+
             var ctx = document.getElementById("chart1").getContext("2d");
-            window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
+            //window.myLine = new Chart(ctx).Bar(barChartData, onlineDaysOpts);
+            window.myLine = new Chart(ctx).Pie(pieChartData, onlineDaysOpts);
         }
      });
 }
