@@ -250,12 +250,12 @@ function loadChannelChangeAllData() {
 
 function loadChannelChangeDailyData() {
     var element = $('#canvas-container');
-    var canvas5="<canvas id=\"chart5\"></canvas> \
-    <nav> \
-      <ul class=\"pager\"> \
-        <li class=\"previous disabled\"><a href=\"#\"><span aria-hidden=\"true\">&larr;</span>向前</a></li> \
-        <li class=\"next\"><a href=\"#\">向后<span aria-hidden=\"true\">&rarr;</span></a></li> \
-      </ul>
+    var canvas5="<canvas id=\"chart5\"></canvas>"
+    var nav = "<nav>\
+      <ul class=\"pager\">\
+        <li class=\"previous disabled\"><a href=\"#\"><span aria-hidden=\"true\">&larr;</span>向前</a></li>\
+        <li class=\"next\"><a href=\"#\">向后<span aria-hidden=\"true\">&rarr;</span></a></li>\
+      </ul>\
     </nav>";
     element.append(canvas5);
 
