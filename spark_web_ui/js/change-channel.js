@@ -133,19 +133,19 @@ function loadChannelChangeAllData() {
 
             numOfDevices = sum(columns[1].map(returnInt))
             final_data_points = [0,0,0,0]
-            for (var i = 0; i <= columns.length - 1; i++) {
+            for (var i = 0; i <= columns[0].length - 1; i++) {
               changeTimes = returnInt(columns[0][i]);
               if (changeTimes<=100) {
-                final_data_points[0]++;
+                final_data_points[0] += returnInt(columns[1][i]);
               }
               else if (changeTimes <= 1000) {
-                final_data_points[1]++;
+                final_data_points[1] += returnInt(columns[1][i]);
               }
               else if (changeTimes <= 10000){
-                final_data_points[2]++;
+                final_data_points[2] += returnInt(columns[1][i]);
               }
               else{
-                final_data_points[3]++;
+                final_data_points[3] += returnInt(columns[1][i]);
               }
             };
             
