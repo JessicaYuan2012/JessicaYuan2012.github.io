@@ -258,6 +258,7 @@ function loadChannelChangeDailyData() {
       </ul>\
     </nav>";
     element.append(canvas5);
+    element.append(nav);
 
     var columns = [[]];
 
