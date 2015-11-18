@@ -86,7 +86,7 @@ var onlineDaysOpts = {
       /*canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",*/
-      graphTitle : "用户（设备）在线天数分布图",
+      graphTitle : "用户在线天数分布图",
             graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
             graphTitleFontStyle : "normal",
@@ -267,8 +267,8 @@ function loadData(){
       $(element.children()).remove();
   }
   loadAudienceRatingData();
-  loadOnlineDayCountData();
   loadPerDayViewingHour();
+  loadOnlineDayCountData();
 }
 
 function loadOnlineDayCountData() {
