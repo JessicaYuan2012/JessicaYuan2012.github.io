@@ -314,7 +314,7 @@ function moveForward() {
 
   if(start > 0){
     $(".previous").removeClass("disabled");
-    $($(".previous").children())attr("onclick", "moveBackward();");
+    $($(".previous").children()).attr("onclick", "moveBackward();");
   }
   else{
     $(".previous").addClass("disabled");
@@ -323,11 +323,11 @@ function moveForward() {
 
   if(end >= final_data_points_daily_average.length){
     $(".next").addClass("disabled");
-    $($(".next").children())removeAttr("onclick");
+    $($(".next").children()).removeAttr("onclick");
   }
   else{
     $(".next").removeClass("disabled");
-    $($(".next").children())attr("onclick", "moveForward();");
+    $($(".next").children()).attr("onclick", "moveForward();");
   }
 
   var lineChartData = {
