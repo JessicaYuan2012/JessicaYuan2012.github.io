@@ -86,7 +86,7 @@ var onlineDaysOpts = {
       /*canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",*/
-      graphTitle : "用户在线天数分布图",
+      graphTitle : "用户在线天数分布图(2014.11.27-2015.5.26)",
             graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
             graphTitleFontStyle : "normal",
@@ -162,7 +162,7 @@ var perDayOnlineHourOpts = {
       /*canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",*/
-      graphTitle : "单日用户在线总时长分布图",
+      graphTitle : "单日用户在线总时长折线图",
             graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
             graphTitleFontStyle : "normal",
