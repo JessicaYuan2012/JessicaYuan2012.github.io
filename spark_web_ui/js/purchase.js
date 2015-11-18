@@ -254,6 +254,15 @@ function processData(allText, col) {
     }
 }
 
+function lym_processData(allText, col) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    //var headers = allTextLines[0].split(',');
+    for (var i=1; i<allTextLines.length; i++) {
+        col[j].push(allTextLines[i]);
+        
+    }
+}
+
 function sum(numArray){
     for (var sum = i = 0; i < numArray.length; i++){
         sum += numArray[i];
@@ -283,7 +292,7 @@ function loadAvgPersonPurchase() {
         url: "data/Purchase/AvgPersonPurchaseTime.txt",
         dataType: "text",
         success: function(data) {
-            processData(data,columns);
+            lym_processData(data,columns);
             console.log(columns);
 /*            
             numOfDevices = sum(columns[1].map(returnInt))
