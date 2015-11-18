@@ -65,7 +65,6 @@ var ChannelChangeAllOpts = {
       xAxisSpaceUnder : 0,
       xAxisLabelSpaceAfter : 0,
       xAxisLabelSpaceBefore : 0,
-      yAxisRight: false,
       legendBordersSpaceBefore : 0,
       legendBordersSpaceAfter : 0,
       footNoteSpaceBefore : 0,
@@ -120,7 +119,6 @@ var ChannelChangeDailyOpts = {
             yAxisFontSize : 16,
             yAxisFontStyle : "normal",
             yAxisFontColor : "#666",
-      yAxisRight: false,
       /*xAxisLabel : "pX Axis Label",
           xAxisFontFamily : "'Arial'",
             xAxisFontSize : 16,
@@ -351,7 +349,7 @@ function moveForward() {
 
 function moveBackward() {
   if(start <= 0) return;
-  
+
   $("#chart5").remove();
   var canvas5="<canvas id=\"chart5\"></canvas>"
   $("#chart-nav").before(canvas5);
