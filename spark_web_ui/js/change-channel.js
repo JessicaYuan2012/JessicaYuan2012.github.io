@@ -303,6 +303,7 @@ function loadChannelChangeDailyData() {
 }
 
 function moveForward() {
+  if (end >= final_data_points_daily_average.length) return;
   start += 14;
   end += 14;
   if(start > 0){
@@ -333,6 +334,7 @@ function moveForward() {
 }
 
 function moveBackward() {
+  if(start <= 0) return;
   start -= 14;
   end -= 14;
   if(start > 0){
