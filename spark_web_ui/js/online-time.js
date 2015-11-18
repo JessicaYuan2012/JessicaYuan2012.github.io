@@ -368,7 +368,7 @@ function loadPerDayViewingHour() {
                 datasets : [
                     {
                         label: "Online Hours",
-                        fillColor : "rgba(151,187,205,0.5)",
+                        fillColor : "rgba(151,187,205,0.2)",
                         strokeColor : "rgba(151,187,205,1)",
                         pointColor : "rgba(151,187,205,1)",
                         pointStrokeColor : "#fff",
@@ -454,7 +454,7 @@ function moveForward2() {
       datasets : [
           {
               label: "Online Hours",
-              fillColor : "rgba(151,187,205,0.5)",
+              fillColor : "rgba(151,187,205,0.2)",
               strokeColor : "rgba(151,187,205,1)",
               pointColor : "rgba(151,187,205,1)",
               pointStrokeColor : "#fff",
@@ -501,7 +501,7 @@ function moveBackward2() {
       datasets : [
           {
               label: "Online Hours",
-              fillColor : "rgba(151,187,205,0.5)",
+              fillColor : "rgba(151,187,205,0.2)",
               strokeColor : "rgba(151,187,205,1)",
               pointColor : "rgba(151,187,205,1)",
               pointStrokeColor : "#fff",
