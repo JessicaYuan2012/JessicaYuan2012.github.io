@@ -368,7 +368,7 @@ function loadPerDayViewingHour() {
             //console.log(label_list);
             daily_viewing_hour_list = columns2[1].map(returnHour);
             var LineChartData = {
-                labels : columns2[0].slice(0,14),
+                labels : label_list.slice(start2,end2),
                 datasets : [
                     {
                         label: "Online Hours",
@@ -378,7 +378,7 @@ function loadPerDayViewingHour() {
                         pointStrokeColor : "#fff",
                         pointHighlightFill : "#fff",
                         pointHighlightStroke : "rgba(220,220,220,1)",
-                        data : columns2[1].slice(0,14).map(returnHour)
+                        data : daily_viewing_hour_list.slice(start2,end2)
                     }
                 ]
             }
