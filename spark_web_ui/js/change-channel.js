@@ -86,7 +86,7 @@ var ChannelChangeDailyOpts = {
       /*canvasBorders : true,
       canvasBordersWidth : 3,
       canvasBordersColor : "black",*/
-      graphTitle : "日均换台次数折现图",
+      graphTitle : "日均换台次数折线图",
             graphTitleFontFamily : "'Arial'",
             graphTitleFontSize : 24,
             graphTitleFontStyle : "normal",
@@ -267,7 +267,7 @@ function loadChannelChangeDailyData() {
             device_num_list = columns[2].map(returnInt);
             final_data_points = []
             for (var i = 0; i <= columns[0].length - 1; i++) {
-              final_data_points.push(change_sum_list[i]/device_num_list[i]);
+              final_data_points.push((change_sum_list[i]/device_num_list[i]).toFixed(2));
             };
             
             var lineChartData = {
