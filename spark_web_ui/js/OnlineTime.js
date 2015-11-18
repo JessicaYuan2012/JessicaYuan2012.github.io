@@ -261,6 +261,12 @@ function sum(numArray){
     return sum;
 }
 
+var columns2 = [[]];
+var label_list = [];
+var daily_viewing_hour_list = [];
+var start2 = 0;
+var end2 = 14;
+
 function loadData(){
   var element = $('#canvas-container');
   if(element.children() != []){
@@ -339,12 +345,6 @@ function loadOnlineDayCountData() {
      });
 }
 
-var columns2 = [[]];
-var label_list = [];
-var daily_viewing_hour_list = [];
-var start2 = 0;
-var end2 = 14;
-
 function loadPerDayViewingHour() {
     var element = $('#canvas-container');
     var canvas2="<canvas id=\"chart2\"></canvas>"
@@ -363,9 +363,9 @@ function loadPerDayViewingHour() {
         dataType: "text",
         success: function(data) {
             processData(data, columns2);
-            console.log(columns2)
+            //console.log(columns2)
             label_list = columns2[0].map(returnMyDateFormat);
-            console.log("in ajax:",label_list);
+            //console.log("in ajax:",label_list);
             daily_viewing_hour_list = columns2[1].map(returnHour);
             var LineChartData = {
                 labels : label_list.slice(start2,end2),
