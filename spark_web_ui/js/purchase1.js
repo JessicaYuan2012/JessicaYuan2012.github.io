@@ -271,10 +271,7 @@ function sum(numArray){
 }
 
 function loadPurchaseData(){
-  var element = $('#canvas-container');
-  if(element.children() != []){
-      $(element.children()).remove();
-  }
+  clearAll();
   loadSeasonPurchaseData();
   loadAvgPersonPurchase();
   //loadPerDayViewingHour();

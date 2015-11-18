@@ -268,10 +268,7 @@ var start2 = 0;
 var end2 = 14;
 
 function loadData(){
-  var element = $('#canvas-container');
-  if(element.children() != []){
-      $(element.children()).remove();
-  }
+  clearAll();
   loadAudienceRatingData();
   loadPerDayViewingHour();
   loadOnlineDayCountData();
