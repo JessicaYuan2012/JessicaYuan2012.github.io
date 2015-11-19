@@ -231,7 +231,7 @@ function loadChannelChangeData(){
   contentContainer.attr("style","margin:20px;")
   contentContainer.addClass("col-sm-2")
   var comment = "<p>结论：<p><br>日均换台高峰出现在周六和周日</p>\
-                <br><br><br><br><br><br><br><br><br><br><br><br><br>\
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>\
                 <p>用户很爱换台</p>";
   contentContainer.append(comment);
 
