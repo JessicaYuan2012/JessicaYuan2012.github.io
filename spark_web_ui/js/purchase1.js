@@ -426,7 +426,7 @@ function loadPurchaseSumAvgCost() {
               ]
             }
             var ctx2 = document.getElementById("chart2").getContext("2d")
-            window.myLine = new Chart(ctx2).Bar(mydata1,PurchaseSumpts);
+            window.myLine = new Chart(ctx2).Bar(mydata1,PurchaseSumOpts);
         }
      });
 
