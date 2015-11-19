@@ -416,14 +416,11 @@ var daily_viewing_hour_list = [];
 function loadPurchaseSumAvgCost() {
     var element = $('#canvas-container');
     var canvas2="<canvas id=\"chart2\"></canvas>"
-/*
+
     var nav = "<nav id=\"chart-nav\">\
-      <ul class=\"pager\">\
-        <li class=\"previous disabled\"><a href=\"javascript:void(0);\" onclick = \"moveBackward2()\"><span aria-hidden=\"true\">&larr;</span>更早</a></li>\
-        <li class=\"next\"><a href=\"javascript:void(0);\" onclick = \"moveForward2()\">更晚<span aria-hidden=\"true\">&rarr;</span></a></li>\
-      </ul>\
+      <ul class=\"pager\"></ul>\
     </nav>";
-*/
+
     element.append(canvas2);
     element.append(nav);
 
