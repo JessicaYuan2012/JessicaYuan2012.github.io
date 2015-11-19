@@ -275,9 +275,14 @@ function loadData(){
   element.append(title1);
 
   var contentContainer = $('#content-container');
-  contentContainer.attr("style","margin:20px;")
-  contentContainer.addClass("col-sm-2")
-  var comment = "<p>在这里添加一些评论~</p>"
+  contentContainer.attr("style","margin:20px;");
+  contentContainer.addClass("col-sm-2");
+  var comment ="<p>结论：</p><br><p>下午1点到2点是收视高峰期，收视最低时期是在晚上7点到9点。</p>\
+                 <br>\
+                 <p>周六周日用户在线总时长最高,特殊情况很少出现。</p>\
+                 <br>\
+                 <p>从用户在线天数分布图可以看出，比重最高的是几乎每天都看电视的群体。</p>\
+                 ";
   contentContainer.append(comment);
 
   loadAudienceRatingData();

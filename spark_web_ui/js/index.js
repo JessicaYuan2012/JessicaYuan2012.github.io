@@ -52,6 +52,8 @@ function loadOverview() {
 }
 
 function showHadoop(){
+    clearAll();
+    
     $('li a').css("color", "#b3b3b3");
     $('#hadoop').css("color", "white");
 }

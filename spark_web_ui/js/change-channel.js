@@ -230,7 +230,9 @@ function loadChannelChangeData(){
   var contentContainer = $('#content-container');
   contentContainer.attr("style","margin:20px;")
   contentContainer.addClass("col-sm-2")
-  var comment = "<p>在这里添加一些评论~</p>"
+  var comment = "<p>日均换台高峰出现在周六和周日</p>\
+                <br>\
+                <p>用户很爱换台</p>";
   contentContainer.append(comment);
 
   loadChannelChangeDailyData();
