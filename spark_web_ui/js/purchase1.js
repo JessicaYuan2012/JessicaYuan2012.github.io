@@ -289,6 +289,9 @@ function loadPurchaseData(){
   loadSeasonPurchaseData();
   loadAvgPersonPurchase();
   loadPurchaseSumAvgCost();
+  $('li a').css("color", "#b3b3b3");
+  $('#purchase').css("color", "white");
+
   
 }
 

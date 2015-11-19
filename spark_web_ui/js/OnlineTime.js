@@ -267,7 +267,7 @@ var daily_viewing_hour_list = [];
 var start2 = 0;
 var end2 = 14;
 
-function loadData(){
+function loadData(num){
   clearAll();
   var element = $('#canvas-container');
   element.addClass("col-sm-8");
@@ -283,6 +283,13 @@ function loadData(){
   loadAudienceRatingData();
   loadPerDayViewingHour();
   loadOnlineDayCountData();
+  $('li a').css("color", "#b3b3b3");
+  if(num == 1){
+    $('#data').css("color", "white");
+  }
+  else{
+    $('#data2').css("color", "white");
+  }
 }
 
 function loadOnlineDayCountData() {

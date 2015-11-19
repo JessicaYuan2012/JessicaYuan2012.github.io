@@ -1,6 +1,7 @@
 function showIndex(){
 	clearAll();
 	addIndexContent();
+    $('li').css("background", "#e3e3e3");
 }
 
 function clearAll(){
@@ -46,4 +47,50 @@ function loadOverview() {
     var content = "<h3 style=\"margin:30px;\">系统架构</h3>\
     <img style=\"margin:30px;width:80%\" src=\"img/structure.png\" class=\"img-responsive animated pulse\" alt=\"Responsive image\" />";
     element.append(content);
+    $('li a').css("color", "#b3b3b3");
+    $('#overview').css("color", "white");
+}
+
+function showHadoop(){
+    $('li a').css("color", "#b3b3b3");
+    $('#hadoop').css("color", "white");
+}
+
+function showSpark(){
+    clearAll();
+    var element = $('#content-container');
+    var content = "<h3 style=\"text-align: left\">计算——SparkSQL</h3>\
+                <br>\
+                <p style=\"text-align: left\">Spark SQL is a Spark module for structured data processing. It provides a programming abstraction called DataFrames and can also act as distributed SQL query engine.</p>\
+                <br>\
+                <p style=\"text-align: left\">spark csv library: input(csv) -> DataFrame -> output(csv)</p>\
+                <br>\
+                <pre style=\"text-align: left\">\
+import org.apache.spark.SparkContext\n\
+import org.apache.spark.SparkContext._\n\
+import org.apache.spark.SparkConf\n\
+import org.apache.spark.sql.SQLContext\n\
+\n\
+object CSVReader {\n\
+    def main(args: Array[String]) {\n\
+        val conf = new SparkConf().setAppName(\"CSVReader\")\n\
+        val sc = new SparkContext(conf)\n\
+        val sqlContext = new org.apache.spark.sql.SQLContext(sc)\n\
+        val df = sqlContext.read.format(\"com.databricks.spark.csv\").option(\"header\", \"true\").option(\"inferSchema\", \"true\").load(\"input/EventClientChannelTune_small.csv\")\n\
+        df.registerTempTable(\"ecct\")\n\
+\n\
+        val df2 = sqlContext.sql(\"SELECT ChannelNumber, SUM(Duration) FROM ecct GROUP BY ChannelNumber\")\n\
+        df2.repartition(1).write.format(\"com.databricks.spark.csv\").option(\"header\", \"true\").save(\"output/groupBy_output\")\n\
+    }\n\
+}\n\
+            </pre>\
+            <br>\
+                <h4 style=\"text-align: left\">难点</h4>\
+                <br>\
+                <p style=\"text-align: left\"> spark-shell调试时遇到的问题</p>\
+                <br>\
+                <p style=\"text-align: left\">sbt libraryDependencies</p>";
+    element.append(content);
+    $('li a').css("color", "#b3b3b3");
+    $('#spark').css("color", "white");
 }

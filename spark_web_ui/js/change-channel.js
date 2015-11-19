@@ -342,6 +342,9 @@ function loadChannelChangeDailyData() {
             window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
         }
      });
+    $('li a').css("color", "#b3b3b3");
+    $('#channelchange').css("color", "white");
+
 }
 
 function moveForward() {
