@@ -33,3 +33,11 @@ function addIndexContent() {
     <p><small>2015.11.20</small></p>";
     element.append(content);
 }
+
+function loadOverview() {
+    clearAll();
+    var element = $('#content-container');
+    var content = "<h3 style=\"margin:30px;\">系统架构</h3>\
+    <img style=\"margin:30px;width:80%\" src=\"img/structure.png\" class=\"img-responsive animated pulse\" alt=\"Responsive image\" />";
+    element.append(content);
+}
