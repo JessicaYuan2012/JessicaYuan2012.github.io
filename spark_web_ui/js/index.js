@@ -54,14 +54,14 @@ function loadOverview() {
 function showHadoop(){
     clearAll();
     var element = $('#content-container');
-    var content = "<h4>hadoop, spark集群配置: 一定要记得修改文件权限 = =。</h4>\
+    var content = "<h2>hadoop, spark集群配置: 一定要记得修改文件权限 = =。</h4>\
                   <br>\
-                  <h4>sbt构建项目遇到的问题</h4>\
+                  <h2>sbt构建项目遇到的问题</h4>\
                   <pre>libraryDependencies += \"org.apache.spark\" %% \"spark-core\" % \"1.5.2\"</pre>\
                   <pre>libraryDependencies += groupID % artifactID % revision % configuration</pre>\
                   <pre>libraryDependencies += groupID %% artifactID % revision % configuration</pre>\
                   <br>\
-                  <h4>spark sql遇到的问题</h4>\
+                  <h2>spark sql遇到的问题</h4>\
                   <p>spark shell中用group by等比较高级一些的sql语句没有结果, 但是在用sbt打包之后再运行没有任何问题</p>\
                   ";
     element.append(content);
@@ -73,7 +73,7 @@ function showHadoop(){
 function showSpark(){
     clearAll();
     var element = $('#content-container');
-    var content = "<h3 style=\"text-align: left\">计算——SparkSQL</h3>\
+    var content = "<h2 style=\"text-align: left\">计算——SparkSQL</h3>\
                 <br>\
                 <p style=\"text-align: left\">Spark SQL is a Spark module for structured data processing. It provides a programming abstraction called DataFrames and can also act as distributed SQL query engine.</p>\
                 <br>\
