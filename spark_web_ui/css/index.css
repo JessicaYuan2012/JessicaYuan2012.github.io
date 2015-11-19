@@ -10,3 +10,11 @@
 canvas {
 	margin:10px;
 }
+
+h1, h2, h3, h4, h5, h6 {
+	color:#505050;
+}
+
+p {
+	color:#b3b3b3;
+}
