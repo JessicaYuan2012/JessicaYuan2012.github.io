@@ -269,6 +269,10 @@ var end2 = 14;
 
 function loadData(){
   clearAll();
+  var element = $('#canvas-container');
+  var title1 = "<h4 style=\"margin:10px;\">1.收视情况</h4>";
+  element.append(title1);
+
   loadAudienceRatingData();
   loadPerDayViewingHour();
   loadOnlineDayCountData();

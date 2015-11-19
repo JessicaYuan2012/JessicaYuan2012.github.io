@@ -221,6 +221,11 @@ var final_data_points_daily_average = [];
 
 function loadChannelChangeData(){
   clearAll();
+
+  var element = $('#canvas-container');
+  var title3 = "<h4 style=\"margin:10px;\">3.换台行为</h4>";
+  element.append(title3);
+
   loadChannelChangeDailyData();
   loadChannelChangeAllData();
 }

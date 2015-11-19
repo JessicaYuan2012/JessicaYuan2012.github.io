@@ -274,6 +274,11 @@ function sum(numArray){
 
 function loadPurchaseData(){
   clearAll();
+
+  var element = $('#canvas-container');
+  var title2 = "<h4 style=\"margin:10px;\">2.购买情况</h4>";
+  element.append(title2);
+
   loadSeasonPurchaseData();
   loadAvgPersonPurchase();
   loadPurchaseSumAvgCost();
