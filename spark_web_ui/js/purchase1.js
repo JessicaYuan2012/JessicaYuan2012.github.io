@@ -1,4 +1,4 @@
-var newopts = {
+var PurchaseSumopts = {
       inGraphDataShow : true,
       datasetFill : true,
       scaleLabel: "<%=value%>",
@@ -226,81 +226,7 @@ var avgPersonPurchaseOpts = {
       responsive : true
 }
 
-var perDayOnlineHourOpts = {
-      inGraphDataShow : true,
-      datasetFill : true,
-      scaleLabel: "<%=value%>",
-      scaleTickSizeRight : 5,
-      scaleTickSizeLeft : 5,
-      scaleTickSizeBottom : 5,
-      scaleTickSizeTop : 5,
-      scaleFontSize : 10,
-      /*canvasBorders : true,
-      canvasBordersWidth : 3,
-      canvasBordersColor : "black",*/
-      graphTitle : "单日用户在线总时长折线图",
-            graphTitleFontFamily : "'Arial'",
-            graphTitleFontSize : 24,
-            graphTitleFontStyle : "normal",
-            graphTitleFontColor : "#666",
-      /*graphSubTitle : "Graph Sub Title",
-            graphSubTitleFontFamily : "'Arial'",
-            graphSubTitleFontSize : 18,
-            graphSubTitleFontStyle : "normal",
-            graphSubTitleFontColor : "#666",*/
-      /*footNote : "Footnote for the graph",
-            footNoteFontFamily : "'Arial'",
-            footNoteFontSize : 8,
-            footNoteFontStyle : "bold",
-            footNoteFontColor : "#666",*/
-      legend : true,
-        legendFontFamily : "'Arial'",
-        legendFontSize : 12,
-        legendFontStyle : "normal",
-        legendFontColor : "#666",
-      legendBlockSize : 15,
-      legendBorders : true,
-      legendBordersWidth : 1,
-      legendBordersColors : "#666",
-      yAxisLeft : true,
-      yAxisRight : false,
-      xAxisBottom : true,
-      xAxisTop : false,
-      yAxisLabel : "小时",
-            yAxisFontFamily : "'Arial'",
-            yAxisFontSize : 16,
-            yAxisFontStyle : "normal",
-            yAxisFontColor : "#666",
-      /*xAxisLabel : "pX Axis Label",
-          xAxisFontFamily : "'Arial'",
-            xAxisFontSize : 16,
-            xAxisFontStyle : "normal",
-            xAxisFontColor : "#666",
-      yAxisUnit : "Y Unit",
-            yAxisUnitFontFamily : "'Arial'",
-            yAxisUnitFontSize : 8,
-            yAxisUnitFontStyle : "normal",
-            yAxisUnitFontColor : "#666",*/
-      //annotateDisplay : true, 
-      spaceTop : 0,
-      spaceBottom : 0,
-      spaceLeft : 0,
-      spaceRight : 0,
-      logarithmic: false,
-//      showYAxisMin : false,
-      rotateLabels : "smart",
-      xAxisSpaceOver : 0,
-      xAxisSpaceUnder : 0,
-      xAxisLabelSpaceAfter : 0,
-      xAxisLabelSpaceBefore : 0,
-      legendBordersSpaceBefore : 0,
-      legendBordersSpaceAfter : 0,
-      footNoteSpaceBefore : 0,
-      footNoteSpaceAfter : 0, 
-      startAngle : 0,
-      dynamicDisplay : true,
-      responsive : true
-}
+
 
 function returnInt(element){
   return parseInt(element,10);
@@ -485,7 +411,7 @@ function loadPurchaseSumAvgCost() {
               ]
             }
             var ctx2 = document.getElementById("chart2").getContext("2d")
-            window.myLine = new Chart(ctx2).Bar(mydata1,newopts);
+            window.myLine = new Chart(ctx2).Bar(mydata1,PurchaseSumopts);
         }
      });
 
