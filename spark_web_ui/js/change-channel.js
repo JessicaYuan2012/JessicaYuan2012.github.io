@@ -221,6 +221,18 @@ var final_data_points_daily_average = [];
 
 function loadChannelChangeData(){
   clearAll();
+
+  var element = $('#canvas-container');
+  element.addClass("col-sm-8");
+  var title3 = "<h4 style=\"margin:10px;\">3.换台行为</h4>";
+  element.append(title3);
+
+  var contentContainer = $('#content-container');
+  contentContainer.attr("style","margin:20px;")
+  contentContainer.addClass("col-sm-2")
+  var comment = "<p>在这里添加一些评论~</p>"
+  contentContainer.append(comment);
+
   loadChannelChangeDailyData();
   loadChannelChangeAllData();
 }
@@ -330,6 +342,9 @@ function loadChannelChangeDailyData() {
             window.myLine = new Chart(ctx).Line(lineChartData, ChannelChangeDailyOpts);
         }
      });
+    $('li a').css("color", "#b3b3b3");
+    $('#channelchange').css("color", "white");
+
 }
 
 function moveForward() {
