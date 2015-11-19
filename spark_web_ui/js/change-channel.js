@@ -220,10 +220,7 @@ var date_list = [];
 var final_data_points_daily_average = [];
 
 function loadChannelChangeData(){
-  var element = $('#canvas-container');
-  if(element.children() != []){
-      $(element.children()).remove();
-  }
+  clearAll();
   loadChannelChangeDailyData();
   loadChannelChangeAllData();
 }
