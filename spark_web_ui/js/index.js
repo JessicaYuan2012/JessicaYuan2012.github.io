@@ -53,7 +53,19 @@ function loadOverview() {
 
 function showHadoop(){
     clearAll();
-    
+    var element = $('#content-container');
+    var content = "<h4>hadoop, spark集群配置: 一定要记得修改文件权限 = =。</h4>\
+                  <br>\
+                  <h4>sbt构建项目遇到的问题</h4>\
+                  <pre>libraryDependencies += \"org.apache.spark\" %% \"spark-core\" % \"1.5.2\"</pre>\
+                  <pre>libraryDependencies += groupID % artifactID % revision % configuration</pre>\
+                  <pre>libraryDependencies += groupID %% artifactID % revision % configuration</pre>\
+                  <br>\
+                  <h4>spark sql遇到的问题</h4>\
+                  <p>spark shell中用group by等比较高级一些的sql语句没有结果, 但是在用sbt打包之后再运行没有任何问题</p>\
+                  ";
+    element.append(content);
+
     $('li a').css("color", "#b3b3b3");
     $('#hadoop').css("color", "white");
 }
@@ -87,11 +99,7 @@ object CSVReader {\n\
 }\n\
             </pre>\
             <br>\
-                <h4 style=\"text-align: left\">难点</h4>\
-                <br>\
-                <p style=\"text-align: left\"> spark-shell调试时遇到的问题</p>\
-                <br>\
-                <p style=\"text-align: left\">sbt libraryDependencies</p>";
+            ";
     element.append(content);
     $('li a').css("color", "#b3b3b3");
     $('#spark').css("color", "white");
