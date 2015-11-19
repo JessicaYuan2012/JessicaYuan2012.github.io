@@ -283,10 +283,10 @@ function loadPurchaseData(){
   var contentContainer = $('#content-container');
   contentContainer.attr("style","margin:20px;")
   contentContainer.addClass("col-sm-2")
-  var comment = "<p>各季度购买总高峰出现在2014年夏，而且高出其他季度很多。</p>\
-                 <br>\
+  var comment = "<p>结论：</p><br><p>各季度购买总高峰出现在2014年夏，而且高出其他季度很多。</p>\
+                 <br><br><br><br><br><br><br><br><br><br>\
                 <p>每人每年平均购买次数从11年到14年一直以较快速度增加，符合实际情况。</p>\
-                <br>\
+                <br><br><br><br><br><br><br><br><br><br>\
                 <p>购买次数上涨，购买平均费用减少</p>";
   contentContainer.append(comment);
 
