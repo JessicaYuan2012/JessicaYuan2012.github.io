@@ -276,8 +276,15 @@ function loadPurchaseData(){
   clearAll();
 
   var element = $('#canvas-container');
+  element.addClass("col-sm-8");
   var title2 = "<h4 style=\"margin:10px;\">2.购买情况</h4>";
   element.append(title2);
+
+  var contentContainer = $('#content-container');
+  contentContainer.attr("style","margin:20px;")
+  contentContainer.addClass("col-sm-2")
+  var comment = "<p>在这里添加一些评论~</p>"
+  contentContainer.append(comment);
 
   loadSeasonPurchaseData();
   loadAvgPersonPurchase();

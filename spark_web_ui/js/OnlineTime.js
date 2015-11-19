@@ -270,8 +270,15 @@ var end2 = 14;
 function loadData(){
   clearAll();
   var element = $('#canvas-container');
+  element.addClass("col-sm-8");
   var title1 = "<h4 style=\"margin:10px;\">1.收视情况</h4>";
   element.append(title1);
+
+  var contentContainer = $('#content-container');
+  contentContainer.attr("style","margin:20px;")
+  contentContainer.addClass("col-sm-2")
+  var comment = "<p>在这里添加一些评论~</p>"
+  contentContainer.append(comment);
 
   loadAudienceRatingData();
   loadPerDayViewingHour();
